@@ -1,0 +1,63 @@
+<div id="contentwrapper">
+<div id="contentcolumn">
+	<div id="mystats">
+<% form_for @user, :url => {:action => 'update'} do |f| -%>
+<%= f.error_messages%>
+<fieldset>
+<div id="big_blue_header">
+	Profile Details
+</div>
+	<ol>
+		<li>
+<p><label for="email" style="display: block;">Email</label>
+<%= f.text_field :email %></p>
+		</li>
+		<li>
+<p><label for="password" style="display: block;">Password</label>
+<%= f.password_field :password %></p>
+</li>
+<li>
+<p><label for="password_confirmation" style="display: block;">Confirm Password</label>
+<%= f.password_field :password_confirmation %></p>
+</li>
+<li>
+<p><label for="first" style="display: block;">First Name</label> <%= f.text_field :first_name %></p>
+</li>
+<li>
+<p><label for="last" style="display: block;">Last Name</label> <%= f.text_field :last_name %></p>
+</li>
+<li>
+<p><label for="last" style="display: block;">Phone</label> <%= f.text_field :phone %></p>
+</li>
+<li>
+<p><label for="city" style="display: block;">City</label> <%= f.text_field :city %></p>
+</li>
+<li>
+	<div id="fivepxspacer"></div>
+<p><p><label for="state">State</label> <%= state_select("user", "state", country='US', options = {}, html_options = { :selected => @user.state }) %>
+</li>
+<li>
+<p><label for="birthdate" style="display: block;">Birthdate</label><%= calendar_date_select_tag "user[birthdate]", @user.birthdate, :embedded => false, :year_range => 100 %></p>
+</li>
+<li>
+<div id="fivepxspacer"></div>
+<p><label for="chart_type" >Charting for</label> <%=select("user", "charting_for_id", ChartingFor.find(:all).collect {|p| [ p.chart_type, p.id ] })%></p>
+</li>
+<li>
+	<div id="fivepxspacer"></div>
+<p><label for="children">Children</label> <%= select_with_integer_options ("user", "children", 0, 20, @user.children) %>  
+</li>
+</ol>	
+</fieldset>
+<div id="big_blue_header">
+</div>
+<div id="fifteenpxspacer">
+</div>
+<p><%= submit_tag 'Update' %> or <%= link_to 'Cancel', :controller => 'home', :action => 'index' %></p>
+<% end -%>
+</div>
+</div>
+</div>
+<div id="leftcolumn">
+	<%= render :partial => 'left_column'%>
+</div>

@@ -1,0 +1,2 @@
+page[:new_post].toggle
+page[:create_new_post].toggle

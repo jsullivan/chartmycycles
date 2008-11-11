@@ -1,0 +1,142 @@
+<!-- INSOMNIA -->
+<% if entry.insomnia %>
+	<div id="blue_header">
+		<%= image_tag 'triangle_bullet.png' %>Insomnia
+	</div>
+	<% if entry.insomnia_comment%>
+		<span class="little_gray_text">
+			<%= entry.insomnia_comment.comment %>
+		</span>
+	<% else %>
+		<%= link_to_remote ('Comment', :url => {:action => 'comment_insomnia', :tall_attributes => @tall_attributes_div, :entry_id => entry}) %>
+	<% end %>				
+
+	<div id="fivepxspacer">
+	</div>
+<% end %>
+
+<!-- ACNE -->	
+<% if entry.acne %>
+	<div id="blue_header">
+		<%= image_tag 'triangle_bullet.png' %>Acne
+	</div>
+	<% if entry.acne_comment%>
+		<span class="little_gray_text">
+			<%= entry.acne_comment.comment %>
+		</span>
+	<% else %>
+		<%= link_to 'Comment'%>
+	<% end %>
+	<div id="fivepxspacer">
+	</div>
+<% end %>
+
+<!-- BLOATING -->
+<% if entry.bloating %>
+	<div id="blue_header">
+		<%= image_tag 'triangle_bullet.png' %>Bloating
+	</div>
+	<% if entry.bloating_comment%>
+		<span class="little_gray_text">
+			<%= entry.bloating_comment.comment %>
+		</span>
+	<% else %>
+		<%= link_to 'Comment'%>
+	<% end %>
+	<div id="fivepxspacer">
+	</div>
+<% end %>
+	
+<!-- PERIOD -->
+<% if entry.period %>
+	<div id="blue_header">
+		<%= image_tag 'triangle_bullet.png' %>Period
+	</div>
+	<% if entry.period_comment%>
+		<span class="little_gray_text">
+			<%= entry.period_comment.comment %>
+		</span>
+	<% else %>
+		<%= link_to 'Comment'%>
+	<% end %>
+	<div id="fivepxspacer">
+	</div>
+<% end %>
+
+<!-- VAGINAL SENSATION -->
+<% if entry.vaginal_sensation %>
+	<div id="blue_header">
+		<%= image_tag 'triangle_bullet.png' %>Vaginal Senation
+	</div>
+	<% if entry.vaginal_sensation_comment%>
+		<span class="little_gray_text">
+			<%= entry.vaginal_sensation_comment.comment %>
+		</span>
+	<% else %>
+		<%= link_to 'Comment'%>
+	<% end %>
+	<div id="fivepxspacer">
+	</div>
+<% end %>
+
+<!-- CRAMPS -->
+<% if entry.cramps %>
+	<div id="blue_header">
+		<%= image_tag 'triangle_bullet.png' %>Cramps
+	</div>
+	<% if entry.cramp_comment%>
+		<span class="little_gray_text">
+			<%= entry.cramp_comment.comment %>
+		</span>
+	<% else %>
+		<%= link_to 'Comment'%>
+	<% end %>
+	<div id="fivepxspacer">
+	</div>
+<% end %>
+
+<!-- MOODY -->
+<% if entry.moody %>
+	<div id="blue_header">
+		<%= image_tag 'triangle_bullet.png' %>Moodiness
+	</div>
+	<% if entry.moody_comment%>
+		<span class="little_gray_text">
+			<%= entry.moody_comment.comment %>
+		</span>
+	<% else %>
+		<%= link_to 'Comment'%>
+	<% end %>
+		<div id="fivepxspacer">
+		</div>
+<% end %>
+
+<!-- PEAK -->
+<% if entry.peak %>
+	<div id="blue_header">
+		<%= image_tag 'triangle_bullet.png' %>Peak
+	</div>
+	<% if entry.peak_comment%>
+		<span class="little_gray_text">
+			<%= entry.peak_comment.comment %>
+		</span>
+	<% else %>
+		<%= link_to 'Comment'%>
+	<% end %>
+	<div id="fivepxspacer">		
+	</div>
+<% end %>
+
+<!-- INTERCOURSE -->
+<% if entry.intercourse %>
+	<div id="blue_header">
+		<%= image_tag 'triangle_bullet.png' %>Sex
+	</div>
+	<% if entry.intercourse_comment%>
+		<span class="little_gray_text">
+			<%= entry.intercourse_comment.comment %>
+		</span>
+	<% else %>
+		<%= link_to 'Comment'%>
+	<% end %>
+<% end %>

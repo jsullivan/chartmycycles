@@ -1,0 +1,1 @@
+page[:new_avatar_link].toggle 

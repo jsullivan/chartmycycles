@@ -1,0 +1,88 @@
+<div id="contentwrapper">
+<div id="contentcolumn">
+
+	<div id="mystats" class="little_gray_text">
+<%= error_messages_for :entry %>
+<div id="big_blue_header">
+	Editing Entry
+</div>
+
+<div id="fivepxspacer"></div>
+<div id="fivepxspacer"></div>
+
+<% form_for(:entry, :url => {:controller => 'entry', :action => 'update'}, 
+                      :html => { :multipart => true }) do |f| -%>
+ 
+<p><label for="chart_date">Chart Date </label><%= calendar_date_select_tag "chart", @entry.chart_date, :embedded => false, :year_range => 100 %></p>
+<br />
+<label for="waking_temp">Waking Temperature</label>
+	<%= select_with_temp_options ("entry", "temp", degree_hash, @entry.temp) %><br />
+	<div id="fivepxspacer"></div>
+
+
+	
+	<%= check_box( :entry, :period)%> <label for="acne">Period</label>
+	  <br />
+	
+	<%= check_box( :entry, :intercourse)%> <label for="acne">Sex</label>
+	  <br />
+	
+
+	<%= check_box( :entry, :peak)%> <label for="acne">Peak day</label>
+	 <br />
+	
+	<%= check_box( :entry, :insomnia)%>
+	<% if @entry.cycle.custom3 && @entry.cycle.custom3.length >= 1%>
+	<label for="acne"><%= @entry.cycle.custom3.capitalize %></label>
+	<% else %>
+		<label for="acne">Insomnia</label>
+	<% end %>
+	  <br />
+	
+	<%= check_box( :entry, :moody)%> <label for="acne">Moody</label>
+	<br />
+	
+	
+	<%= check_box( :entry, :bloating)%>
+	<% if @entry.cycle.custom4 && @entry.cycle.custom4.length >= 1%>
+	<label for="acne"><%= @entry.cycle.custom4.capitalize %></label>
+	<% else %>
+		<label for="acne">Bloating</label>
+	<% end %>
+	 <br />
+	<%= check_box( :entry, :acne)%> 
+	<% if @entry.cycle.custom1 && @entry.cycle.custom1.length >= 1%>
+	<label for="acne"><%= @entry.cycle.custom1.capitalize %></label>
+	<% else %>
+		<label for="acne">Acne</label>
+	<% end %>
+	    <br />
+	
+		<%= check_box( :entry, :cramps)%>
+		<% if @entry.cycle.custom2 && @entry.cycle.custom2.length >= 1%>
+		<label for="acne"><%= @entry.cycle.custom2.capitalize %></label>
+		<% else %>
+			<label for="acne">Cramps</label>
+		<% end %>
+  <br />
+	<%= check_box( :entry, :vaginal_sensation)%> <label for="acne">Vaginal sensation</label>
+	  <br />
+	<label for="comments">Comments</label><br />
+		<%= text_area ("entry", "comment") %><br />
+	<div id="fivepxspacer"></div>
+	<div id="big_blue_header"></div>
+	<div id="fivepxspacer"></div>
+	<div id="fivepxspacer"></div>
+	
+<p>
+	<%= hidden_field_tag("entry_id", @entry.id) %>
+	
+	<%= submit_tag 'Update' %> or <%= link_to ('Cancel', :controller => 'home', :action => 'index') %>
+</p>
+<% end -%>
+</div>
+</div>
+</div>
+<div id="leftcolumn">
+	<%= render :partial => 'entry_left'%>
+</div>

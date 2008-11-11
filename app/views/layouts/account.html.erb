@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>ChartMyCycles.com | Plan your family with online fertility charting.</title>
+  <!-- I'm using Yahoo's reset.css stylesheet here to level the playing field across browsers.-->
+	<%= stylesheet_link_tag 'reset' %>
+	<%= stylesheet_link_tag 'fertile' %>
+	
+
+</head>
+<body>
+	<div id="container">
+		<div id="logo_space">
+			<div id="logo_div">
+				<%= link_to image_tag('family_logo.png'), :action => 'index'%>
+			</div>
+			<div id="header_links">
+			  <p style="text-align: right;"><%= link_to 'Forums', :controller => 'forums' %> | <%= link_to 'Invite your friends', :action => 'invite' %> | <%= link_to 'Contact Us', :action => 'contact' %> | Already a member? <%= link_to 'Log in', :action => 'login' %></p><br />
+			</div>
+		</div>
+	
+		<%= yield  %>
+	
+	</div>
+		<div id="footer">
+			<%= render :partial => '/layouts/footer'%>
+		</div>
+</body>
+</html>

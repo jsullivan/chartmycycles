@@ -1,0 +1,79 @@
+<div id="fivepxspacer">
+</div>
+<% for entry in @entries %>
+	<% @entry_div = "expanded#{entry.id}"%>
+	<% @default = "default#{entry.id}"%>
+	<% @tall_attributes_div = "tall_attributes#{entry.id}"%>
+	<div id="vertical_calendar">
+		<div id="day">
+			<span class="daydetails">
+				Day
+				<br />
+			</span>
+			<span class="daynumber">
+				<%= (entry.chart_date.to_date - @user.current_cycle.started.to_date + 1).to_i %>
+			</span>
+			<br />
+			<span class="daydetails">
+				<%= nice_date_no_year (entry.chart_date) %>
+			</span>
+		</div>
+		<div id="<%= @default%>">
+			<div id="temp_and_expand">
+				<span class="tempdetails">
+					temp.
+					<br />
+				</span>
+				<span class="tempnumber">
+					<%= entry.temp %>&deg;
+					<br />
+				</span>
+				<span class="more_button">
+					<%= link_to_remote ('', :url => {:action => 'toggle_expand', :entry_id => @entry_div, :default => @default})%>
+		  	</span>
+			</div>
+			<div id="attributes">
+  			<%= render :partial => 'vert_cal_table', :locals => {:entry => entry} %>
+			</div>
+		</div>
+		<div id="<%= @entry_div %>" style="display: none;">
+			<div style="background: none;">
+				<div id="tall_temp_and_expand">
+					<span class="tempdetails">
+						temp.
+						<br />
+					</span>
+					<span class="tempnumber">
+						<%= entry.temp %>&deg;
+						<br />			
+					</span>
+					<span class="less_button">
+						<%= link_to_remote ('', :url => {:action => 'toggle_expand', :entry_id => @entry_div, :default => @default})%>
+			  	</span>	
+				</div>
+				<div id="attributes">
+					 <%= render :partial => 'vert_cal_table', :locals => {:entry => entry} %>
+				</div>
+				
+			
+					<div id="tall_attributes">
+									<div id="insomnia_comment_div" style="display: none;">
+										<%= render :partial => 'insomnia_comment_form', :locals => {:entry_id => entry}%>
+									</div>
+						<div id="<%= @tall_attributes_div %>"> 
+			  		<%= render :partial => 'vert_cal_expanded', :locals => {:entry => entry} %>
+						<div id="fifteenpxspacer">
+						</div>
+						<span class="greenlink"><%= link_to 'Edit this entry', {:controller => 'entry', :action => 'edit_entry', :id => entry} %>
+						</span> | 
+						<span class="redlink">
+							<%= link_to 'Delete this entry', {:controller => 'entry', :action => 'destroy', :id => entry}, :confirm => 'Are you sure you want to delete this entry? This cannot be undone.', :method => :post %>
+						</span>
+						<div id="fifteenpxspacer">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<% end%>

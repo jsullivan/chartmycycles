@@ -1,0 +1,141 @@
+<table width="100%" height="54px">
+	<tr>
+		<!-- COMMENT BUBBLE -->
+		<td >			
+			<% if entry.comment && entry.comment.length > 1%>
+				<%= link_to_remote image_tag('big_comment.png'), :url => {:action => 'toggle_expand', :entry_id => @entry_div, :default => @default}%>
+			<% else%> 
+				<%= link_to_remote image_tag('no_comment.png'), :url => {:action => 'toggle_expand', :entry_id => @entry_div, :default => @default}%>			
+			<% end%>
+		</td>
+
+		<!-- MUCUS -->
+		<td>
+			<div id="blankies">
+			  mucus
+			 </div>
+		</td>
+	
+		<!-- CERVIX -->
+		<td>
+			<div id="blankies">
+			  cervix
+		  </div>		
+		</td>
+		
+		<!-- PERIOD -->
+		<td align="center" width="11%">
+			<% if entry.period%>
+				<div id="light_blue">
+			<% else%>
+				<div id="white">
+			<% end %>
+			period
+			</div>		
+		</td>
+		
+		<!-- SEX -->	
+		<td align="center" width="11%">
+			<% if entry.intercourse%>
+				<div id="dark_blue">
+			<% else%>
+				<div id="white">
+			<% end %>
+			sex
+			</div>
+		</td>
+		
+		<!-- PEAK DAY -->
+		<td align="center" width="11%">
+			<% if entry.peak%>
+				<div id="light_blue">
+			<% else%>
+				<div id="white">
+			<% end %>
+			peak 
+			</div>
+		</td>
+	
+		<!-- INSOMNIA -->	
+		<td align="center" width="11%">
+			<% if entry.insomnia%>
+				<div id="dark_blue">
+			<% else%>
+				<div id="white">
+			<% end %>
+			<% if entry.cycle.custom3 && entry.cycle.custom3.length >= 1%>
+				<%= entry.cycle.custom3 %>
+			<% else %>
+				insomnia
+			<% end %>			
+			</div>
+		</td>
+
+		<!-- MOODY -->
+		<td align="center" width="11%">
+			<% if entry.moody %>
+				<div id="light_blue">
+			<% else%>
+				<div id="white">
+			<% end %>
+			moody
+			</div>
+		</td>
+		
+		<!-- BLOATING -->
+		<td align="center" width="11%">
+			<% if entry.bloating%>
+				<div id="dark_blue">
+			<% else%>
+				<div id="white">
+			<% end %>
+				<% if entry.cycle.custom4 && entry.cycle.custom4.length >= 1%>
+					<%= entry.cycle.custom4 %>
+				<% else %>
+					bloating
+				<% end %>
+			</div>
+		</td>
+		
+		<!-- ACNE -->
+		<td align="center" width="11%">
+			<% if entry.acne%>
+				<div id="light_blue">
+			<% else%>
+				<div id="white">
+			<% end %>
+				<% if entry.cycle.custom1 && entry.cycle.custom1.length >= 1%>
+					<%= entry.cycle.custom1 %>
+				<% else %>
+					acne
+				<% end %>
+		  </div>
+		</td>
+
+		<!-- CRAMPS -->
+		<td align="center" width="11%">
+			<% if entry.cramps%>
+				<div id="dark_blue">
+			<% else%>
+				<div id="white">
+			<% end %>
+				<% if entry.cycle.custom2 && entry.cycle.custom2.length >= 1%>
+					<%= entry.cycle.custom2 %>
+				<% else %>
+					cramps
+				<% end %>
+			</div>
+		</td>
+	
+		<!-- VAGINAL SENSATION -->
+		<td align="center" width="11%">
+			<% if entry.vaginal_sensation%>
+				<div id="light_blue">
+			<% else%>
+				<div id="white">
+			<% end %>
+			sensation
+		  </div>		
+		</td>
+	</tr>
+</table>

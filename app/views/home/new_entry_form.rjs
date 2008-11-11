@@ -1,0 +1,2 @@
+page[:new_entry_form].toggle
+page[:entry_and_stats].toggle

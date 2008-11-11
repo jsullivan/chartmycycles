@@ -1,0 +1,2 @@
+page[:comment_button].toggle
+page[:create_new_comment].toggle

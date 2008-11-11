@@ -1,0 +1,40 @@
+<div id="contentwrapper">
+<div id="contentcolumn">
+
+	<div id="mystats" class="little_gray_text">
+<%= error_messages_for :entry %>
+<div id="big_blue_header">
+	Editing Entry
+</div>
+
+<div id="fivepxspacer"></div>
+<div id="fivepxspacer"></div>
+
+<% form_for(:cycle, :url => {:controller => 'cycle', :action => 'update'}, 
+                      :html => { :multipart => true }) do |f| -%>
+<% if @user.cycles.count == 1%>
+<p><label for="chart_date">Cycle start date </label><%= calendar_date_select_tag "cycle[started]", @cycle.started, :embedded => false, :year_range => 100 %></p>
+<% end %>
+<br />
+<br />
+	<p><label for="custom1">Change Acne to</label><br />
+	<%= f.text_field :custom1 %></p>
+	
+	<p><label for="custom2">Change Cramps to</label><br />
+	<%= f.text_field :custom2 %></p>
+	
+	<p><label for="custom3">Change Insomnia to</label><br />
+	<%= f.text_field :custom3 %></p>
+	
+	<p><label for="custom4">Changing Bloating to</label><br />
+	<%= f.text_field :custom4 %></p>
+	<br />
+	<br />
+											<%= submit_tag 'Update' %> or <%= link_to ('Cancel', :controller => 'home', :action => 'index') %>
+<% end %>
+</div>
+</div>
+</div>
+<div id="leftcolumn">
+	<%= render :partial => 'entry_left'%>
+</div>

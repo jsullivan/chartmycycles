@@ -1,0 +1,75 @@
+<%= error_messages_for :entry %>
+<div id="big_blue_header">
+	New Entry
+</div>
+<div id="fivepxspacer"></div>
+<div id="fivepxspacer"></div>
+
+<% form_for(:entry, :url => {:controller => 'entry', :action => 'create'}, 
+                      :html => { :multipart => true }) do |f| -%>
+ 
+<p><label for="last">Chart Date </label><%= calendar_date_select_tag "chart", Time.now, :embedded => false, :year_range => 100 %></p>
+<br />
+<label for="waking_temp">Waking Temperature</label><br />
+	<%= select_with_temp_options ("entry", "temp", degree_hash, "select") %><br />
+	<div id="fivepxspacer"></div>
+<div id="fivepxspacer"></div>
+<%= check_box( :entry, :period)%> <label for="acne">Period</label>
+  <br />
+
+<%= check_box( :entry, :intercourse)%> <label for="acne">Sex</label>
+  <br />
+
+
+<%= check_box( :entry, :peak)%> <label for="acne">Peak day</label>
+ <br />
+
+	<%= check_box( :entry, :insomnia)%>
+	<% if current_user.current_cycle.custom3 && current_user.current_cycle.custom3.length >= 1%>
+	<label for="acne"><%= current_user.current_cycle.custom3.capitalize %></label>
+	<% else %>
+		<label for="acne">Insomnia</label>
+	<% end %>
+	  <br />
+
+
+	<%= check_box( :entry, :moody)%> <label for="acne">Moody</label>
+	  <br />
+
+
+		<%= check_box( :entry, :bloating)%>
+		<% if current_user.current_cycle.custom4 && current_user.current_cycle.custom4.length >= 1%>
+		<label for="acne"><%= current_user.current_cycle.custom4.capitalize %></label>
+		<% else %>
+			<label for="acne">Bloating</label>
+		<% end %>
+		 <br />
+		
+		<%= check_box( :entry, :acne)%> 
+		<% if current_user.current_cycle.custom1 && current_user.current_cycle.custom1.length >= 1%>
+		<label for="acne"><%= current_user.current_cycle.custom1.capitalize %></label>
+		<% else %>
+			<label for="acne">Acne</label>
+		<% end %>
+		    <br />
+		
+					<%= check_box( :entry, :cramps)%>
+					<% if current_user.current_cycle.custom2 && current_user.current_cycle.custom2.length >= 1%>
+					<label for="acne"><%= current_user.current_cycle.custom2.capitalize %></label>
+					<% else %>
+						<label for="acne">Cramps</label>
+					<% end %>
+			  <br />
+<%= check_box( :entry, :vaginal_sensation)%> <label for="acne">Vaginal sensation</label>
+  <br />
+	<label for="comments">Comments</label><br />
+		<%= text_area ("entry", "comment") %><br />
+	<div id="fivepxspacer"></div>
+	<div id="big_blue_header"></div>
+	<div id="fivepxspacer"></div>
+	<div id="fivepxspacer"></div>
+	
+<p>
+	<%= submit_tag 'Update' %> or <%= link_to_remote ('Cancel', :url => {:action => 'new_entry_form'}) %>
+</p>
+<% end -%>

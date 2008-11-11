@@ -1,0 +1,341 @@
+/* 
+Created: 2/24/08
+Updated: 2/25/08 12:17am
+Author: Josh Sullivan
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+COLORS
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Background:        #c0c0c0
+Headlines:         #383838
+Sub Headlines:     #484848
+Main Text:         #505050
+Sub Text:          #707070
+Links:             blue
+Rules:             #A0A0A0
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+INDEX
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+GENERIC
+HEADER
+PRODUCT SPACE
+CONTENT
+FOOTER
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+/* GENERIC 
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+/* If you're wondering why the body text-align is centered, check this out:
+   http://www.simplebits.com/notebook/2004/09/08/centering.html */
+body {
+	font-family: Arial, Helvetica;
+ 	text-align: center;
+	color: #000000;
+	background: #E0E0E0;
+}
+h1 {
+	font-size: 3.4em;
+	font-weight: bold;
+	font-family: Arial, Helvetica;
+	letter-spacing: -2px;
+	color: #000000;
+}
+h2 {
+	font-size: 1.3em;
+	font-family: Arial, Helvetica;
+	font-weight: bold;
+	letter-spacing: -.5px;
+	color: #000000;
+	display: inline;
+}
+a {
+	color: #0d6fc9;
+}
+a:hover {
+	color: #ffffff;
+	background-color: #0d6fc9;
+}
+img {
+	border: none;
+}
+label {  
+display: block;
+color: #000000;
+}
+#container {
+	margin: 0 auto;
+	width: 758px;
+	background: url(../images/container_bkgrnd.jpg) repeat-y;
+	text-align: left;
+	font-size: .9em;
+	padding: 0px 21px 0px 21px;
+	min-height: 800px;
+}
+
+/* HEADER 
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+#logo_space {
+	height: 46px;
+	background: url(/images/logo_space_bkgrnd.jpg);
+	margin: 0px -8px 0px -9px;
+/*	border-bottom: thin solid #C0C0C0;*/
+}
+#logo_div {
+	margin-left: 10px;
+	height: 46px;
+	width: 95px;
+	position: absolute;
+}
+#logo_div a:hover{
+	background: none;
+}
+#header_banner {
+	position: absolute;
+	height: 235px;
+	width: 775px;
+	text-align: left;
+	padding-top: 40px;
+	margin-left: -9px;
+	line-height: 1.2em;
+	border-top: thin solid #8d9bfe;
+	border-bottom: thin solid #8d9bfe;
+	background: url(/images/banner_graphic.jpg);
+}
+#header_links {
+	padding: 25px 10px 0px 0px;
+}
+#taglines {
+	margin-left: 20px;
+	width: 390px;
+	text-align: center;
+}
+.header_subtitle {
+	color: #000000;
+	font-size: 1.4em;
+	line-height: 1.2em;
+}
+#call_to_action {
+	margin-top: 20px;
+	background: none;
+	padding: 5px;
+}
+.call_to_action a {
+	color: #990000;
+	font-weight: bold;
+	font-size: 1.5em;
+}
+.call_to_action a:hover {
+	color: #990000;
+	background: none;
+}
+#call_to_choose{
+	margin-top: 20px;
+	background: none;
+	padding: 5px;
+	text-align: center;
+}
+.call_to_choose a {
+	color: #0d6fc9;
+	font-weight: bold;
+	font-size: 1.5em;
+}
+.call_to_choose a:hover {
+	color: #ffffff;
+	background: #0d6fc9;
+}
+#main_testimonial {
+	margin-top: 20px;
+}
+.main_testimonial {
+	color: #1b7e00;
+	font-size: .9em;
+	line-height: 1em;
+}
+
+/* PRODUCT SPACE 
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+#product_space {
+  margin-top: 283px;
+	height: 205px;
+	background: url(/images/screencaptures.png);
+}
+#choose_because {
+	height: 158px;
+	background: url(/images/choose_because.png);
+}
+
+/* CONTENT
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+#copy {
+	margin-top: 20px;
+}
+#content_big {
+	width: 395px;
+	margin: 20px 0px 0px 0px;
+	color: #000000;
+	float: left;
+	font: 1em Georgia, "Times New Roman", Times, serif;
+}
+#content_big_center {
+	width: 395px;
+	margin: 40px 0px 0px 180px;
+	color: #000000;
+	font-size: 1em;
+}
+#content_big_center_wide {
+	width: 495px;
+	margin: 0px 0px 0px 130px;
+	color: #000000;
+	font: 1em Georgia, "Times New Roman", Times, serif;
+}
+#content_small {
+	width: 340px;
+	margin: 20px 0px 0px 20px;
+	float: left;
+	float: left;
+	font: 1em Georgia, "Times New Roman", Times, serif;
+}
+#login_banner {
+	position: absolute;
+	height: 146px;
+	width: 775px;
+	text-align: left;
+	margin-left: -9px;
+	line-height: 1.2em;
+	border-top: thin solid #8d9bfe;
+	border-bottom: thin solid #8d9bfe;
+	background: url(/images/login_banner.jpg);
+}
+#contact_banner {
+	position: absolute;
+	height: 146px;
+	width: 775px;
+	text-align: left;
+	margin-left: -9px;
+	line-height: 1.2em;
+	border-top: thin solid #8d9bfe;
+	border-bottom: thin solid #8d9bfe;
+	background: url(/images/contact_banner.jpg);
+}
+
+/* FOOTER
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+#last_call_to_action {
+	margin-top: 150px;
+	text-align: center;
+}
+#footer {
+	border-top: 1px solid #A0A0A0;
+	padding: 10px 50px;
+	text-align: center;
+	clear: left;
+	margin-bottom: 10px;
+	margin-left: 50px;
+	margin-right: 50px;
+	font-size: .8em;
+}
+
+/* SIGNUP
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+#sign_up_banner {
+	position: absolute;
+	height: 146px;
+	width: 775px;
+	text-align: left;
+	margin-left: -9px;
+	line-height: 1.2em;
+	border-top: thin solid #8d9bfe;
+	border-bottom: thin solid #8d9bfe;
+	background: url(/images/sign_up_banner.jpg);
+}
+
+/* this is a css-based rollover button */
+.best_rollover a {
+	background: url(/images/best_rollover.png) 0 0 no-repeat;
+	height: 194px;
+	width: 323px;
+	margin: 0px 0px 0px 40px;
+	float: left;
+}
+.best_rollover a:hover	{
+	background-position: -324px 0px;
+/* end css-based rollover button */
+}
+
+/* this is a css-based rollover button */
+.basic_rollover a {
+	background: url(/images/basic_rollover.png) 0 0 no-repeat;
+	height: 194px;
+	width: 323px;
+	margin: 0px 0px 0px 40px;
+	float: left;
+}
+.basic_rollover a:hover	{
+	background-position: -324px 0px;
+/* end css-based rollover button */
+}
+
+/* LAST STEP
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+#last_step_banner {
+	position: absolute;
+	height: 146px;
+	width: 775px;
+	text-align: left;
+	margin-left: -9px;
+	line-height: 1.2em;
+	border-top: thin solid #8d9bfe;
+	border-bottom: thin solid #8d9bfe;
+	background: url(/images/last_step_banner.jpg);
+}
+
+#best_plan {
+	background: url(/images/best_rollover.png) 0 0 no-repeat;
+	height: 194px;
+	width: 323px;
+	margin: 0px 0px 0px 220px;
+}
+
+#basic_plan {
+	background: url(/images/basic_rollover.png) 0 0 no-repeat;
+	height: 194px;
+	width: 323px;
+	margin: 0px 0px 0px 220px;
+}
+
+/* FORMS
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+
+#login_box {
+	color: black;
+	border: thin solid #8d9bfe;
+	background: url(/images/thin_blank_banner.jpg);
+	padding: 10px 50px;
+}
+fieldset {  
+margin: 1.5em 0 0 0;  
+padding: 0;
+}
+legend {  
+margin-left: 1em;  
+color: #000000;  
+font-weight: bold;
+}
+fieldset ol {  
+padding: 1em 1em 0 1em;  
+list-style: none;
+}
+fieldset li {  
+padding-bottom: 5px;
+}
+fieldset.submit {  
+border-style: none;
+}

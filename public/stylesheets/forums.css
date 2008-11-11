@@ -1,0 +1,93 @@
+#forum_topics {
+/*	border-width: 1px 1px 0px 1px;
+	border-color: blue;
+	border-style: solid;*/
+	background: url(/images/topic_bkgrnd.jpg) repeat-x;
+	font-size: .9em;
+  min-height: 50px;
+  padding-left: 5px;
+}
+#forum_topics a {
+	font-size: 1.3em;
+	font-weight: bold;
+	color: #592992;
+	text-decoration: none;
+}
+#forum_topics a:hover {
+	font-size: 1.3em;
+	font-weight: bold;
+	color: #ffffff;
+	background: #592992;
+}
+#forum_container {
+	background: #e7d2fc;
+	padding: 10px;
+	min-height: 730px;
+}
+#topic_read {
+	background: url(/images/topic_read_bkgrnd.jpg)  repeat-x;
+	font-size: .9em;
+  height: 33px;
+	padding: 0px 5px 0px 5px;
+}
+#test {
+	background: #e7d2fc;
+}
+#create_new_post {
+float:left;
+}
+/* this is a css-based rollover button */
+.create_new_post a {
+	background: url(/images/create_new_post.png) 0 0 no-repeat;
+	height: 45px;
+	width: 200px;
+  float: left;
+}
+.create_new_post a:hover	{
+	background-position: -199px 0px;
+}
+/* end css-based rollover button */
+#comment_button {
+float:left;
+margin-top: 10px;
+height: 60px;
+}
+/* this is a css-based rollover button */
+.comment_button a {
+	background: url(/images/comment_button.png) 0 0 no-repeat;
+	height: 45px;
+	width: 200px;
+  float: left;
+}
+.comment_button a:hover	{
+	background-position: -199px 0px;
+}
+/* end css-based rollover button */
+#post_div {
+	padding: 20px;
+	background: url(/images/blue_paper.jpg) repeat-y #dce1f0;
+	font-size: 1.2em;
+	color: #ffffff;
+	clear: both;
+	border-color: #1f2a4d;
+	border-width: 3px 0px 3px 0px;
+	border-style: solid;
+}
+#comment_div {
+	padding: 20px;
+	background: url(/images/green_paper.jpg) repeat-y #f0dcef;
+	font-size: 1.1em;
+	clear: both;
+	border-color: #192111;
+	border-width: 3px 0px 3px 0px;
+	border-style: solid;
+	margin-right: 30%;
+	margin-top: 10px;
+	color: #ffffff;
+}
+.writer_info {
+	padding-left: 10px;
+	font-size: .8em;
+	color: #ffffff;
+	font-weight: bold;
+}

@@ -1,0 +1,10 @@
+class Avatar < ActiveRecord::Base
+  has_attachment :content_type => :image, 
+                   :storage => :file_system, 
+                   :max_size => 500.kilobytes,
+                   :resize_to => '180',
+                   :thumbnails => { :thumb => '40x40>' }
+
+    validates_as_attachment
+    belongs_to :user
+end

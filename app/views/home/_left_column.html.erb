@@ -1,0 +1,79 @@
+<div id="avatar">
+		<% if current_user.avatar %>	
+		<%= image_tag(current_user.avatar.public_filename) %>	
+		<% else %>	
+		<img src="/images/blankavatar.jpg">
+		<% end %>
+		<br />
+		<%= link_to_remote ('Change photo', :url => {:action => 'toggle_new_avatar'})%>
+</div>
+<div id="new_avatar_link" style="display:none;">
+	<%= render :partial => 'home/new_avatar'%>
+</div>
+<div id="fifteenpxspacer">
+</div>
+<% unless controller.action_name == 'edit' %>
+	<div id="add_new_entry">
+		<span class="add_new_entry">
+			<%= link_to_remote ('', :url => {:action => 'new_entry_form'}) %>
+  	</span>
+	</div>
+<% end %>
+
+
+<div class="innertube">
+	<span class="redlink"><%= link_to 'End this cycle', {:action => 'end_cycle', :id => @user.current_cycle}, :confirm => 'Are you sure you want to end this cycle? This will put your cycle into your history and create a new cycle.', :method => :post %></span>
+	<br />
+	<div id="fivepxspacer"></div>
+	<%= link_to 'Share this cycle' %><br />
+	<%= link_to 'Customize this cycle', :controller => 'cycle', :action => 'edit' %><br />
+	
+	<span class="little_gray_text">
+		<br />
+		<div id="blue_header">
+			<b>Motto</b> <%= link_to_remote ('Edit', :url => {:action => 'toggle_edit_motto'})%>
+		</div>
+		<%= @user.display_motto %> 
+		<br />
+		<div id="edit_motto_link" style="display:none;">
+			<%= render :partial => 'home/edit_motto'%>
+		</div>
+		<div id="fifteenpxspacer">
+		</div>
+			<div id="blue_header">
+				<b>Profile</b> <%= link_to 'Edit', :action => 'edit' %>
+			</div>
+			<%= @user.full_name %> 
+			<br />
+			<% if @user.city && @user.city.length > 1 %>
+				<%= @user.city %>
+			<% end %>
+			<% if @user.state && @user.state.length > 1 %>
+			<%= @user.state %>
+			<% end %><br />
+			<% if @user.children && @user.children == 1 %>
+			Has <%= @user.children %> kid <br />
+			<% elsif @user.children && @user.children > 1 %>
+			Has <%= @user.children %> kids <br />
+			<% end %>
+			<% if @user.charting_for %>
+			Charting for <%= @user.charting_for.chart_type %>
+			<% end %>
+			<div id="fifteenpxspacer">
+			</div>
+		<div id="blue_header">
+		<b>This cycle</b>
+		</div>
+		Started <%= nice_date (@user.current_cycle.started) %><br />
+		<%= time_ago_in_words(@user.cycle_start_date)%> ago<br />
+			<div id="fifteenpxspacer">
+			</div>
+		<div id="blue_header">
+			<b>Latest Activity</b>
+		</div>
+  	Logged in <%= time_ago_in_words(current_user.last_login) %> ago<br />
+  	Member since <%= nice_date(current_user.created_at)%>
+<br />
+	
+</span>
+</div>

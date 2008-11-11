@@ -1,0 +1,41 @@
+<div id="contentwrapper">
+<div id="contentcolumn">
+<div id="entry_and_stats">
+<div id="graph">
+	<% if @user.current_cycle.entries.count >= 1%>
+		<%= @graph %>
+	<% else %>
+		<% if @user.cycles.count <= 1 %>
+			<%= render :partial => 'new_user_graph_pointers'%>
+		<% else %>
+			<%= render :partial => 'new_cycle_message'%>
+		<% end %>
+	<% end %>
+</div>
+</div>
+<div id="new_entry_form" style="display: none;">
+ <%= render :partial => 'new_entry'%>
+</div>
+	<% if @user.cycles.count == 1 && @user.current_cycle.entries.count == 1 %>
+		<%= render :partial => 'first_entry' %>
+	<% elsif @user.cycles.count == 1 && @user.current_cycle.entries.count == 2 %>
+		<%= render :partial => 'second_entry'%>
+	<% elsif @user.cycles.count == 1 && @user.current_cycle.entries.count == 3%>
+		<%= render :partial => 'third_entry'%>
+	<% elsif @user.cycles.count == 1 && @user.current_cycle.entries.count == 4%>
+		<%= render :partial => 'fourth_entry'%>
+	<% elsif @user.cycles.count == 1 && @user.current_cycle.entries.count == 5%>
+		<%= render :partial => 'fifth_entry'%>
+	<% end %>
+	<%= render :partial => 'vertical_cal'%>
+	<br />
+	<br />
+</div>
+</div>
+<div id="leftcolumn">
+	<%= render :partial => 'left_column'%>
+</div>
+
+
+
+				

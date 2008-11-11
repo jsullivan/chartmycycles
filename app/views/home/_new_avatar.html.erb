@@ -1,0 +1,14 @@
+<div style="background: #ffffff; padding: 5px;">
+<%= error_messages_for :avatar %>
+<% form_for(:avatar, :url => {:action => 'create_avatar'}, 
+                      :html => { :multipart => true }) do |f| -%>
+  <p>
+    Upload a picture:<br />
+    <%= f.file_field :uploaded_data, :size => 17%>
+  </p>
+<br />
+  <p>
+    <%= submit_tag 'Upload' %> or <%= link_to_remote ('Cancel', :url => {:action => 'toggle_new_avatar'}) %>
+  </p>
+<% end -%>
+</div>

@@ -1,0 +1,45 @@
+<div id="avatar">
+	<% if logged_in? && current_user.avatar %>	
+		<%= image_tag(current_user.avatar.public_filename) %>	
+	<% else %>	
+		<img src="/images/blankavatar.jpg">
+	<% end %>
+	<br />
+	<% if logged_in? %>
+		<br />
+		<%= link_to 'Share your current cycle' %><br />
+		<span class="little_gray_text">
+			<br />
+			<div id="blue_header">
+				Motto 
+			</div>
+			<%= @user.display_motto %> 
+			<br />
+	
+			<div id="fifteenpxspacer">
+			</div>
+				<div id="blue_header">
+					Profile 
+				</div>
+				<%= @user.full_name %> 
+				<br />
+				<% if @user.city && @user.city.length > 1 %>
+					<%= @user.city %>
+				<% end %>
+				<% if @user.state && @user.state.length > 1 %>
+				<%= @user.state %>
+				<% end %><br />
+				<% if @user.children && @user.children == 1 %>
+				Has <%= @user.children %> kid <br />
+				<% elsif @user.children && @user.children > 1 %>
+				Has <%= @user.children %> kids <br />
+				<% end %>
+				<% if @user.charting_for %>
+				Charting for <%= @user.charting_for.chart_type %>
+				<% end %>
+				<div id="fifteenpxspacer">
+				</div>
+	<% end %>
+	
+</div>
+<br />

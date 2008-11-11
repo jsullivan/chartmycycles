@@ -1,0 +1,36 @@
+<div id="login_banner">
+</div>
+<div id="spacer" style="height: 170px">
+</div>
+
+<table align="center">
+	<tr>
+		<td>
+<div id="login_box">
+	<%= flash[:notice] %><br /	>
+<%= link_to 'Create a new account', :action => "signup" %>
+<% form_tag do -%>
+<fieldset>
+	<ol>
+		<li>
+<p><label for="email">Email</label>
+<%= text_field_tag 'email'%></p>
+</li>
+<li>
+	</li>
+<p><label for="password">Password</label>
+<%= password_field_tag 'password' %></p>
+<br />
+<!-- Uncomment this if you want this functionality-->
+<p><label for="remember_me" style="display: inline;">Remember me:</label>
+<%= check_box_tag 'remember_me' %></p>
+
+<div style="text-align:right; padding-top: 20px">
+<p><%= submit_tag 'Log in' %>  or <%= link_to 'Cancel', :action => 'index' %></p>
+</div>
+<% end -%>
+</fieldset>
+</div>
+		</td>
+		</tr>
+		</table>

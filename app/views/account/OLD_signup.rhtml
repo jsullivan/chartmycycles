@@ -1,0 +1,55 @@
+<table>
+	<thead>
+	  <tr>
+		  <th>&nbsp;</th>
+		  <th>Premium $12/mo.</th>
+	    <th>Basic $10/mo.</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr>
+		  <th>Free 30 day trial</th>
+		    <td>&bull;</td>
+		    <td>&bull;</td>
+		</tr>
+		<tr>
+		  <th>3 months of chart history</th>
+			  <td>&bull;</td>
+		    <td>&bull;</td>
+		</tr>
+		<tr>
+		  <th>Unlimited chart history</th>
+		   <td>&bull;</td>
+		   <td>&nbsp;</td>
+		</tr>
+		  <th>Community forum access</th>
+		     <td>&bull;</td>
+		     <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+<div id="content_big">
+ <h2>Why chart my cycles?</h2><br />
+Learning to chart fertility cycles can be confusing. Skip the confusion and get straight to the good stuff. Learn from other women who are charting their cycles and get help from others when you get stumped.
+</div>
+
+<div id="content_small">
+ <h2>Will this be easy for me?</h2><br />
+Yes! Learning to chart fertility cycles can be confusing. Skip the confusion and get straight to the good stuff. Learn from other women who are charting their cycles and get help from others when you get stumped.
+</div>
+
+<%= error_messages_for :user %>
+<% form_for :user do |f| -%>
+
+<p><label for="email">Email</label><br/>
+<%= f.text_field :email %></p>
+
+<p><label for="password">Password</label><br/>
+<%= f.password_field :password %></p>
+
+<p><label for="password_confirmation">Confirm Password</label><br/>
+<%= f.password_field :password_confirmation %></p>
+
+<p><%= submit_tag 'Sign up' %> or <%= link_to 'Cancel', :action => 'index' %></p>
+<% end -%>

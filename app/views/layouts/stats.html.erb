@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>ChartMyCycles.com | Get control of your fertility</title>
+  <!-- I'm using Yahoo's reset.css stylesheet here to level the playing field across browsers.-->
+	<%= stylesheet_link_tag 'reset', 'fertile_home'%>
+	<%= javascript_include_tag :defaults, 'swfobject' %>
+	<%= calendar_date_select_includes 'silver' %>
+</head>
+<body>
+	<div id="maincontainer">
+	<div id="topsection">
+	<div class="innertube">
+	<div id="logo">
+	</div>
+	<div id="domain">
+		<%= link_to 'ChartMyCycles', :controller => 'home' %>
+	</div>
+	<div id="tabs_container">
+	<%= render :partial => '/layouts/tabs'%>
+	</div>
+	<div id="top_links" class="top_links">
+		<%= render :partial => '/layouts/toplinks' %>	
+	</div>
+	<br />
+	</div>
+	</div>
+
+		
+		<%= yield  %>
+<div id="footer">
+	<%= render :partial => '/layouts/footer'%>
+	
+</div>
+
+		</div>
+	
+</body>
+</html>

@@ -1,0 +1,69 @@
+<div id="contentwrapper">
+<div id="contentcolumn">
+	<div id="forum_container">
+		<h1><%= @forum.topic %>.</h1>
+		<%= @forum.description%><br />
+		<%= link_to 'Back', :controller => 'forums'%>
+		<div id="create_new_post">
+			<span class="create_new_post">
+				<%= link_to_remote ('', :url => {:action => 'new_post_form', :forum_id => @forum.id}) %>
+		  </span>
+		</div>
+		<br />
+		<div id="new_post" style="display:none;">
+			<%= render :partial => 'new_post'%>
+		</div>
+		<% if @posts.length >= 1 %>	
+					<table width="100%" >
+						<tr>
+							<% for post in @posts %>
+					<td width="17px">
+						<%= image_tag 'topic_tab.png'%>
+					</td>
+					<td align="center" valign="middle" id="forum_topics">
+							<% if post.user.avatar %>	
+							<%= image_tag(post.user.avatar.public_filename(:thumb)) %>	
+							<% else %>	
+							<img src="/images/blankavatar_thumb.jpg">
+							<% end %>
+							</td>
+							<td width="60%" valign="middle" id="forum_topics">
+						<%= link_to post.title, :action => 'details', :id => post %> <br />
+						by <b><%= post.user.full_name %></b>, posted <%= time_ago_in_words(post.created_at) %> ago.
+						
+						</td>
+						<td width="12px">
+							<%= image_tag 'topic_title_transition.jpg'%>
+						</td>
+
+						<td align="center" id="topic_read">
+							<%= post.comments.count%> comments
+							</td>
+								<td align="center" id="topic_read">
+									<% if post.comments.count >= 1%>
+									Last comment <%= time_ago_in_words(post.comments.find(:last).created_at) %> ago<br />
+									by <%= post.comments.find(:last).user.full_name %>
+									<% end%>
+									</td>
+							</tr>
+									<% end %>
+					</table>
+				
+				
+		<% else %>
+			There aren't any posts yet in this topic. Be the first! <br />
+		<% end %>
+		<div id="thirtypxspacer"></div>
+		<div id="create_new_post">
+			<span class="create_new_post">
+				<%= link_to_remote ('', :url => {:action => 'new_post_form', :forum_id => @forum.id}) %>
+		  </span>
+		</div>		
+</div>
+<p></p>
+</div>
+</div>
+<div id="leftcolumn">
+	<%= render :partial => 'forums_left_column'%>
+</div>
+

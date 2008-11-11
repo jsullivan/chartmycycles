@@ -1,0 +1,33 @@
+<%= error_messages_for :user %>
+<% form_for :user do |f| -%>
+
+<table align="center">
+	<tr>
+		<td>
+<div id="login_box">
+<fieldset>
+	Create an account<br />
+	<ol>
+		<li>
+<p><label for="email">Email</label>
+<%= f.text_field :email %></p>
+		</li>
+		<li>
+<p><label for="password">Password</label>
+<%= f.password_field :password %></p>
+		</li>
+		<li>
+<p><label for="password_confirmation">Confirm Password</label>
+<%= f.password_field :password_confirmation %></p>
+</li>
+</ol>
+<div style="text-align:right; padding-top: 20px">
+<p><%= submit_tag 'Sign up' %> or <%= link_to 'Cancel', :action => 'index' %></p>
+</div>
+<% end -%>
+</fieldset>
+</div>
+</tr>
+</td>
+</table>
+<br />

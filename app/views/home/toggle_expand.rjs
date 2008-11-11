@@ -1,0 +1,4 @@
+@entry_id = params[:entry_id]
+@default = params[:default]
+page[@default].toggle 
+page[@entry_id].toggle 

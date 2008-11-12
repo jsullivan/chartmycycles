@@ -18,6 +18,8 @@ namespace :passenger do
   desc "Restart Application"
   task :restart do
     run "touch #{current_path}/tmp/restart.txt"
+    run "copy #{current_path}/config/dipperstove.database.yml database.yml"
+    run "rm #{current_path}/public/.htaccess"
   end
 end
 

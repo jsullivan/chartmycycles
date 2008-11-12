@@ -21,7 +21,7 @@ namespace :passenger do
     run "cp #{current_path}/config/dipperstove.database.yml #{current_path}/config/database.yml"
     run "rm #{current_path}/public/.htaccess"
     run "rm -rf #{current_path}/public/avatars"
-    run "ln -s /www/chartmycycles/avatars #{current_path}/public/avatars"
+    run "ln -s /www/chartmycyles/avatars/ #{current_path}/public/avatars"
   end
 end
 

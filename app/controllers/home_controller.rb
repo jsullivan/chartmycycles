@@ -54,6 +54,20 @@ class HomeController < ApplicationController
     end
   end
   
+  def toggle_share_it
+    if request.post?
+      cycle = current_user.current_cycle
+      if cycle.shared
+        cycle.shared = false
+        cycle.save
+      else
+        cycle.shared = true
+        cycle.save
+      end
+    end
+    redirect_to :action => 'index'
+  end
+  
   def end_cycle
     if request.post?
       cycle = current_user.current_cycle  

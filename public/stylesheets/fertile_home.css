@@ -427,3 +427,18 @@ border-style: none;
 	border-style: solid;
 	border-color: #3c2f24;
 }
+#share_it {
+	background: url(/images/blue_paper.jpg);
+	font-weight: bold;
+	padding: 10px;
+	margin: 5px;
+	color: #ffffff;
+	border-width: 3px 0px 3px 0px;
+	border-style: solid;
+	border-color: #1f2a4d;
+	text-align: center;
+}
+.share_it a {
+	color: #ffffff;
+	text-decoration: underline;
+}

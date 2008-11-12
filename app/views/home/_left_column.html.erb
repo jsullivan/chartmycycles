@@ -24,8 +24,16 @@
 <div class="innertube">
 	<span class="redlink"><%= link_to 'End this cycle', {:action => 'end_cycle', :id => @user.current_cycle}, :confirm => 'Are you sure you want to end this cycle? This will put your cycle into your history and create a new cycle.', :method => :post %></span>
 	<br />
-	<div id="fivepxspacer"></div>
-	<%= link_to 'Share this cycle' %><br />
+	<div id="fivepxspacer"></div>	
+	<% if current_user.current_cycle.shared%>
+	<%= link_to 'Stop sharing this cycle', {:controller => 'home', :action => 'toggle_share_it'}, :method => :post %>
+	<% else %>
+	<%= link_to 'Share this cycle', {:controller => 'home', :action => 'toggle_share_it'}, :method => :post %>
+	<% end %>
+	<br />
+	<div id="edit_motto_link" style="display:none;">
+		<%= render :partial => 'home/edit_motto'%>
+	</div>
 	<%= link_to 'Customize this cycle', :controller => 'cycle', :action => 'edit' %><br />
 	
 	<span class="little_gray_text">

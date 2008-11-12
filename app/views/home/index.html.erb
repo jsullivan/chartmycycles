@@ -27,6 +27,12 @@
 	<% elsif @user.cycles.count == 1 && @user.current_cycle.entries.count == 5%>
 		<%= render :partial => 'fifth_entry'%>
 	<% end %>
+	<% if @user.current_cycle.shared%>
+	<div id="share_it" class="share_it" >
+		<% share_link = "www.chartmycycles.com/share/#{current_user.current_cycle.id}"%>
+		This cycle is shared at this url: <%= link_to share_link %><br />
+	</div>
+	<% end %>
 	<%= render :partial => 'vertical_cal'%>
 	<br />
 	<br />

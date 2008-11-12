@@ -3,6 +3,7 @@ class Avatar < ActiveRecord::Base
                    :storage => :file_system, 
                    :max_size => 500.kilobytes,
                    :resize_to => '180',
+                   :processor => :MiniMagick,
                    :thumbnails => { :thumb => '40x40>' }
 
     validates_as_attachment

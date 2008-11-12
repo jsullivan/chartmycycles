@@ -29,8 +29,8 @@
 	<% end %>
 	<% if @user.current_cycle.shared%>
 	<div id="share_it" class="share_it" >
-		<% share_link = "www.chartmycycles.com/share/#{current_user.current_cycle.id}"%>
-		This cycle is shared at this url: <%= link_to share_link, "http://chartmycycles.com/share/#{current_user.current_cycle.id}" %><br />
+		<% share_link = "www.chartmycycles.com/share/cycle/#{current_user.current_cycle.id}"%>
+		This cycle is shared at this url: <%= link_to share_link, "http://chartmycycles.com/share/cycle/#{current_user.current_cycle.id}" %><br />
 	</div>
 	<% end %>
 	<%= render :partial => 'vertical_cal'%>

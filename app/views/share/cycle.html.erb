@@ -1,4 +1,39 @@
 <div id="contentwrapper">
 <%= @graph%>
+<div id="share_it" class="share_it">
+	<table>
+		<tr>
+			<td align="right" width="80">
+	<div id="avatar" style="display: inline;">
+			<% if @user.avatar %>	
+			<%= image_tag(@user.avatar.public_filename(:medium)) %>	
+			<% else %>	
+			<img src="/images/blankavatar.jpg">
+			<% end %>
+			</td>
+			<td align="left">
+				<div id="share_text">
+				<%= @user.full_name %> shared this cycle. It started on <%= nice_date(@cycle.started) %>
+				<% if @cycle.ended %>
+				 and ended on <%= nice_date(@cycle.ended) %>.
+				<% else %>
+				.
+				<% end %>
+				<br />
+				<%= @user.name %> has charted <%= @user.cycles.count%> 
+				<% if @user.cycles.count == 1 %>
+				cycle.
+				<% else %>
+				cycles.
+				<% end %>
+				</div>
+					</td>
+				</tr>
+			</table>
+	</div>
+	<%= render :partial => 'shared_vertical_cal'%>
+	<br />
+	<br />
+	</div>
 <p></p>
 </div>

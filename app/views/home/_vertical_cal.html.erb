@@ -57,11 +57,9 @@
 				
 			
 					<div id="tall_attributes">
-									<div id="insomnia_comment_div" style="display: none;">
-										<%= render :partial => 'insomnia_comment_form', :locals => {:entry_id => entry}%>
-									</div>
+								
 						<div id="<%= @tall_attributes_div %>"> 
-			  		<%= render :partial => 'vert_cal_expanded', :locals => {:entry => entry} %>
+							<%= entry.comment%>
 						<div id="fifteenpxspacer">
 						</div>
 						<span class="greenlink"><%= link_to 'Edit this entry', {:controller => 'entry', :action => 'edit_entry', :id => entry} %>

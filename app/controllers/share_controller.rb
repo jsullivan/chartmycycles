@@ -3,6 +3,7 @@ class ShareController < ApplicationController
 def cycle
   @cycle = Cycle.find(params[:id])
   @user = @cycle.user
+  @entries = @cycle.entries.find(:all, :order => 'chart_date ASC')
   if @cycle.shared
     @graph = open_flash_chart_object("100%",300, "/share/y_right/#{@cycle.id}")#, true, '../' used to be here, too.
   else
@@ -14,18 +15,17 @@ end
     g = Graph.new
    # g.title( 'Fertility Cycle #1', '{color: #7E97A6; font-size: 18; text-align: center}' )
     g.set_bg_color('#e7d2fc')
-    
-    @user = current_user
-cycle = Cycle.find(params[:id])
+    cycle = Cycle.find(params[:id])
+    @user = cycle.user
     entries = cycle.entries.find(:all, :order => 'chart_date ASC')
-    max_entry = (entries.last.chart_date.to_date - @user.current_cycle.started.to_date).to_i
+    max_entry = (entries.last.chart_date.to_date - cycle.started.to_date).to_i
     # Create an empty array and fill it with a baseline value of 96.9 for the amount of days into the
     # cycle the latest entry exists for
     graph_array = [].fill(96.9, 0, max_entry)
     # Now, populate that array with the actual temp values from the entries. Correspond the temp in each
     # entry to that day in the cycle. 
     for entry in entries
-      day = (entry.chart_date.to_date - @user.current_cycle.started.to_date).to_i
+      day = (entry.chart_date.to_date - cycle.started.to_date).to_i
       graph_array[day] = entry.temp
     end
     

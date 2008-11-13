@@ -442,3 +442,6 @@ border-style: none;
 	color: #ffffff;
 	text-decoration: underline;
 }
+#share_text {
+	margin-left: 10px;
+}

@@ -1,3 +1,0 @@
-@tall_attributes_div = params[:tall_attributes]
-page[@tall_attributes_div].toggle
-page[:insomnia_comment_div].toggle

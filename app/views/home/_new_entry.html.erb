@@ -16,22 +16,22 @@
 <div id="fivepxspacer"></div>
 
 <label for="waking_temp">Vaginal sensation</label><br />
-	<%= select_with_sensation_options ("entry", "vaginal_sensation", sensation_hash, "select") %><br />
+	<%= select_with_sensation_options ("entry", "vaginal_sensation", sensation_hash, "") %><br />
 	<div id="fivepxspacer"></div>
 <div id="fivepxspacer"></div>
 
 <label for="waking_temp">Mucus</label><br />
-	<%= select_with_mucus_options ("entry", "mucus", mucus_hash, "select") %><br />
+	<%= select_with_mucus_options ("entry", "mucus", mucus_hash, "") %><br />
 	<div id="fivepxspacer"></div>
 <div id="fivepxspacer"></div>
 
 <label for="waking_temp">Cervix position</label><br />
-	<%= select_with_cervix_position_options ("entry", "cervix_position", position_hash, "select") %><br />
+	<%= select_with_cervix_position_options ("entry", "cervix_position", position_hash, "") %><br />
 	<div id="fivepxspacer"></div>
 <div id="fivepxspacer"></div>
 
 <label for="waking_temp">Cervix firmness</label><br />
-	<%= select_with_cervix_firmness_options ("entry", "cervix_firmness", firmness_hash, "select") %><br />
+	<%= select_with_cervix_firmness_options ("entry", "cervix_firmness", firmness_hash, "") %><br />
 	<div id="fivepxspacer"></div>
 <div id="fivepxspacer"></div>
 
@@ -84,10 +84,10 @@
 			  <br />
 <%= check_box( :entry, :vaginal_sensation)%> <label for="acne">Vaginal sensation</label>
   <br />
+	<br />
 	<label for="comments">Comments</label><br />
 		<%= text_area ("entry", "comment") %><br />
 	<div id="fivepxspacer"></div>
-	<div id="big_blue_header"></div>
 	<div id="fivepxspacer"></div>
 	<div id="fivepxspacer"></div>
 	

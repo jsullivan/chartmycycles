@@ -13,8 +13,16 @@
 <% form_for(:cycle, :url => {:controller => 'cycle', :action => 'update'}, 
                       :html => { :multipart => true }) do |f| -%>
 <% if @user.cycles.count == 1%>
-<p><label for="chart_date">Cycle start date </label><%= calendar_date_select_tag "cycle[started]", @cycle.started, :embedded => false, :year_range => 100 %></p>
+<p><label for="chart_date">Cycle start date </label><br /><%= calendar_date_select_tag "cycle[started]", @cycle.started, :embedded => false, :year_range => 100 %></p>
+<br />
+<br />
 <% end %>
+
+<p><label for="chart_date">Phase one end date </label><br /><%= calendar_date_select_tag "cycle[phase_one_end]", @cycle.phase_one_end, :embedded => false, :year_range => 100 %></p>
+<br />
+<br />
+
+<p><label for="chart_date">Phase three start date </label><br /><%= calendar_date_select_tag "cycle[phase_three_start]", @cycle.phase_three_start, :embedded => false, :year_range => 100 %></p>
 <br />
 <br />
 	<p><label for="custom1">Change Acne to</label><br />

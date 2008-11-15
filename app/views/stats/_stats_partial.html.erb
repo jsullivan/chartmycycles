@@ -8,14 +8,24 @@ today.
 <%= nice_date (@user.current_cycle.started) %> (<%= time_ago_in_words(@user.cycle_start_date)%> ago).
 <% end %>
 <%= @graph%>
-
 <br />
-	<% if @user.cycles.count > 1 %>
-	<%= image_tag 'triangle_bullet.png' %>Your previous cycle lasted <%= @last_cycle_day_count %> days (you made <%= @last_cycle_entry_count %> entries).<br />
-	<% if @last_period_started %>
-	<%= image_tag 'triangle_bullet.png' %>Your last period started <%= time_ago_in_words(@last_period_started) %> ago. It lasted <%= @period_entries.length %> days.<br />
-	<% end %>
-  <%= image_tag 'triangle_bullet.png' %>Your last ovulation was ... days ago. <br />
-  <%= image_tag 'triangle_bullet.png' %>You were fertile for ... days. <br />
-	<% else %><br />
-	<% end %>
+
+<table width="100%">
+	<tr>
+		<td width="33%">
+			<%= @mucus_pie %> 
+		</td>
+		<td width="33%">	
+			<%= @sensation_pie %>
+		</td>
+		<td width="33%">
+			<%= @firmness_pie %>
+		</td>
+		</tr>
+		<tr>
+		<td width="33%">
+			<%= @position_pie %>
+		</td>
+
+	</tr>
+</table>	

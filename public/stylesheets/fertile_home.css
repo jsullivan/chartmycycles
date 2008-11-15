@@ -466,7 +466,7 @@ border-style: none;
 }
 
 #infertile{
-	background: repeat-y #898888;
+	background: repeat-y #695240;
 	height: 53px;
 	font-size: .8em;
   padding-left: 3px;
@@ -478,7 +478,7 @@ border-style: none;
 	-webkit-border-radius: 5px;
 	border-width: 2px;
 	border-style: solid;
-	border-color: #747373;
+	border-color: #4e3d30;
 }
 
 #unsure{

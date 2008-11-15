@@ -14,7 +14,12 @@ class StatsController < ApplicationController
         @last_period_started = @period_entries.first.created_at    
       end
     end
-      @graph = open_flash_chart_object('100%',250, 'stats/bar_glass', true, '')     
+      @graph = open_flash_chart_object('100%',300, 'stats/bar_glass', true, '')   
+      @mucus_pie = open_flash_chart_object('100%',300, '/stats/mucus_pie', true, '')       
+      @sensation_pie = open_flash_chart_object('100%',300, '/stats/sensation_pie', true, '')       
+      @firmness_pie = open_flash_chart_object('100%',300, '/stats/firmness_pie', true, '')       
+      @position_pie = open_flash_chart_object('100%',300, '/stats/position_pie', true, '')       
+
   end
   
   def bar_glass
@@ -131,6 +136,143 @@ class StatsController < ApplicationController
     g.set_tool_tip(tip)
     render :text => g.render
   end
+  
+  def mucus_pie
+    data = []
+    this_cycle = current_user.current_cycle
+    these_entries = this_cycle.entries
+    fertile = 0
+    infertile = 0
+    unsure = 0
+    no_entry = 0
+    for entry in these_entries
+      if entry.mucus && entry.mucus == 'fertile'
+        fertile = fertile + 1
+      elsif entry.mucus && entry.mucus == 'infertile'
+        infertile = infertile + 1
+      elsif entry.mucus && entry.mucus == 'unsure'
+        unsure = unsure + 1
+      else
+        no_entry = no_entry + 1
+      end
+    end
+    data << fertile
+    data << infertile
+    data << unsure
+    data << no_entry
+  
+    g = Graph.new
+    g.set_bg_color('#e7d2fc')  
+    g.pie(90, '#505050', '{font-size: 12px; color: #404040;}')
+    g.pie_values(data, %w(Fertile Infertile Unsure Empty))
+    g.pie_slice_colors(%w(#ffffff #cc9bff #9c76c3 #48375a))
+    g.set_tool_tip("#val# of #{these_entries.count} entries")
+    g.title("Mucus", '{font-size:18px; color: #d01f3c}' )
+    render :text => g.render
+  end
+  
+  def sensation_pie
+    data = []
+    this_cycle = current_user.current_cycle
+    these_entries = this_cycle.entries
+    wet = 0
+    dry = 0
+    other = 0
+    no_entry = 0
+    for entry in these_entries
+      if entry.vaginal_sensation && entry.vaginal_sensation == 'wet'
+        wet = wet + 1
+      elsif entry.vaginal_sensation && entry.vaginal_sensation == 'dry'
+        dry = dry + 1
+      elsif entry.vaginal_sensation && entry.vaginal_sensation == 'other'
+        other = other + 1
+      else
+        no_entry = no_entry + 1
+      end
+    end
+    data << wet
+    data << dry
+    data << other
+    data << no_entry
+  
+    g = Graph.new
+    g.set_bg_color('#e7d2fc')  
+    g.pie(90, '#505050', '{font-size: 12px; color: #404040;}')
+    g.pie_values(data, %w(Wet Dry Other Empty))
+    g.pie_slice_colors(%w(#ffffff #cc9bff #9c76c3 #48375a))
+    g.set_tool_tip("#val# of #{these_entries.count} entries")
+    g.title("Sensation", '{font-size:18px; color: #d01f3c}' )
+    render :text => g.render
+  end
+  
+  def firmness_pie
+     data = []
+     this_cycle = current_user.current_cycle
+     these_entries = this_cycle.entries
+     firm = 0
+     medium = 0
+     soft = 0
+     no_entry = 0
+     for entry in these_entries
+       if entry.cervix_firmness && entry.cervix_firmness == 'firm'
+         firm = firm + 1
+       elsif entry.cervix_firmness && entry.cervix_firmness == 'medium'
+         medium = medium + 1
+       elsif entry.cervix_firmness && entry.cervix_firmness == 'soft'
+         soft = soft + 1
+       else
+         no_entry = no_entry + 1
+       end
+     end
+     data << firm
+     data << medium
+     data << soft
+     data << no_entry
+
+     g = Graph.new
+     g.set_bg_color('#e7d2fc')  
+     g.pie(90, '#505050', '{font-size: 12px; color: #404040;}')
+     g.pie_values(data, %w(Firm Medium Soft Empty))
+     g.pie_slice_colors(%w(#ffffff #cc9bff #9c76c3 #48375a))
+     g.set_tool_tip("#val# of #{these_entries.count} entries")
+     g.title("Cervical firmness", '{font-size:18px; color: #d01f3c}' )
+     render :text => g.render
+   end
+  
+   def position_pie
+       data = []
+       this_cycle = current_user.current_cycle
+       these_entries = this_cycle.entries
+       high = 0
+       medium = 0
+       low = 0
+       no_entry = 0
+       for entry in these_entries
+         if entry.cervix_position && entry.cervix_position == 'high'
+           high = high + 1
+         elsif entry.cervix_position && entry.cervix_position == 'medium'
+           medium = medium + 1
+         elsif entry.cervix_position && entry.cervix_position == 'low'
+           low = low + 1
+         else
+           no_entry = no_entry + 1
+         end
+       end
+       data << high
+       data << medium
+       data << low
+       data << no_entry
+
+       g = Graph.new
+       g.set_bg_color('#e7d2fc')  
+       g.pie(90, '#505050', '{font-size: 12px; color: #404040;}')
+       g.pie_values(data, %w(High Medium Low Empty))
+       g.pie_slice_colors(%w(#ffffff #cc9bff #9c76c3 #48375a))
+       g.set_tool_tip("#val# of #{these_entries.count} entries")
+       g.title("Cervical position", '{font-size:18px; color: #d01f3c}' )
+       render :text => g.render
+     end
+  
   
 end
 

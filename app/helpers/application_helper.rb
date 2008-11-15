@@ -23,7 +23,7 @@ module ApplicationHelper
   end
   
   def select_with_sensation_options (object, column, hash, select_class)  
-    output = "<select id=\"#{object}_#{column}\" name=\"#{object}[#{column}]\">"  
+    output = "<select id=\"#{object}_#{column}\" name=\"#{object}[#{column}]\" blank='true'>"  
     for i in hash 
       i.to_i 
       output << "\n<option value=\"#{i}\""  
@@ -79,19 +79,19 @@ module ApplicationHelper
    end
    
    def sensation_hash
-     sensation_hash = ["wet", "dry", "other"]
+     sensation_hash = ["", "wet", "dry", "other"]
    end
 
    def mucus_hash
-      mucus_hash = ["fertile", "infertile", "unsure"]
+      mucus_hash = ["", "fertile", "infertile", "unsure"]
     end
     
      def position_hash
-        position_hash = ["high", "middle", "low"]
+        position_hash = ["", "high", "middle", "low"]
       end
       
       def firmness_hash
-          firmness_hash = ["firm", "medium", "soft"]
+          firmness_hash = ["", "firm", "medium", "soft"]
         end
    
    def degree_hash

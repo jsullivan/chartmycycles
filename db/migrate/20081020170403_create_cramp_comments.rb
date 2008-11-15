@@ -8,6 +8,5 @@ class CreateCrampComments < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :cramp_comments
   end
 end

@@ -9,14 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081110035903) do
-
-  create_table "acne_comments", :force => true do |t|
-    t.string   "comment"
-    t.integer  "entry_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(:version => 20081113221222) do
 
   create_table "avatars", :force => true do |t|
     t.integer  "parent_id"
@@ -27,20 +20,6 @@ ActiveRecord::Schema.define(:version => 20081110035903) do
     t.integer  "width"
     t.integer  "height"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "bloating_comments", :force => true do |t|
-    t.string   "comment"
-    t.integer  "entry_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "cervix_comments", :force => true do |t|
-    t.string   "comment"
-    t.integer  "entry_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -59,37 +38,29 @@ ActiveRecord::Schema.define(:version => 20081110035903) do
     t.datetime "updated_at"
   end
 
-  create_table "cramp_comments", :force => true do |t|
-    t.string   "comment"
-    t.integer  "entry_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "cycles", :force => true do |t|
     t.datetime "started"
     t.datetime "ended"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "current",    :default => true
-    t.boolean  "shared",     :default => false
+    t.boolean  "current",           :default => true
+    t.boolean  "shared",            :default => false
     t.string   "custom1"
     t.string   "custom2"
     t.string   "custom3"
     t.string   "custom4"
+    t.datetime "phase_one_end"
+    t.datetime "phase_three_start"
   end
 
   create_table "entries", :force => true do |t|
     t.integer  "user_id"
     t.integer  "cycle_id"
-    t.integer  "cervix"
-    t.integer  "mucus"
     t.boolean  "peak"
     t.boolean  "intercourse"
     t.boolean  "period"
     t.boolean  "moody"
-    t.boolean  "vaginal_sensation"
     t.boolean  "insomnia"
     t.boolean  "acne"
     t.boolean  "bloating"
@@ -99,6 +70,10 @@ ActiveRecord::Schema.define(:version => 20081110035903) do
     t.datetime "updated_at"
     t.datetime "chart_date"
     t.text     "comment"
+    t.string   "cervix_position"
+    t.string   "cervix_firmness"
+    t.string   "mucus"
+    t.string   "vaginal_sensation"
   end
 
   create_table "forums", :force => true do |t|
@@ -107,48 +82,6 @@ ActiveRecord::Schema.define(:version => 20081110035903) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "description"
-  end
-
-  create_table "insomnia_comments", :force => true do |t|
-    t.string   "comment"
-    t.integer  "entry_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "intercourse_comments", :force => true do |t|
-    t.string   "comment"
-    t.integer  "entry_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "moody_comments", :force => true do |t|
-    t.string   "comment"
-    t.integer  "entry_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "mucus_comments", :force => true do |t|
-    t.string   "comment"
-    t.integer  "entry_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "peak_comments", :force => true do |t|
-    t.string   "comment"
-    t.integer  "entry_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "period_comments", :force => true do |t|
-    t.string   "comment"
-    t.integer  "entry_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "plugin_schema_info", :id => false, :force => true do |t|
@@ -163,13 +96,6 @@ ActiveRecord::Schema.define(:version => 20081110035903) do
     t.datetime "updated_at"
     t.integer  "forum_id"
     t.text     "body"
-  end
-
-  create_table "temp_comments", :force => true do |t|
-    t.string   "comment"
-    t.integer  "entry_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
@@ -192,13 +118,6 @@ ActiveRecord::Schema.define(:version => 20081110035903) do
     t.string   "motto"
     t.boolean  "member",                                  :default => false
     t.datetime "member_start_date"
-  end
-
-  create_table "vaginal_sensation_comments", :force => true do |t|
-    t.string   "comment"
-    t.integer  "entry_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
 end

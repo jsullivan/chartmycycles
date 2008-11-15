@@ -8,6 +8,5 @@ class CreateMucusComments < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :mucus_comments
   end
 end

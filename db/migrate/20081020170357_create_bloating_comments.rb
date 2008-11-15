@@ -8,6 +8,5 @@ class CreateBloatingComments < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :bloating_comments
   end
 end

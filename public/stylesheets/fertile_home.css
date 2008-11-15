@@ -445,3 +445,56 @@ border-style: none;
 #share_text {
 	margin-left: 10px;
 }
+
+/* VERTICAL CAL TEXT DIVS 
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+#fertile{
+	background: repeat-y #ff3838;
+	height: 53px;
+	font-size: .8em;
+  padding-left: 3px;
+	padding-top: 2px;
+	margin-right: 3px;
+	font-weight: bold;
+	color: #ffffff;	
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #cd2d2d;
+}
+
+#infertile{
+	background: repeat-y #898888;
+	height: 53px;
+	font-size: .8em;
+  padding-left: 3px;
+	padding-top: 2px;
+	margin-right: 3px;
+	font-weight: bold;
+	color: #ffffff;	
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #747373;
+}
+
+#unsure{
+	background: repeat-y #ffbd4b;
+	height: 53px;
+	font-size: .8em;
+  padding-left: 3px;
+	padding-top: 2px;
+	margin-right: 3px;
+	font-weight: bold;
+	color: #ffffff;	
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #dfa542;
+}
+
+

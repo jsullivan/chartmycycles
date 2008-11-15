@@ -8,6 +8,5 @@ class CreateIntercourseComments < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :intercourse_comments
   end
 end

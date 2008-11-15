@@ -8,12 +8,34 @@
 <% form_for(:entry, :url => {:controller => 'entry', :action => 'create'}, 
                       :html => { :multipart => true }) do |f| -%>
  
-<p><label for="last">Chart Date </label><%= calendar_date_select_tag "chart", Time.now, :embedded => false, :year_range => 100 %></p>
+<p><label for="last">Chart date </label><%= calendar_date_select_tag "chart", Time.now, :embedded => false, :year_range => 100 %></p>
 <br />
-<label for="waking_temp">Waking Temperature</label><br />
+<label for="waking_temp">Waking temperature</label><br />
 	<%= select_with_temp_options ("entry", "temp", degree_hash, "select") %><br />
 	<div id="fivepxspacer"></div>
 <div id="fivepxspacer"></div>
+
+<label for="waking_temp">Vaginal sensation</label><br />
+	<%= select_with_sensation_options ("entry", "vaginal_sensation", sensation_hash, "select") %><br />
+	<div id="fivepxspacer"></div>
+<div id="fivepxspacer"></div>
+
+<label for="waking_temp">Mucus</label><br />
+	<%= select_with_mucus_options ("entry", "mucus", mucus_hash, "select") %><br />
+	<div id="fivepxspacer"></div>
+<div id="fivepxspacer"></div>
+
+<label for="waking_temp">Cervix position</label><br />
+	<%= select_with_cervix_position_options ("entry", "cervix_position", position_hash, "select") %><br />
+	<div id="fivepxspacer"></div>
+<div id="fivepxspacer"></div>
+
+<label for="waking_temp">Cervix firmness</label><br />
+	<%= select_with_cervix_firmness_options ("entry", "cervix_firmness", firmness_hash, "select") %><br />
+	<div id="fivepxspacer"></div>
+<div id="fivepxspacer"></div>
+
+
 <%= check_box( :entry, :period)%> <label for="acne">Period</label>
   <br />
 

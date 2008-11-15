@@ -8,6 +8,5 @@ class CreatePeriodComments < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :period_comments
   end
 end

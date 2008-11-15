@@ -8,6 +8,5 @@ class CreatePeakComments < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :peak_comments
   end
 end

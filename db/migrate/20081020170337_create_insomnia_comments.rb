@@ -8,6 +8,5 @@ class CreateInsomniaComments < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :insomnia_comments
   end
 end

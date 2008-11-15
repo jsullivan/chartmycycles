@@ -8,6 +8,5 @@ class CreateCervixComments < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :cervix_comments
   end
 end

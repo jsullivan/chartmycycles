@@ -8,6 +8,5 @@ class CreateAcneComments < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :acne_comments
   end
 end

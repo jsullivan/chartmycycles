@@ -8,6 +8,5 @@ class CreateTempComments < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :temp_comments
   end
 end

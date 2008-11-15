@@ -8,6 +8,5 @@ class CreateVaginalSensationComments < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :vaginal_sensation_comments
   end
 end

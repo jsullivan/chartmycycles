@@ -8,6 +8,5 @@ class CreateMoodyComments < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :moody_comments
   end
 end

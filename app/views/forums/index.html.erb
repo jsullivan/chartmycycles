@@ -7,24 +7,13 @@
 		<table width="100%">
 			<tr>
 		<% for forum in @forums %>
-		<td width="17px">
-			<%= image_tag 'topic_tab.png'%>
-		</td>
-			<td width="60%" id="forum_topics">
+			<td width="60%">
 		<%= link_to forum.topic, :action => 'topic', :id => forum %><br />
+		<%= forum.posts.count%> posts<br />
+		<% if forum.posts.count >= 1%>
+		Last post <%= time_ago_in_words(forum.posts.find(:last).created_at) %> ago
+		<% end%>
 			</td>
-			<td width="12px">
-				<%= image_tag 'topic_title_transition.jpg'%>
-			</td>
-		
-			<td align="center" id="topic_read">
-				<b><%= forum.posts.count%> posts</b>
-				</td>
-					<td align="center" id="topic_read">
-						<% if forum.posts.count >= 1%>
-						Last post <%= time_ago_in_words(forum.posts.find(:last).created_at) %> ago
-						<% end%>
-						</td>
 				</tr>
 						<% end %>
 		</table>

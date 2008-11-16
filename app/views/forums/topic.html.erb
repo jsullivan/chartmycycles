@@ -17,9 +17,7 @@
 					<table width="100%" >
 						<tr>
 							<% for post in @posts %>
-					<td width="17px">
-						<%= image_tag 'topic_tab.png'%>
-					</td>
+
 					<td align="center" valign="middle" id="forum_topics">
 							<% if post.user.avatar %>	
 							<%= image_tag(post.user.avatar.public_filename(:thumb)) %>	
@@ -31,9 +29,6 @@
 						<%= link_to post.title, :action => 'details', :id => post %> <br />
 						by <b><%= post.user.full_name %></b>, posted <%= time_ago_in_words(post.created_at) %> ago.
 						
-						</td>
-						<td width="12px">
-							<%= image_tag 'topic_title_transition.jpg'%>
 						</td>
 
 						<td align="center" id="topic_read">

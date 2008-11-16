@@ -2,16 +2,15 @@
 <div id="contentcolumn">
 
 	<div id="mystats" class="little_gray_text">
-<h1>History</h1>
+<h1>History</h1><br />
 
 <% if @old_cycles.length == 0 %>
 You don't have any archived cycles yet.
 <% end%>
 <% for cycle in @old_cycles %>
-Started <%= nice_date(cycle.started) %><br />
-Ended on <%= nice_date(cycle.ended) %><br />
+<%= nice_date(cycle.started) %> to <%= nice_date(cycle.ended) %><br />
 <%= cycle.entries.count %> entries<br />
-<%= link_to 'View Details' %> | <%= link_to 'Share this cycle' %> | <span class="redlink">
+<%= link_to 'View Details', :action => 'details', :id => cycle.id %> | <%= link_to 'Share this cycle' %> | <span class="redlink">
 <%= link_to 'Delete this cycle', {:controller => 'history', :action => 'destroy', :id => cycle}, :confirm => 'Are you sure you want to delete this cycle? This cannot be undone.', :method => :post %>
 </span><br /><br />
 

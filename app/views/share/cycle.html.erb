@@ -32,8 +32,9 @@
 					<% if @user.state%>
 					<%= @user.state%>
 					<% end %>
-					<% end %>
 					<br />
+					
+					<% end %>
 					<% if @user.children && @user.children > 0 %>
 					Has <%= @user.children %> 
 					<%if @user.children == 1%>
@@ -41,9 +42,12 @@
 					<% else %>
 					kids
 					<% end%>
-					<% end %>
 					<br />
+					
+					<% end %>
+					<% if @user.charting_for %>
 					And is charting for <%= @user.charting_for.chart_type%>.
+					<% end %>
 					</div>
 						</td>
 					</tr>

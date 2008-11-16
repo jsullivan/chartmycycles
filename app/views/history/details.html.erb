@@ -1,0 +1,34 @@
+<div id="contentwrapper">
+	<div id="share_it" class="share_it">
+		<table>
+			<tr>
+				<td align="right" width="80">
+		<div id="avatar" style="display: inline;">
+				<% if @user.avatar %>	
+				<%= image_tag(@user.avatar.public_filename(:medium)) %>	
+				<% else %>	
+				<img src="/images/blankavatar.jpg">
+				<% end %>
+				</td>
+				<td align="left">
+					<div id="share_text">
+					<%= @user.full_name %>'s cycle<br />
+					<h1><%= nice_date(@cycle.started) %> to <%= nice_date(@cycle.ended) %>.</h1>
+					<br />
+					You have charted <%= @user.cycles.count%> 
+					cycles.
+					<br />
+				
+					</div>
+						</td>
+					</tr>
+				</table>
+		</div>
+<%= @graph%>
+
+	<%= render :partial => 'history_vertical_cal'%>
+	<br />
+	<br />
+	</div>
+<p></p>
+</div>

@@ -1,0 +1,73 @@
+<div id="fivepxspacer">
+</div>
+<% for entry in @entries %>
+	<% @entry_div = "expanded#{entry.id}"%>
+	<% @default = "default#{entry.id}"%>
+	<% @tall_attributes_div = "tall_attributes#{entry.id}"%>
+	<div id="vertical_calendar">
+		<div id="day">
+			<span class="daydetails">
+				Day
+				<br />
+			</span>
+			<span class="daynumber">
+				<%= (entry.chart_date.to_date - @cycle.started.to_date + 1).to_i %>
+			</span>
+			<br />
+			<span class="daydetails">
+				<%= nice_date_no_year (entry.chart_date) %>
+			</span>
+		</div>
+		<div id="<%= @default%>">
+			<div id="temp_and_expand">
+				<span class="tempdetails">
+					temp.
+					<br />
+				</span>
+				<span class="tempnumber">
+					<%= entry.temp %>&deg;
+					<br />
+				</span>
+				<span class="more_button">
+					<%= link_to_remote ('', :url => {:action => 'toggle_expand', :entry_id => @entry_div, :default => @default,})%>
+		  	</span>
+			</div>
+			<div id="attributes">
+  			<%= render :partial => 'history_vert_cal_table', :locals => {:entry => entry} %>
+			</div>
+		</div>
+		<div id="<%= @entry_div %>" style="display: none;">
+			<div style="background: none;">
+				<div id="tall_temp_and_expand">
+					<span class="tempdetails">
+						temp.
+						<br />
+					</span>
+					<span class="tempnumber">
+						<%= entry.temp %>&deg;
+						<br />			
+					</span>
+					<span class="less_button">
+						<%= link_to_remote ('', :url => {:action => 'toggle_expand', :entry_id => @entry_div, :default => @default})%>
+			  	</span>	
+				</div>
+				<div id="attributes">
+					 <%= render :partial => 'history_vert_cal_table', :locals => {:entry => entry} %>
+				</div>
+				
+			
+					<div id="tall_attributes">
+								
+						<div id="<%= @tall_attributes_div %>"> 
+							<%= entry.comment%>
+						<div id="fifteenpxspacer">
+						</div>
+						
+						<div id="fifteenpxspacer">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<% end%>

@@ -328,12 +328,21 @@ margin-right: 10px;}
 
 #blankies {
 	height: 57px;
-	font-size: .9em;
+	font-size: .8em;
   padding: 0px 5px 0px 5px;
 	margin-right: 3px;
 	font-weight: bold;
 	background: #d9f4d8;
 	color: #000000;
+
+}
+#blankies2 {
+	font-size: .8em;
+  padding: 0px 5px 0px 5px;
+	margin-right: 3px;
+	font-weight: bold;
+	background: #d9f4d8;
+	color: #5a3187;
 
 }
 
@@ -497,4 +506,47 @@ border-style: none;
 	border-color: #dfa542;
 }
 
+#fertile_small{
+	background: repeat-y #ff3838;
+	font-size: .8em;
+  padding-left: 3px;
+	margin-right: 3px;
+	font-weight: bold;
+	color: #ffffff;	
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+}
+
+#infertile_small{
+	background: repeat-y #695240;
+	font-size: .8em;
+  padding-left: 3px;
+	margin-right: 3px;
+	font-weight: bold;
+	color: #ffffff;	
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+}
+
+#unsure_small{
+	background: repeat-y #ffbd4b;
+	font-size: .8em;
+  padding-left: 3px;
+	margin-right: 3px;
+	font-weight: bold;
+	color: #ffffff;	
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+}
+#white_small {
+	background: #d9f4d8;
+	font-size: .8em;
+  padding-left: 3px;
+	margin-right: 3px;
+	font-weight: bold;
+	color: #d9f4d8;	
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+
+}
 

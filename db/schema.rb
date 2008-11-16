@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081113221222) do
+ActiveRecord::Schema.define(:version => 20081115233435) do
 
   create_table "avatars", :force => true do |t|
     t.integer  "parent_id"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20081113221222) do
     t.string   "cervix_firmness"
     t.string   "mucus"
     t.string   "vaginal_sensation"
+    t.string   "cervix_opening"
   end
 
   create_table "forums", :force => true do |t|

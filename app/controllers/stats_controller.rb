@@ -19,6 +19,7 @@ class StatsController < ApplicationController
       @sensation_pie = open_flash_chart_object('100%',300, '/stats/sensation_pie', true, '')       
       @firmness_pie = open_flash_chart_object('100%',300, '/stats/firmness_pie', true, '')       
       @position_pie = open_flash_chart_object('100%',300, '/stats/position_pie', true, '')       
+      @opening_pie = open_flash_chart_object('100%',300, '/stats/opening_pie', true, '')       
 
   end
   
@@ -272,6 +273,40 @@ class StatsController < ApplicationController
        g.title("Cervical position", '{font-size:18px; color: #d01f3c}' )
        render :text => g.render
      end
+     
+     def opening_pie
+         data = []
+         this_cycle = current_user.current_cycle
+         these_entries = this_cycle.entries
+         closed = 0
+         partly_open = 0
+         open = 0
+         no_entry = 0
+         for entry in these_entries
+           if entry.cervix_opening && entry.cervix_opening == 'closed'
+             closed = closed + 1
+           elsif entry.cervix_opening && entry.cervix_opening == 'partly open'
+             partly_open = partly_open + 1
+           elsif entry.cervix_opening && entry.cervix_opening == 'open'
+             open = open + 1
+           else
+             no_entry = no_entry + 1
+           end
+         end
+         data << closed
+         data << partly_open
+         data << open
+         data << no_entry
+
+         g = Graph.new
+         g.set_bg_color('#e7d2fc')  
+         g.pie(90, '#505050', '{font-size: 12px; color: #404040;}')
+         g.pie_values(data, %w(Closed Partly_Open Open Empty))
+         g.pie_slice_colors(%w(#ffffff #cc9bff #9c76c3 #48375a))
+         g.set_tool_tip("#val# of #{these_entries.count} entries")
+         g.title("Cervical opening", '{font-size:18px; color: #d01f3c}' )
+         render :text => g.render
+       end
   
   
 end

@@ -35,6 +35,11 @@
 	<div id="fivepxspacer"></div>
 <div id="fivepxspacer"></div>
 
+<label for="waking_temp">Cervix opening</label><br />
+	<%= select_with_cervix_opening_options ("entry", "cervix_opening", opening_hash, "") %><br />
+	<div id="fivepxspacer"></div>
+<div id="fivepxspacer"></div>
+
 
 <%= check_box( :entry, :period)%> <label for="acne">Period</label>
   <br />
@@ -82,8 +87,7 @@
 						<label for="acne">Cramps</label>
 					<% end %>
 			  <br />
-<%= check_box( :entry, :vaginal_sensation)%> <label for="acne">Vaginal sensation</label>
-  <br />
+
 	<br />
 	<label for="comments">Comments</label><br />
 		<%= text_area ("entry", "comment") %><br />

@@ -34,6 +34,9 @@ end
 def update
    @entry = Entry.find(params[:entry_id])
     if @entry.update_attributes(params[:entry])
+       chart_day = params[:chart]
+       @entry.chart_date = chart_day
+       @entry.save
       flash[:notice] = 'Your entry was successfully updated.'
       redirect_to(:controller => 'home', :action => 'index')
     else

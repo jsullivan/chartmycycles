@@ -65,7 +65,7 @@ height: 60px;
 /* end css-based rollover button */
 #post_div {
 	padding: 20px;
-	background: url(/images/blue_paper.jpg) repeat-y #dce1f0;
+	background: url(/images/blue_paper.jpg) repeat #dce1f0;
 	font-size: 1.2em;
 	color: #ffffff;
 	clear: both;

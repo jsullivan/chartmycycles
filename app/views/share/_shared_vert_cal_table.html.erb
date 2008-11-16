@@ -1,7 +1,7 @@
 <table width="100%" height="54px">
 	<tr>
 		<!-- COMMENT BUBBLE -->
-		<td >			
+		<td  width="8.3%" >			
 			<% if entry.comment && entry.comment.length > 1%>
 				<%= link_to_remote image_tag('big_comment.png'), :url => {:action => 'toggle_expand', :entry_id => @entry_div, :default => @default}%>
 			<% else%> 
@@ -10,21 +10,84 @@
 		</td>
 
 		<!-- MUCUS -->
-		<td>
-			<div id="blankies">
-			  mucus
-			 </div>
+		<td align="center" width="8.3%">
+				<% if entry.mucus == "unsure"%>
+					<div id="unsure">
+				<% elsif entry.mucus == "infertile"%>
+					<div id="infertile">
+				<% elsif entry.mucus == "fertile" %>
+					<div id="fertile">
+				<% else %>
+					<div id="white">
+				<% end %>
+				<%= entry.mucus %><br />
+				mucus
+			 	</div>
 		</td>
-	
+		
+		<!-- VAGINAL_SENSATION -->
+		<td align="center" width="8.3%">
+			<% if entry.vaginal_sensation == "wet"%>
+				<div id="fertile">
+			<% elsif entry.vaginal_sensation == "dry"%>
+				<div id="infertile">
+			<% elsif entry.vaginal_sensation == "other" %>
+				<div id="infertile">
+			<% else %>
+				<div id="white">
+			<% end %>
+			<%= entry.vaginal_sensation %><br />
+			sens-<br />
+			ation
+		 	</div>
+		</td>
+
 		<!-- CERVIX -->
-		<td>
-			<div id="blankies">
-			  cervix
-		  </div>		
+		<td align="center" width="8.3%">
+			<div id="blankies2">
+				cervix
+			</div>
+			<% if entry.cervix_position == "high" %>
+				<div id="fertile_small">  
+			<% elsif entry.cervix_position == "middle" %>
+				<div id="unsure_small">
+			<% elsif entry.cervix_position == "low" %>
+				<div id="infertile_small">
+			<% else %>
+				<div id="white_small">
+			<% end %>
+				<%= entry.cervix_position%><br />
+			</div>
+			<% if entry.cervix_firmness == "soft" %>
+				<div id="fertile_small">
+			<% elsif entry.cervix_firmness == "medium" %>
+				<div id="unsure_small">
+			<% elsif entry.cervix_firmness == "hard" %>
+				<div id="infertile_small">
+			<% else%>
+				<div id="white_small">
+			<% end %>
+				<%= entry.cervix_firmness %><br />
+			</div>
+			<% if entry.cervix_opening == "open"%>
+				<div id="fertile_small">
+			<% elsif entry.cervix_opening == "partly open"%>
+				<div id="unsure_small">
+			<% elsif entry.cervix_opening == "closed"%>
+				<div id="infertile_small">
+			<% else%>
+				<div id="white_small">
+  		<% end %>
+				<% if entry.cervix_opening == "partly open"%>
+				partly
+				<% else%>
+				<%= entry.cervix_opening %>
+				<% end %><br />
+			</div>
 		</td>
 		
 		<!-- PERIOD -->
-		<td align="center" width="11%">
+		<td align="center"  width="8.3%">
 			<% if entry.period%>
 				<div id="light_blue">
 			<% else%>
@@ -35,7 +98,7 @@
 		</td>
 		
 		<!-- SEX -->	
-		<td align="center" width="11%">
+		<td align="center"  width="8.3%">
 			<% if entry.intercourse%>
 				<div id="dark_blue">
 			<% else%>
@@ -46,7 +109,7 @@
 		</td>
 		
 		<!-- PEAK DAY -->
-		<td align="center" width="11%">
+		<td align="center"  width="8.3%">
 			<% if entry.peak%>
 				<div id="light_blue">
 			<% else%>
@@ -57,7 +120,7 @@
 		</td>
 	
 		<!-- INSOMNIA -->	
-		<td align="center" width="11%">
+		<td align="center"  width="8.3%">
 			<% if entry.insomnia%>
 				<div id="dark_blue">
 			<% else%>
@@ -72,7 +135,7 @@
 		</td>
 
 		<!-- MOODY -->
-		<td align="center" width="11%">
+		<td align="center"  width="8.3%">
 			<% if entry.moody %>
 				<div id="light_blue">
 			<% else%>
@@ -83,7 +146,7 @@
 		</td>
 		
 		<!-- BLOATING -->
-		<td align="center" width="11%">
+		<td align="center" width="8.3%">
 			<% if entry.bloating%>
 				<div id="dark_blue">
 			<% else%>
@@ -98,7 +161,7 @@
 		</td>
 		
 		<!-- ACNE -->
-		<td align="center" width="11%">
+		<td align="center"  width="8.3%">
 			<% if entry.acne%>
 				<div id="light_blue">
 			<% else%>
@@ -113,7 +176,7 @@
 		</td>
 
 		<!-- CRAMPS -->
-		<td align="center" width="11%">
+		<td align="center"  width="8.3%">
 			<% if entry.cramps%>
 				<div id="dark_blue">
 			<% else%>
@@ -127,15 +190,5 @@
 			</div>
 		</td>
 	
-		<!-- VAGINAL SENSATION -->
-		<td align="center" width="11%">
-			<% if entry.vaginal_sensation%>
-				<div id="light_blue">
-			<% else%>
-				<div id="white">
-			<% end %>
-			sensation
-		  </div>		
-		</td>
 	</tr>
 </table>

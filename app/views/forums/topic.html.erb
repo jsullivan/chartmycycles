@@ -46,13 +46,16 @@
 				
 				
 		<% else %>
-			There aren't any posts yet in this topic. Be the first! <br />
+		<br />
+			There aren't any posts yet in this topic. Be the first! <br /><br />
 		<% end %>
 		<div id="thirtypxspacer"></div>
 		<div id="create_new_post">
+			<% unless @posts.length < 1%>
 			<span class="create_new_post">
 				<%= link_to_remote ('', :url => {:action => 'new_post_form', :forum_id => @forum.id}) %>
 		  </span>
+		<% end %>
 		</div>		
 </div>
 <p></p>

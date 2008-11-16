@@ -22,9 +22,9 @@ def create
   entry.cycle = current_cycle
   entry.update_attributes(form)
   entry.save
-  if entry.mucus = "fertile"
-    unless current_cycle.phase_one_end
-      current_cycle.phase_one_end = Time.now
+  if entry.mucus == "fertile"
+    unless entry.cycle.phase_one_end
+      entry.cycle.phase_one_end = chart_day
       entry.cycle.save
     end
   end
@@ -43,6 +43,12 @@ def update
        chart_day = params[:chart]
        @entry.chart_date = chart_day
        @entry.save
+       if @entry.mucus == "fertile"
+          unless @entry.cycle.phase_one_end
+            current_cycle.phase_one_end = chart_day
+            entry.cycle.save
+          end
+        end
       flash[:notice] = 'Your entry was successfully updated.'
       redirect_to(:controller => 'home', :action => 'index')
     else

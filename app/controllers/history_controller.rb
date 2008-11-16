@@ -1,44 +1,37 @@
 class HistoryController < ApplicationController
   before_filter :login_required
 
-def index
+  def index
     @user = current_user
     @old_cycles = @user.cycles.find(:all, :conditions => 'current = false', :order => 'created_at ASC')
     @current_cycle = @user.cycles.find(:first, :conditions => 'current = true')
-    @graph = open_flash_chart_object(500,250, 'history/pie_links', true, '')     
-end
-def pie_links
-  data = []
-  links = []
-  5.times do |t|
-          temp = rand(10) + 5
-          data << temp
-          links << "javascript:alert('temp')"
+    if @user.cycles.count > 1
+      @graph = open_flash_chart_object(500,250, 'history/pie_links', true, '')     
+    end
   end
-  g = Graph.new
-  g.set_bg_color('#e7d2fc')
-  g.pie(60, '#505050', '{font-size: 12px; color: #404040;}')
-  g.pie_values(data, %w(IE FireFox Opera Wii Other), links)
-  g.pie_slice_colors(%w(#d01fc3 #356aa0 #c79810))
-  g.set_tool_tip("#val#%")
-  #g.title("Pie Chart with links", '{font-size:18px; color: #d01f3c}' )
-  render :text => g.render
-end
 
-def details
-@cycle = Cycle.find(params[:id])
-@user = current_user
-@graph = open_flash_chart_object("100%",300, "/history/y_right/#{@cycle.id}")#, true, '../' used to be here, too.
-@entries = @cycle.entries.find(:all, :order => 'chart_date ASC')
-end
-
-def destroy
-  if request.post?
-  cycle = Cycle.find(params[:id])
-  cycle.destroy
-  redirect_to :action => 'index'
+  def details
+    @cycle = Cycle.find(params[:id])
+    @user = current_user
+    @graph = open_flash_chart_object("100%",300, "/history/y_right/#{@cycle.id}")#, true, '../' used to be here, too.
+    @entries = @cycle.entries.find(:all, :order => 'chart_date ASC')
   end
-end
+
+  def destroy
+    if request.post?
+      cycle = Cycle.find(params[:id])
+      cycle.destroy
+      redirect_to :action => 'index'
+    end
+  end
+  
+  def share_cycle
+    if request.post?
+      cycle = Cycle.find(params[:id])
+      cycle.toggle_share(cycle)
+      redirect_to :action => 'index'
+    end
+  end
 
 #=-=-=-=-=GRAPH CODE=-=-=-=-=-=
 def y_right

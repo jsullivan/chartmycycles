@@ -22,6 +22,12 @@ def create
   entry.cycle = current_cycle
   entry.update_attributes(form)
   entry.save
+  if entry.mucus = "fertile"
+    unless current_cycle.phase_one_end
+      current_cycle.phase_one_end = Time.now
+      entry.cycle.save
+    end
+  end
   redirect_to :controller => 'home', :action => 'index'
 end
 end

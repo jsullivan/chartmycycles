@@ -54,18 +54,12 @@ class HomeController < ApplicationController
     end
   end
   
-  def toggle_share_it
+  def share_cycle
     if request.post?
-      cycle = current_user.current_cycle
-      if cycle.shared
-        cycle.shared = false
-        cycle.save
-      else
-        cycle.shared = true
-        cycle.save
-      end
+      cycle = Cycle.find(params[:id])
+      cycle.toggle_share(cycle)
+      redirect_to :action => 'index'
     end
-    redirect_to :action => 'index'
   end
   
   def end_cycle
@@ -74,17 +68,6 @@ class HomeController < ApplicationController
       cycle.end(current_user)
       redirect_to :action => 'index'
     end
-  end
-  
-  #=-=-=-==-=COMMENT CODE=-=-=-=-
-  
-  def insomnia_comment
-    entry = Entry.find(params[:entry_id])
-    insomnia_comment = InsomniaComment.new
-    insomnia_comment.entry = entry
-    insomnia_comment.update_attributes(params[:insomnia_comment])
-    redirect_to :action => 'home'
- #   render :action => 'comment_insomnia', @tall_attributes_div = params[:tall_attributes] 
   end
 
   #=-=-=-=-=GRAPH CODE=-=-=-=-=-=

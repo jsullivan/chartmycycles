@@ -28,7 +28,7 @@
 	<% if current_user.current_cycle.shared%>
 	<%= link_to 'Stop sharing this cycle', {:controller => 'home', :action => 'toggle_share_it'}, :method => :post %>
 	<% else %>
-	<%= link_to 'Share this cycle', {:controller => 'home', :action => 'toggle_share_it'}, :method => :post %>
+	<%= link_to 'Share this cycle', {:controller => 'home', :action => 'share_cycle', :id => current_user.current_cycle.id}, :method => :post %>
 	<% end %>
 	<br />
 	<div id="fivepxspacer"></div>	

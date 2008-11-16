@@ -37,9 +37,18 @@ has_many :entries
     
     def raw_day_count
       count = (Time.now.to_date - self.started.to_date).to_i + 1
+      return count
+    end
     
-        return count
-      
-      end
+    def toggle_share(cycle_id)
+       cycle = Cycle.find(cycle_id)
+        if cycle.shared
+          cycle.shared = false
+          cycle.save
+        else
+          cycle.shared = true
+          cycle.save
+        end
+    end
 
 end

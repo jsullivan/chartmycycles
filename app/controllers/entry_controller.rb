@@ -35,6 +35,7 @@ end
 def edit_entry
   @entry = Entry.find(params[:id])
   @user = current_user
+  @history = params[:history_id]
 end
 
 def update
@@ -49,8 +50,13 @@ def update
             entry.cycle.save
           end
         end
-      flash[:notice] = 'Your entry was successfully updated.'
-      redirect_to(:controller => 'home', :action => 'index')
+      history = params[:history_id]
+      if history && history.length >= 1
+        cycle = Cycle.find(params[:history_id])
+        redirect_to(:controller => 'history', :action => 'details', :id => cycle)
+      else
+        redirect_to(:controller => 'home', :action => 'index')
+      end
     else
       render :controller => "home", :action => "edit_entry"
     end
@@ -59,7 +65,12 @@ end
 def destroy
     entry = Entry.find(params[:id])
     entry.destroy
-    redirect_to :controller => 'home', :action => 'index'
+    if params[:history_id]
+      cycle = Cycle.find(params[:history_id])
+      redirect_to(:controller => 'history', :action => 'details', :id => cycle)
+    else
+      redirect_to :controller => 'home', :action => 'index'
+    end
 end
 
 

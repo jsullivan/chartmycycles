@@ -98,6 +98,8 @@
 	
 <p>
 	<%= hidden_field_tag("entry_id", @entry.id) %>
+	<%= hidden_field_tag("history_id", @history) %>
+	
 	
 	<%= submit_tag 'Update' %> or <%= link_to ('Cancel', :controller => 'home', :action => 'index') %>
 </p>

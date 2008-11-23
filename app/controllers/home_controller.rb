@@ -94,15 +94,18 @@ class HomeController < ApplicationController
         end
       end
       day_length = days.length
+    
     # Create an empty array and fill it with a baseline value of 96.9 for the amount of days into the
     # cycle the latest entry exists for
     graph_array = [].fill(96.9, 0, max_entry)
+    
     # Now, populate that array with the actual temp values from the entries. Correspond the temp in each
     # entry to that day in the cycle. 
     for entry in entries
       day = (entry.chart_date.to_date - @user.current_cycle.started.to_date).to_i
       graph_array[day] = entry.temp
     end
+    
     #Create an empty area for a phase 2 area graph. Fill it with a baseline value of 96.9 for the amount
     # of days in the cycle.
     phase2 = [].fill(96.9, 0, day_length)
@@ -116,15 +119,28 @@ class HomeController < ApplicationController
       phase_two_last_entry = (phase_two_last_entry - phase_one_end_day) + 1
        phase2.fill(99, phase_one_end_day, phase_two_last_entry)
     end
- 
+    
+    #This is my HLC graph
+    a = []
+    a << Hlc.new(98,98,98)
+    a << Hlc.new(98,98,98)
+    a << Hlc.new(98,98,98)
+    a << Hlc.new(98,98,98)
+    a << Hlc.new(98,98,98)
+    a << Hlc.new(98,98,98)
+    
+    
+    
     
     #This is my area graph for the phases
-    g.area_hollow(0,0,25,'#7f61a1')
+    g.area_hollow(1,0,25,'#7f61a1', 'Phase Two', 10)
     g.set_data(phase2)
       
     #This is my line graph for the waking temperatures
     g.line_dot( 5, 8, '#1f76e3', 'Waking temperature', 10 )
     g.set_data(graph_array)
+    
+    g.hlc(a, 90, 3, '#f50505', 'Cover Line', 10)
 
     g.set_y_min(96.9)
     g.set_y_max(99)

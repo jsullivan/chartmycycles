@@ -123,12 +123,12 @@ color: #000000;
 	padding: 5px;
 }
 .call_to_action a {
-	color: #990000;
+	color: green;
 	font-weight: bold;
 	font-size: 1.5em;
 }
 .call_to_action a:hover {
-	color: #990000;
+	color: green;
 	background: none;
 }
 #call_to_choose{

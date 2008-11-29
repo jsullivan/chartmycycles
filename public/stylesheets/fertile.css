@@ -231,7 +231,7 @@ color: #000000;
 	text-align: center;
 }
 #footer {
-	border-top: 1px solid #A0A0A0;
+/*	border-top: 1px solid #A0A0A0; */
 	padding: 10px 50px;
 	text-align: center;
 	clear: left;
@@ -239,6 +239,10 @@ color: #000000;
 	margin-left: 50px;
 	margin-right: 50px;
 	font-size: .8em;
+	color: white;
+}
+#footer a{
+	color: white;
 }
 
 /* SIGNUP

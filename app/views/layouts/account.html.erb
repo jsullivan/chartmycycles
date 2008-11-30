@@ -15,15 +15,23 @@
 <body>
 	<div id="container">
 		<div id="logo_space">
-			<div id="logo_div">
 				<% if logged_in? %>
-					<%= link_to image_tag('family_logo.png'), :controller => 'home', :action => 'index'%>
+					<div id="logo_div">
+						<%= link_to image_tag('family_logo_purple.png'), :controller => 'home', :action => 'index'%>
+					</div>
+					<div id="domain">
+						<%= link_to "ChartMyCycles", :controller => 'home', :action => 'index'%>
+						</div>
 				<% else %>
-					<%= link_to image_tag('family_logo.png'), :action => 'index'%>
+					<div id="logo_div">
+						<%= link_to image_tag('family_logo_purple.png'), :action => 'index'%>
+					</div>
+					<div id="domain">
+						<%= link_to "ChartMyCycles", :action => 'index'%>
+						</div>
 				<% end %>
-			</div>
 			<div id="header_links">
-			  <p style="text-align: right;"><!--<%= link_to 'Forums', :controller => 'forums' %> | <%= link_to 'Invite your friends', :action => 'invite' %> |--> <%= link_to 'Contact Us', :action => 'contact' %> | Already a member? <%= link_to 'Log in', :action => 'login' %></p><br />
+			  <p style="text-align: right;"><!--<%= link_to 'Forums', :controller => 'forums' %> | <%= link_to 'Invite your friends', :action => 'invite' %> |--> <%= link_to 'Contact us', :action => 'contact' %> | Already a member? <%= link_to 'Log in', :action => 'login' %></p><br />
 			</div>
 		</div>
 	

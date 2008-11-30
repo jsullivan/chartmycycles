@@ -33,7 +33,7 @@ body {
 	font-family: Arial, Helvetica;
  	text-align: center;
 	color: #000000;
-	background: #7f61a1;
+	background: url(../images/body_bkgrnd.png) repeat-x #7f61a1;
 }
 h1 {
 	font-size: 3.4em;
@@ -67,7 +67,7 @@ color: #000000;
 #container {
 	margin: 0 auto;
 	width: 758px;
-	background: url(../images/container_bkgrnd.jpg) repeat-y;
+	background: url(../images/container_bkgrnd.png) repeat-y;
 	text-align: left;
 	font-size: .9em;
 	padding: 0px 21px 0px 21px;
@@ -90,6 +90,21 @@ color: #000000;
 	position: absolute;
 }
 #logo_div a:hover{
+	background: none;
+}
+#domain {
+	position: absolute;
+	margin: 19px 0px 0px 52px;
+}
+#domain a {
+	text-decoration: none;
+	color: #7f61a1;
+	font-size: 1.6em;
+	font-weight: bold;
+}
+#domain a:hover {
+	text-decoration: none;
+	color: #7f61a1;
 	background: none;
 }
 #header_banner {
@@ -179,7 +194,7 @@ color: #000000;
 	margin: 20px 0px 0px 0px;
 	color: #000000;
 	float: left;
-	font: 1em Georgia, "Times New Roman", Times, serif;
+	font: 1em;
 }
 #content_big_center {
 	width: 395px;
@@ -191,14 +206,14 @@ color: #000000;
 	width: 495px;
 	margin: 0px 0px 0px 130px;
 	color: #000000;
-	font: 1em Georgia, "Times New Roman", Times, serif;
+	font: 1em;
 }
 #content_small {
 	width: 340px;
 	margin: 20px 0px 0px 20px;
 	float: left;
 	float: left;
-	font: 1em Georgia, "Times New Roman", Times, serif;
+	font: 1em;
 }
 #login_banner {
 	position: absolute;

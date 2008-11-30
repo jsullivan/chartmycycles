@@ -340,8 +340,6 @@ color: #000000;
 
 #login_box {
 	color: black;
-	border: thin solid #8d9bfe;
-	background: url(/images/thin_blank_banner.jpg);
 	padding: 10px 50px;
 }
 fieldset {  

@@ -79,7 +79,7 @@ def y_right2
 
    
    #This is my area graph for the phases
-   g.area_hollow(0,0,25,'#7f61a1')
+   g.area_hollow(0,0,25,'#7f61a1', 'Phase two', 10)
    g.set_data(phase2)
      
    #This is my line graph for the waking temperatures

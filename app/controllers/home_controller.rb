@@ -133,14 +133,14 @@ class HomeController < ApplicationController
     
     
     #This is my area graph for the phases
-    g.area_hollow(1,0,25,'#7f61a1', 'Phase Two', 10)
+    g.area_hollow(1,0,25,'#7f61a1', 'Phase two', 10)
     g.set_data(phase2)
       
     #This is my line graph for the waking temperatures
     g.line_dot( 5, 8, '#1f76e3', 'Waking temperature', 10 )
     g.set_data(graph_array)
     
-    g.hlc(a, 90, 3, '#f50505', 'Cover Line', 10)
+    g.hlc(a, 90, 3, '#f50505', 'Cover line', 10)
 
     g.set_y_min(96.9)
     g.set_y_max(99)

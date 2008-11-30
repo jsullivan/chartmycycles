@@ -118,7 +118,7 @@ padding-top: 15px;
 /* MAIN COLUMN
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 #maincontainer {
-	background: url(/images/main_bkgrnd.jpg) repeat;
+	background: url(/images/body_bkgrnd3.png) repeat;
 }
 #contentwrapper{
 float: left;
@@ -354,7 +354,7 @@ float: left;
 min-height: 750px;
 width: 200px; /*Width of left column*/
 margin-left: -100%;
-background: url(/images/left_column_bkgrnd.jpg) repeat-y;
+background: url(/images/left_column_bkgrnd.png) repeat-y;
 }
 #avatar {
 	margin: 7px 0px 0px 5px;

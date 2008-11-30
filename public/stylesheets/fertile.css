@@ -183,6 +183,7 @@ color: #000000;
 	background: url(/images/choose_because.png);
 }
 
+
 /* CONTENT
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
@@ -258,6 +259,10 @@ color: #000000;
 }
 #footer a{
 	color: white;
+}
+#amazon_referrals {
+	height: 264px;
+	background: url(/images/amazon_referrals.png);
 }
 
 /* SIGNUP

@@ -13,6 +13,15 @@
 	<% end %>
 </div>
 </div>
+<% if @fertile_toggle == true %>
+<div id="fertile_toggle_red">
+	You are probably fertile right now. <br />
+</div>
+<% else %>
+<div id="fertile_toggle_purple">
+You are probably infertile right now. <br />
+</div>
+<% end %>
 <div id="new_entry_form" style="display: none;">
  <%= render :partial => 'new_entry'%>
 </div>

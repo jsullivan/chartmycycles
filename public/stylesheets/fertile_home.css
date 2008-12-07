@@ -438,14 +438,11 @@ border-style: none;
 	border-color: #3c2f24;
 }
 #share_it {
-	background: url(/images/blue_paper.jpg);
+	background: #4f366c;
 	font-weight: bold;
-	padding: 10px;
-	margin: 5px;
+	padding: 5px;
+	margin: 5px 0px 0px 0px;
 	color: #ffffff;
-	border-width: 3px 0px 3px 0px;
-	border-style: solid;
-	border-color: #1f2a4d;
 	text-align: center;
 }
 .share_it a {
@@ -455,7 +452,24 @@ border-style: none;
 #share_text {
 	margin-left: 10px;
 }
-
+#fertile_toggle_purple {
+	background: #4f366c;
+	font-weight: bold;
+	padding: 5px;
+	margin: 5px 0px 0px 0px;
+	color: #ffffff;
+	text-align: center;
+	font-size: 1.5em;
+}
+#fertile_toggle_red {
+	background: #ff3838;
+	font-weight: bold;
+	padding: 5px;
+	margin: 5px 0px 0px 0px;
+	color: #ffffff;
+	text-align: center;
+	font-size: 1.5em;
+}
 /* VERTICAL CAL TEXT DIVS 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 

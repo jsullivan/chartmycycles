@@ -4,19 +4,17 @@
 		<h1>Forums <%= image_tag 'black_beta.png' %> </h1>
 		We realize sometimes you've just got to get a little help from your friends. That's why we've taken the time to create custom, integrated forums. Take a few minutes to meet other women who took control of their fertility. Ask questions, help others, and build your community.<br />
 		<div id="fifteenpxspacer"></div>
-		<table width="100%">
-			<tr>
+
 		<% for forum in @forums %>
 			<td width="60%">
-		<%= link_to forum.topic, :action => 'topic', :id => forum %><br />
+		<h1><%= link_to forum.topic, :action => 'topic', :id => forum %></h1>
 		<%= forum.posts.count%> posts<br />
 		<% if forum.posts.count >= 1%>
 		Last post <%= time_ago_in_words(forum.posts.find(:last).created_at) %> ago
 		<% end%>
-			</td>
-				</tr>
+		<br /><br />
 						<% end %>
-		</table>
+
 </div>
 <p></p>
 </div>

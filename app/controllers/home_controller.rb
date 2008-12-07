@@ -6,6 +6,17 @@ class HomeController < ApplicationController
     @user = current_user
     @entries = current_user.current_cycle.entries.find(:all, :order => 'chart_date ASC')
     @graph = open_flash_chart_object("100%",300, 'home/y_right')#, true, '../' used to be here, too.
+    @fertile_toggle = false
+    if @entries.last.period == true
+      @fertile_toggle = true
+    end
+    if @entries.last.mucus == "fertile" or @entries.last.mucus == "unsure"
+      @fertile_toggle = true
+    end 
+    if @entries.last.vaginal_sensation == "wet" or @entries.last.vaginal_sensation == "other"
+      @fertile_toggle = true
+    end
+    
   end
  
   def edit

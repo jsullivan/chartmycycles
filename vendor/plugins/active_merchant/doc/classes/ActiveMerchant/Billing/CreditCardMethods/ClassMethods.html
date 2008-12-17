@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: ActiveMerchant::Billing::CreditCardMethods::ClassMethods</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">ActiveMerchant::Billing::CreditCardMethods::ClassMethods</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../../files/lib/active_merchant/billing/credit_card_methods_rb.html">
+                lib/active_merchant/billing/credit_card_methods.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000169">card_companies</a>&nbsp;&nbsp;
+      <a href="#M000171">last_digits</a>&nbsp;&nbsp;
+      <a href="#M000172">mask</a>&nbsp;&nbsp;
+      <a href="#M000173">matching_type?</a>&nbsp;&nbsp;
+      <a href="#M000170">type?</a>&nbsp;&nbsp;
+      <a href="#M000168">valid_number?</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000169" class="method-detail">
+        <a name="M000169"></a>
+
+        <div class="method-heading">
+          <a href="#M000169" class="method-signature">
+          <span class="method-name">card_companies</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Regular expressions for the known card companies.
+</p>
+<p>
+References:
+</p>
+<ul>
+<li><a
+href="http://en.wikipedia.org/wiki/Credit_card_number">en.wikipedia.org/wiki/Credit_card_number</a>
+
+</li>
+<li><a
+href="http://www.barclaycardbusiness.co.uk/information_zone/processing/bin_rules.html">www.barclaycardbusiness.co.uk/information_zone/processing/bin_rules.html</a>
+
+</li>
+</ul>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000169-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000169-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/credit_card_methods.rb, line 58</span>
+58:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">card_companies</span>
+59:           <span class="ruby-constant">CARD_COMPANIES</span>
+60:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000171" class="method-detail">
+        <a name="M000171"></a>
+
+        <div class="method-heading">
+          <a href="#M000171" class="method-signature">
+          <span class="method-name">last_digits</span><span class="method-args">(number)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000171-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000171-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/credit_card_methods.rb, line 87</span>
+87:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">last_digits</span>(<span class="ruby-identifier">number</span>)     
+88:           <span class="ruby-identifier">number</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">4</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">number</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">number</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-value">-4</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>) 
+89:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000172" class="method-detail">
+        <a name="M000172"></a>
+
+        <div class="method-heading">
+          <a href="#M000172" class="method-signature">
+          <span class="method-name">mask</span><span class="method-args">(number)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000172-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000172-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/credit_card_methods.rb, line 91</span>
+91:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">mask</span>(<span class="ruby-identifier">number</span>)
+92:           <span class="ruby-node">&quot;XXXX-XXXX-XXXX-#{last_digits(number)}&quot;</span>
+93:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000173" class="method-detail">
+        <a name="M000173"></a>
+
+        <div class="method-heading">
+          <a href="#M000173" class="method-signature">
+          <span class="method-name">matching_type?</span><span class="method-args">(number, type)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Checks to see if the calculated type matches the specified type
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000173-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000173-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/credit_card_methods.rb, line 96</span>
+96:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">matching_type?</span>(<span class="ruby-identifier">number</span>, <span class="ruby-identifier">type</span>)
+97:           <span class="ruby-identifier">type?</span>(<span class="ruby-identifier">number</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">type</span>
+98:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000170" class="method-detail">
+        <a name="M000170"></a>
+
+        <div class="method-heading">
+          <a href="#M000170" class="method-signature">
+          <span class="method-name">type?</span><span class="method-args">(number)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a string containing the type of card from the list of known
+information below. Need to check the cards in a particular order, as there
+is some overlap of the allowable ranges
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000170-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000170-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/credit_card_methods.rb, line 75</span>
+75:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">type?</span>(<span class="ruby-identifier">number</span>)
+76:           <span class="ruby-keyword kw">return</span> <span class="ruby-value str">'bogus'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">valid_test_mode_card_number?</span>(<span class="ruby-identifier">number</span>)
+77: 
+78:           <span class="ruby-identifier">card_companies</span>.<span class="ruby-identifier">reject</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">c</span>,<span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'maestro'</span> }.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">company</span>, <span class="ruby-identifier">pattern</span><span class="ruby-operator">|</span>
+79:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">company</span>.<span class="ruby-identifier">dup</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">number</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">pattern</span> 
+80:           <span class="ruby-keyword kw">end</span>
+81:           
+82:           <span class="ruby-keyword kw">return</span> <span class="ruby-value str">'maestro'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">number</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">card_companies</span>[<span class="ruby-value str">'maestro'</span>]
+83: 
+84:           <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+85:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000168" class="method-detail">
+        <a name="M000168"></a>
+
+        <div class="method-heading">
+          <a href="#M000168" class="method-signature">
+          <span class="method-name">valid_number?</span><span class="method-args">(number)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns true if it validates. Optionally, you can pass a card type as an
+argument and make sure it is of the correct type.
+</p>
+<p>
+References:
+</p>
+<ul>
+<li><a
+href="http://perl.about.com/compute/perl/library/nosearch/P073000.htm">perl.about.com/compute/perl/library/nosearch/P073000.htm</a>
+
+</li>
+<li><a
+href="http://www.beachnet.com/~hstiles/cardtype.html">www.beachnet.com/~hstiles/cardtype.html</a>
+
+</li>
+</ul>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000168-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000168-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/credit_card_methods.rb, line 47</span>
+47:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">valid_number?</span>(<span class="ruby-identifier">number</span>)
+48:           <span class="ruby-identifier">valid_test_mode_card_number?</span>(<span class="ruby-identifier">number</span>) <span class="ruby-operator">||</span> 
+49:             <span class="ruby-identifier">valid_card_number_length?</span>(<span class="ruby-identifier">number</span>) <span class="ruby-operator">&amp;&amp;</span> 
+50:             <span class="ruby-identifier">valid_checksum?</span>(<span class="ruby-identifier">number</span>)
+51:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

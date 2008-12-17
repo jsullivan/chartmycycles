@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: ActiveMerchant::Billing::RealexGateway</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">ActiveMerchant::Billing::RealexGateway</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/lib/active_merchant/billing/gateways/realex_rb.html">
+                lib/active_merchant/billing/gateways/realex.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="Gateway.html">
+                Gateway
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Realex us the leading CC gateway in Ireland see <a
+href="http://www.realexpayments.com">www.realexpayments.com</a> Contributed
+by John Ward (john@ward.name) see <a
+href="http://thinedgeofthewedge.blogspot.com">thinedgeofthewedge.blogspot.com</a>
+</p>
+<p>
+Realex works using the following login - The unique id of the merchant
+password - The secret is used to digitally sign the request account - This
+is an optional third part of the authentication process and is used if the
+merchant wishes do distuinguish cc traffic from the different sources by
+using a different account. This must be created in advance
+</p>
+<p>
+the Realex team decided to make the orderid unique per request, so if
+validation fails you can not correct and resend using the same order id
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000411">new</a>&nbsp;&nbsp;
+      <a href="#M000412">purchase</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">URL</td>
+          <td>=</td>
+          <td class="context-item-value">'https://epage.payandshop.com/epage-remote.cgi'</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">CARD_MAPPING</td>
+          <td>=</td>
+          <td class="context-item-value">{         'master'            =&gt; 'MC',         'visa'              =&gt; 'VISA',         'american_express'  =&gt; 'AMEX',         'diners_club'       =&gt; 'DINERS',         'switch'            =&gt; 'SWITCH',         'solo'              =&gt; 'SWITCH',         'laser'             =&gt; 'LASER'</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DECLINED</td>
+          <td>=</td>
+          <td class="context-item-value">&quot;Successful&quot;, &quot;Declined&quot;</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">BANK_ERROR</td>
+          <td>=</td>
+          <td class="context-item-value">REALEX_ERROR  = &quot;Gateway is in maintenance. Please try again later.&quot;</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">ERROR</td>
+          <td>=</td>
+          <td class="context-item-value">CLIENT_DEACTIVATED = &quot;Gateway Error&quot;</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000411" class="method-detail">
+        <a name="M000411"></a>
+
+        <div class="method-heading">
+          <a href="#M000411" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000411-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000411-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateways/realex.rb, line 45</span>
+45:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">options</span> = {})
+46:         <span class="ruby-identifier">requires!</span>(<span class="ruby-identifier">options</span>, <span class="ruby-identifier">:login</span>, <span class="ruby-identifier">:password</span>)
+47:         <span class="ruby-ivar">@options</span> = <span class="ruby-identifier">options</span>
+48:         <span class="ruby-keyword kw">super</span>
+49:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000412" class="method-detail">
+        <a name="M000412"></a>
+
+        <div class="method-heading">
+          <a href="#M000412" class="method-signature">
+          <span class="method-name">purchase</span><span class="method-args">(money, credit_card, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000412-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000412-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateways/realex.rb, line 51</span>
+51:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">purchase</span>(<span class="ruby-identifier">money</span>, <span class="ruby-identifier">credit_card</span>, <span class="ruby-identifier">options</span> = {})
+52:         <span class="ruby-identifier">requires!</span>(<span class="ruby-identifier">options</span>, <span class="ruby-identifier">:order_id</span>)
+53:         
+54:         <span class="ruby-identifier">request</span> = <span class="ruby-identifier">build_purchase_or_authorization_request</span>(<span class="ruby-identifier">:purchase</span>, <span class="ruby-identifier">money</span>, <span class="ruby-identifier">credit_card</span>, <span class="ruby-identifier">options</span>) 
+55:         <span class="ruby-identifier">commit</span>(<span class="ruby-identifier">request</span>)
+56:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

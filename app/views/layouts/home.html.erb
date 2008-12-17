@@ -14,21 +14,25 @@
 	<div id="maincontainer">
 	<div id="topsection">
 	<div class="innertube">
+		<![if !IE]>
+	
 	<div id="logo">
 	</div>
+
 	<div id="domain">
 		<%= link_to 'ChartMyCycles', :controller => 'home' %>
 	</div>
 	<div id="tabs_container">
 	<%= render :partial => '/layouts/tabs'%>
 	</div>
+		<![endif]>
 	<div id="top_links" class="top_links">
 		<%= render :partial => '/layouts/toplinks' %>	
 	</div>
 	<br />
 	</div>
 	</div>
-
+	
 		
 		<%= yield  %>
 <div id="footer">

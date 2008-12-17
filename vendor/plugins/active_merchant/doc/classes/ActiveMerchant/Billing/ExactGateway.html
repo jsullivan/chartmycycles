@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: ActiveMerchant::Billing::ExactGateway</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">ActiveMerchant::Billing::ExactGateway</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/lib/active_merchant/billing/gateways/exact_rb.html">
+                lib/active_merchant/billing/gateways/exact.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="Gateway.html">
+                Gateway
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000442">authorize</a>&nbsp;&nbsp;
+      <a href="#M000444">capture</a>&nbsp;&nbsp;
+      <a href="#M000445">credit</a>&nbsp;&nbsp;
+      <a href="#M000440">new</a>&nbsp;&nbsp;
+      <a href="#M000443">purchase</a>&nbsp;&nbsp;
+      <a href="#M000441">test?</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">URL</td>
+          <td>=</td>
+          <td class="context-item-value">'https://secure2.e-xact.com/vplug-in/transaction/rpc-enc/service.asmx'</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">API_VERSION</td>
+          <td>=</td>
+          <td class="context-item-value">&quot;8.5&quot;</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">TEST_LOGINS</td>
+          <td>=</td>
+          <td class="context-item-value">[ {:login =&gt; &quot;A00049-01&quot;, :password =&gt; &quot;test1&quot;},                       {:login =&gt; &quot;A00427-01&quot;, :password =&gt; &quot;testus&quot;} ]</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">TRANSACTIONS</td>
+          <td>=</td>
+          <td class="context-item-value">{ :sale          =&gt; &quot;00&quot;,                        :authorization =&gt; &quot;01&quot;,                        :capture       =&gt; &quot;32&quot;,                        :credit        =&gt; &quot;34&quot; }</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">ENVELOPE_NAMESPACES</td>
+          <td>=</td>
+          <td class="context-item-value">{ 'xmlns:xsd' =&gt; 'http://www.w3.org/2001/XMLSchema',                               'xmlns:env' =&gt; 'http://schemas.xmlsoap.org/soap/envelope/',                               'xmlns:xsi' =&gt; 'http://www.w3.org/2001/XMLSchema-instance'</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">SEND_AND_COMMIT_ATTRIBUTES</td>
+          <td>=</td>
+          <td class="context-item-value">{ 'xmlns:n1' =&gt; &quot;http://secure2.e-xact.com/vplug-in/transaction/rpc-enc/Request&quot;,                                      'env:encodingStyle' =&gt; 'http://schemas.xmlsoap.org/soap/encoding/'</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">SEND_AND_COMMIT_SOURCE_ATTRIBUTES</td>
+          <td>=</td>
+          <td class="context-item-value">{ 'xmlns:n2' =&gt; 'http://secure2.e-xact.com/vplug-in/transaction/rpc-enc/encodedTypes',                                             'xsi:type' =&gt; 'n2:Transaction'</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">POST_HEADERS</td>
+          <td>=</td>
+          <td class="context-item-value">{ 'soapAction' =&gt; &quot;http://secure2.e-xact.com/vplug-in/transaction/rpc-enc/SendAndCommit&quot;,                        'Content-Type' =&gt; 'text/xml'</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">SUCCESS</td>
+          <td>=</td>
+          <td class="context-item-value">&quot;true&quot;</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">SENSITIVE_FIELDS</td>
+          <td>=</td>
+          <td class="context-item-value">[ :verification_str2, :expiry_date, :card_number ]</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000440" class="method-detail">
+        <a name="M000440"></a>
+
+        <div class="method-heading">
+          <a href="#M000440" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000440-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000440-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateways/exact.rb, line 43</span>
+43:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">options</span> = {})
+44:         <span class="ruby-identifier">requires!</span>(<span class="ruby-identifier">options</span>, <span class="ruby-identifier">:login</span>, <span class="ruby-identifier">:password</span>)
+45:         <span class="ruby-ivar">@options</span> = <span class="ruby-identifier">options</span>
+46:         
+47:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">TEST_LOGINS</span>.<span class="ruby-identifier">include?</span>( { <span class="ruby-identifier">:login</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:login</span>], <span class="ruby-identifier">:password</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:password</span>] } )
+48:           <span class="ruby-ivar">@test_mode</span> = <span class="ruby-keyword kw">true</span>
+49:         <span class="ruby-keyword kw">end</span>
+50:       
+51:         <span class="ruby-keyword kw">super</span>
+52:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000442" class="method-detail">
+        <a name="M000442"></a>
+
+        <div class="method-heading">
+          <a href="#M000442" class="method-signature">
+          <span class="method-name">authorize</span><span class="method-args">(money, credit_card, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000442-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000442-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateways/exact.rb, line 58</span>
+58:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">authorize</span>(<span class="ruby-identifier">money</span>, <span class="ruby-identifier">credit_card</span>, <span class="ruby-identifier">options</span> = {})
+59:         <span class="ruby-identifier">commit</span>(<span class="ruby-identifier">:authorization</span>, <span class="ruby-identifier">build_sale_or_authorization_request</span>(<span class="ruby-identifier">money</span>, <span class="ruby-identifier">credit_card</span>, <span class="ruby-identifier">options</span>))
+60:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000444" class="method-detail">
+        <a name="M000444"></a>
+
+        <div class="method-heading">
+          <a href="#M000444" class="method-signature">
+          <span class="method-name">capture</span><span class="method-args">(money, authorization, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000444-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000444-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateways/exact.rb, line 66</span>
+66:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">capture</span>(<span class="ruby-identifier">money</span>, <span class="ruby-identifier">authorization</span>, <span class="ruby-identifier">options</span> = {})
+67:         <span class="ruby-identifier">commit</span>(<span class="ruby-identifier">:capture</span>, <span class="ruby-identifier">build_capture_or_credit_request</span>(<span class="ruby-identifier">money</span>, <span class="ruby-identifier">authorization</span>, <span class="ruby-identifier">options</span>))
+68:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000445" class="method-detail">
+        <a name="M000445"></a>
+
+        <div class="method-heading">
+          <a href="#M000445" class="method-signature">
+          <span class="method-name">credit</span><span class="method-args">(money, authorization, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000445-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000445-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateways/exact.rb, line 70</span>
+70:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">credit</span>(<span class="ruby-identifier">money</span>, <span class="ruby-identifier">authorization</span>, <span class="ruby-identifier">options</span> = {})
+71:         <span class="ruby-identifier">commit</span>(<span class="ruby-identifier">:credit</span>, <span class="ruby-identifier">build_capture_or_credit_request</span>(<span class="ruby-identifier">money</span>, <span class="ruby-identifier">authorization</span>, <span class="ruby-identifier">options</span>))
+72:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000443" class="method-detail">
+        <a name="M000443"></a>
+
+        <div class="method-heading">
+          <a href="#M000443" class="method-signature">
+          <span class="method-name">purchase</span><span class="method-args">(money, credit_card, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000443-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000443-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateways/exact.rb, line 62</span>
+62:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">purchase</span>(<span class="ruby-identifier">money</span>, <span class="ruby-identifier">credit_card</span>, <span class="ruby-identifier">options</span> = {})
+63:         <span class="ruby-identifier">commit</span>(<span class="ruby-identifier">:sale</span>, <span class="ruby-identifier">build_sale_or_authorization_request</span>(<span class="ruby-identifier">money</span>, <span class="ruby-identifier">credit_card</span>, <span class="ruby-identifier">options</span>))
+64:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000441" class="method-detail">
+        <a name="M000441"></a>
+
+        <div class="method-heading">
+          <a href="#M000441" class="method-signature">
+          <span class="method-name">test?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000441-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000441-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateways/exact.rb, line 54</span>
+54:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test?</span>
+55:         <span class="ruby-ivar">@test_mode</span> <span class="ruby-operator">||</span> <span class="ruby-constant">Base</span>.<span class="ruby-identifier">gateway_mode</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:test</span>
+56:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

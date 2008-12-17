@@ -1,0 +1,1215 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: CHANGELOG</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>CHANGELOG</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>CHANGELOG
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Sun Nov 23 12:09:26 -0800 2008</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>ActiveMerchant CHANGELOG</h1>
+<ul>
+<li>Add test mode detection to Beanstream [cody]
+
+</li>
+<li>Add support for Beanstream payment gateway [xiaobozz]
+
+</li>
+<li>Add support for PayPal NV Pair API. Will be used to replace the usage of
+the PayPal SOAP API in ActiveMerchant in the future [Greg Furmanek, cody]
+
+</li>
+<li>Protx does support UK Maestro [cody]
+
+</li>
+<li>Add tests for length of UK Maestro cards [cody]
+
+</li>
+<li>Return all the error messages and codes from paypal responses [cody]
+
+</li>
+<li>Fail hard when attempting to capture without a credit card with NetRegistry
+[cody]
+
+</li>
+<li>Add support for the order fields to the create_customer_profile_transaction
+in Authorize.net CIM. [Patrick T. Joyce]
+
+</li>
+<li>Strip invalid characters and limit lengths of Protx customer data [Simon
+Russell]
+
+</li>
+<li>Fix empty start or end dates in Protx [Simon Russell]
+
+</li>
+<li>Add support for Authorize.net CIM [Patrick T. Joyce, Ian Lotinsky]
+
+</li>
+<li>Add option to skip order review to all PayPal Express gateways
+[garret.alfert, cody]
+
+</li>
+<li>Add capturing partial amounts, fix issue number formatting, fix
+authorization string when nil values returned, fix parsing of multiple
+&#8217;=&#8217; characters, simplify message_from [Simon Russell]
+
+</li>
+<li>Fix StartDate in ProtxGatewy [cody]
+
+</li>
+<li>Add support for refunds and continuous authority references to
+DataCashGateway [joel.chippindale]
+
+</li>
+<li>Fix gross in HiTrust notification. Don&#8216;t use Money object in Verifi
+gateway [cody]
+
+</li>
+<li>Initial implementation of Payflow Name-Value API [Greg Furmanek]
+
+</li>
+<li>Add support for CyberSource credits [mjuneja]
+
+</li>
+</ul>
+<h2>Version 1.3.2 (February 24, 2008)</h2>
+<ul>
+<li>Actually fix the bug by adding extdata element to Payflow Requests [cody]
+
+</li>
+<li>Fix bug with adding name to Payflow requests [cody]
+
+</li>
+<li>Gateways will now look for CreditCard#brand before looking for
+CreditCard#type [cody]
+
+</li>
+<li>Make before_validate in CreditCard more clear [keith_du&#8230;@mac.com,
+cody]
+
+</li>
+<li>Don&#8216;t send full Australian state names to PayPal [cody]
+
+</li>
+<li>Return last_digits that are less than 4 characters long [cody]
+
+</li>
+<li>Fix Bug with Authorize.Net ARB Remote Test [patrick.t.joyce]
+
+</li>
+<li>Add support for forcing test mode on Secure Pay AU gateway [cody]
+
+</li>
+<li>Update Secure Pay Au to meet specs for MessageInfo elements [cody]
+
+</li>
+<li>Add support for the Australian Secure Pay payment gateway [cody]
+
+</li>
+<li>Allow LinkPoint cancellations for recurring billing. [yanagimoto.shin]
+
+</li>
+<li>Add support for Åland Islands to the country list [cody]
+
+</li>
+</ul>
+<h2>Version 1.3.1 (January 28, 2008)</h2>
+<ul>
+<li>Rename BrainTreeGateway to BraintreeGateway, but keep alias to old naming
+for backwards compatibility [cody]
+
+</li>
+</ul>
+<h2>Version 1.3.0 (January 28, 2008)</h2>
+<ul>
+<li>Remove attr_readers for url and response from Gateway [cody]
+
+</li>
+<li>Remove @url from EfsnetGateway [cody]
+
+</li>
+<li>Remove @response instance variable in QuickpayGateway. [cody]
+
+</li>
+<li>Remove @response instance variable in PsigateGateway. Don&#8216;t use
+billing address for shipping [cody]
+
+</li>
+<li>Remove @response instance variable in PaypalGateway. Don&#8216;t use
+billing address for shipping. [cody]
+
+</li>
+<li>Remove @response instance variable in PayflowGateway [cody]
+
+</li>
+<li>Remove @response instance variable in MonerisGateway [cody]
+
+</li>
+<li>Remove @response instance variable and don&#8216;t use billing address for
+shipping address in LinkpointGateway [cody]
+
+</li>
+<li>Remove @response instance variable from ExactGateway [cody]
+
+</li>
+<li>Remove @response instance variable from EwayGateway [cody]
+
+</li>
+<li>Remove @response instance variable from EfsnetGateway [cody]
+
+</li>
+<li>Remove @response instance variable from DataCashGateway [cody]
+
+</li>
+<li>Don&#8216;t use billing_address for shipping_address in CyberSourceGateway
+[cody]
+
+</li>
+<li>Remove @response instance variable from CardStreamGateway [cody]
+
+</li>
+<li>Remove @response instance variable from BrainTreeGateway [cody]
+
+</li>
+<li>Remove unused deal_with_cc method from BogusGateway [cody]
+
+</li>
+<li>Remove test_result_from_cc_number completely from ActiveMerchant [cody]
+
+</li>
+<li>Don&#8216;t use billing_address for shipping_address in Realex [cody]
+
+</li>
+<li>Update Realex to add support for cvv data. remove
+test_result_from_cc_number. [cody]
+
+</li>
+<li>Update Protx to add support for avs and cvv data. remove
+test_result_from_cc_number. [cody]
+
+</li>
+<li>Include ActiveMerchant::Utils module in test_helper and use
+generate_unique_id from the module instead of generate_order_id. [cody]
+
+</li>
+<li>Update SecurePay tests to check for avs and cvv data. [cody]
+
+</li>
+<li>Update SkipJack to add support for avs and cvv data. remove
+test_result_from_cc_number. [cody]
+
+</li>
+<li>Move generate_unique_id to its own module [cody]
+
+</li>
+<li>Update Viaklix to add support for avs and cvv data. remove
+test_result_from_cc_number. Truncate fields to avoid failure [cody]
+
+</li>
+<li>Update PSL Card Gateway to add support for avs and cvv data. remove
+test_result_from_cc_number. [cody]
+
+</li>
+<li>Update PlugNPayGateway to support avs and cvv data. Remove
+test_result_from_cc_number. [cody]
+
+</li>
+<li>Update PaymentExpressGateway to remove test_result_from_cc_number. [cody]
+
+</li>
+<li>Update PaySecure to remove test_result_from_cc_number. [cody]
+
+</li>
+<li>Update NetbillingGateway to support avs and cvv data. Remove
+test_result_from_cc_number. [cody]
+
+</li>
+<li>Replace all usage of :address with :billing_address in test cases [cody]
+
+</li>
+<li>Remove sensitive data from NetRegistryGateway responses. Refactor gateway
+and tests. Remove test_result_from_cc_number. [cody]
+
+</li>
+<li>Update VerifiGateway to support avs and cvv data. Remove
+test_result_from_cc_number. [cody]
+
+</li>
+<li>Small refactoring of UsaEpayGateway [cody]
+
+</li>
+<li>Update UsaEpayGateway to support avs and cvv data. Remove
+test_result_from_cc_number. [cody]
+
+</li>
+<li>Update TrustCommerce docs now that the gateway falls back to SSL post when
+tclink isn&#8216;t available [cody]
+
+</li>
+<li>Change ARB to use correct :address1 key for addresses [cody]
+
+</li>
+<li>No need for specialized recurring response for Authorize.net recurring
+billing [cody]
+
+</li>
+<li>Update TransFirst to support avs and cvv data. Remove
+test_result_from_cc_number. [cody]
+
+</li>
+<li>Maintain backwards compatibility with :address option for now in the
+Payflow gateways [cody]
+
+</li>
+<li>Remove test_result_from_cc_number from SecurePayTech. Improve unit test
+coverage [cody]
+
+</li>
+<li>Fix email option in PayflowGateway. Remove support for :address option.
+:billing_address and :shipping_address must now be passed in separately.
+[cody]
+
+</li>
+<li>Make Bogus gateway&#8216;s credit() method behave like capture [cody]
+
+</li>
+<li>Add update and delete methods to update and delete records stored in the
+vault. [benjamin.curtis]
+
+</li>
+<li>Add support for recurring_inquiry() to the PayflowGateway
+[dave.my&#8230;@contentfree.com]
+
+</li>
+<li>Add support for Authorize.net Automated Recurring Billing (ARB)
+[vkurnavenkov, forestcarlisle, ianlotin&#8230;@hotmail.com,
+patrick.t.joyce]
+
+</li>
+<li>Fix laser card regex [ladislav.martincik]
+
+</li>
+<li>Cleanup whitepace in README [patrick.t.joyce]
+
+</li>
+<li>Update ExactGateway to support avs and cvv data. Remove
+test_result_from_cc_number. [cody]
+
+</li>
+<li>Remove test_result_from_cc_number from eWay gateway. [cody]
+
+</li>
+<li>Remove duplicate attr_reader definitions from all gateways [cody]
+
+</li>
+<li>Remove useless tests raising Error [cody]
+
+</li>
+<li>Update gateway templates [cody]
+
+</li>
+<li>Fix Authorize.net test where authorize() was being called instead of
+purchase(). Perform some cleanup of the tests [ianlotin&#8230;@hotmail.com,
+cody]
+
+</li>
+<li>Improve Authorize.net documentation based on the DataCashGateway docs
+[patrick.t.joyce]
+
+</li>
+<li>Update EfsnetGateway to support avs and cvv data. Remove
+test_result_from_cc_number. [cody]
+
+</li>
+<li>Remove test_result_from_cc_number from DataCash. Improve unit test coverage
+[cody]
+
+</li>
+<li>Update CyberSourceGateway to support avs and cvv results. Remove
+test_result_from_cc_number. [cody]
+
+</li>
+<li>Remove match information from CVVResult [cody]
+
+</li>
+<li>Remove Response#card_data. The application has access to the information
+anyway [cody]
+
+</li>
+<li>Return the last 4 digits of the card number from the Response instead of
+the masked number [cody]
+
+</li>
+<li>Actually use the shipping address in TrustCommerce [cody]
+
+</li>
+<li>Update TrustCommerceGateway to support avs and cvv results. Remove
+test_result_from_cc_number. Automatically fallback to SSL POST if the
+TCLink library is not available. Add additional customer information to the
+requests. [cody]
+
+</li>
+<li>Fix remote CardStreamGateway tests [cody]
+
+</li>
+<li>Map merchant AVS codes to street and postal match codes [cody]
+
+</li>
+<li>Update CardStreamGateway to support avs and cvv data [cody]
+
+</li>
+<li>Remove merchant_data hash. Add additional CVV codes [cody]
+
+</li>
+<li>Update QuickpayGateway to support merchant_data hash. Remove
+test_result_from_cc_number. [cody]
+
+</li>
+<li>Update LinkpointGateway to support merchant_data hash. Remove
+test_result_from_cc_number. [cody]
+
+</li>
+<li>Update PsigateGateway to support merchant_data hash. Remove
+test_result_from_cc_number. [cody]
+
+</li>
+<li>Update MonerisGateway to support merchant_data hash. Remove
+test_result_from_cc_number. [cody]
+
+</li>
+<li>Remove AVS Message and CVV2 Message from params hash in Authorize.net
+[cody]
+
+</li>
+<li>Update BrainTreeGateway to support merchant_data hash [cody]
+
+</li>
+<li>Update PaypalGateway to support merchant_data hash [cody]
+
+</li>
+<li>Update Payflow to support merchant_data hash [cody]
+
+</li>
+<li>Add card data to PayJunction response. PayJunction does not return the CVV
+or AVS result codes. Remote test_result_from_cc_number from PayJunction.
+[cody]
+
+</li>
+<li>Rename CCVResult to CVVResult to be more aligned with
+ActiveMerchant&#8216;s usage of the term verification value [cody]
+
+</li>
+<li>Remove test_result_from_cc_number from Authorize.net in favour of mocking
+[cody]
+
+</li>
+<li>Add merchant_data hash, which contains all of the card_data, avs_result,
+and ccv_result. [cody]
+
+</li>
+<li>Add CCVResult for the Card Code Verification Result. Update Authorize.net
+to use the new class [cody]
+
+</li>
+<li>Rename AVSResult#match_type AVSResult#match [cody]
+
+</li>
+<li>Rename AVS::Result class to AVSResult [cody]
+
+</li>
+<li>Convert Authorize.net gateway to use the new AVS module [cody]
+
+</li>
+<li>Add AVS data to the Response object [cody]
+
+</li>
+<li>Fix credentials for remote Authorize.net TEST MODE test [cody]
+
+</li>
+<li>Add AVS module and AVS::Result class [cody]
+
+</li>
+<li>Update base gateway class RDOC [cody]
+
+</li>
+<li>Update the README with the latest list of supported gateways. Update the
+example in the README to include the verification value, which is now
+required by the credit card object by default. [cody]
+
+</li>
+<li>Handle the return from 2Checkout [cody]
+
+</li>
+<li>Automatically determine the credit card type when a type is not provided
+[cody]
+
+</li>
+<li>Revert to initial implementation of LUHN algorithm because it all fits in
+one simple method [cody]
+
+</li>
+<li>Remove unused api_cert_chain.crt file [cody]
+
+</li>
+<li>Update PaypalGateway, and PaypalExpressGateway to send requests to the
+correct endpoints when using API signatures [cody]
+
+</li>
+<li>Successful return code for HiTRUST is actually 00 [cody]
+
+</li>
+<li>Make ActiveMerchant::Billing::Error a subclass of
+ActiveMerchant::ActiveMerchantError [cody]
+
+</li>
+<li>Handle the return from the offsite payment gateways [cody]
+
+</li>
+<li>Default HiTRUST order description to &quot;Store purchase&quot; [cody]
+
+</li>
+<li>Fix HiTRUST field names [cody]
+
+</li>
+<li>Add support for passing in the locale code [georg.fr&#8230;@meandevel.com]
+
+</li>
+<li>Add support for the Offsite payment gateway HiTRUST [cody]
+
+</li>
+<li>Accept SuccessWithWarning as success [cody]
+
+</li>
+<li>Add a link to the LinkPoint staging server docs in remote_linkpoint_test.rb
+[cody]
+
+</li>
+<li>Update Discover regex [cody]
+
+</li>
+<li>Match full pan range of Maestro cards from 12 - 19 digits in length [cody]
+
+</li>
+<li>Fix errors on base of CreditCard [josh.bassett]
+
+</li>
+<li>Update product to use Rubigen instead of stolen Rails generator [cody]
+
+</li>
+<li>Mimic directory structure of unit tests in remote tests [cody]
+
+</li>
+<li>Restructure the location of the remote tests [cody]
+
+</li>
+<li>Ensure DataCash order_id is limited to 30 characters [cody]
+
+</li>
+<li>Return the pretty messages from PayJunction based on the return code [cody]
+
+</li>
+<li>make CreditCard.require_verification_value = true the default [cody]
+
+</li>
+<li>Use existing credit_card helper in credit card tests [cody]
+
+</li>
+<li>Return the authrorization number of the original transaction in the
+SkipJack gateway [cody]
+
+</li>
+<li>Update format of line items given to the gateway. Cleanup and uncomment
+unit tests [cody]
+
+</li>
+<li>Add support for the SkipJack gateway [Bill Bereza, cody]
+
+</li>
+<li>Make the bogus gateway easier to test by moving messages into constants
+[cody]
+
+</li>
+<li>Add retry logic when connection has been refused for all gateways. Enable
+safe retries of all connection failures with the PayflowGateway, as it has
+a unique request header. [cody]
+
+</li>
+<li>Catch Timeout::Error when posting data [cody]
+
+</li>
+<li>Change order of loading ActionPack for tests since assert_success defined
+in ActionController::Assertions::DeprecatedAssertions inteferes with
+ActiveMerchant&#8216;s definition [cody]
+
+</li>
+<li>Catch Errno::ETIMEDOUT and extend open and read timeouts to 60 seconds
+[cody]
+
+</li>
+<li>Add address2 to the billing address of Viaklix transactions [cody]
+
+</li>
+<li>Improve Psigate generic error message [cody]
+
+</li>
+<li>Fix small errors in Psigate documentation [cody]
+
+</li>
+<li>Add Response#fraud_review? query method to the response. Allows gateways to
+indicate that a payment is pending review by the fraud service [cody]
+
+</li>
+<li>Handle Errno::ECONNRESET when posting data [cody]
+
+</li>
+<li>Fix broken USA ePay URL [cody]
+
+</li>
+<li>Update RequiresParameters to support HashWithIndifferentAccess [cody]
+
+</li>
+<li>Add support for SecurePayTech payment gateway [Jasper Bryant-Greene]
+
+</li>
+<li>Detect when test credentials are being used with PayJunction [cody]
+
+</li>
+<li>Update documentation about TrustCommerce void [cody]
+
+</li>
+<li>Add void to TrustCommerce [jesse.c.scott]
+
+</li>
+<li>Add support for echecks to the BrainTree gateway [Jeremy Voorhis]
+
+</li>
+<li>Fix before_validate and validate methods in CreditCard [rick.denatale]
+
+</li>
+<li>Add support for Netbilling payment gateway [cody]
+
+</li>
+<li>Pass in N/A for unknown states when a country is present in PaypalGateway
+[cody]
+
+</li>
+<li>Strip non alpha chars from order_id in Payflow gateway, as Paymentech Tampa
+can&#8216;t handle them [cody]
+
+</li>
+<li>Add support for the PaySecure payment gateway [cody]
+
+</li>
+<li>Add support for descriptions in Authorize.net credits [shiva.kaul]
+
+</li>
+<li>Great cleanup and improvement of CreditCard code, tests, and docs [James
+Herdman]
+
+</li>
+</ul>
+<h2>Version 1.2.1</h2>
+<ul>
+<li>Fix remote PayPal tests [cody]
+
+</li>
+</ul>
+<h2>Version 1.2.0</h2>
+<ul>
+<li>Update Linkpoint tests to remove useless pem file [cody]
+
+</li>
+<li>Use symbols for CreditCard error messages, since errors have indifferent
+access [cody]
+
+</li>
+<li>Improve CreditCard error messages [George Ogata]
+
+</li>
+<li>Change deny to assert_false, and deny_success to assert_failure. Remove
+Gateway.gateway, as it is available from Base [cody]
+
+</li>
+<li>Improve documentation, and test coverage [James Herdman]
+
+</li>
+<li>Refactor MonerisGateway, improve test coverage and documentation [James
+Herdman]
+
+</li>
+<li>Add support for crediting to Moneris [James Herdman]
+
+</li>
+<li>Send state N/A in Payflow when the state is blank. Fixes UK PayPal Express
+payments when not providing a state [cody]
+
+</li>
+<li>Load remote test credentials from a fixtures file. ActiveMerchant will look
+for a custom file ~/.active_merchant/fixtures.yml. If the file exists it
+will be loaded instead of the default fixtures provided by ActiveMerchant.
+This makes development easier, and removes the risk of committing
+non-public test account credentials to subversion. [cody]
+
+</li>
+<li>Add support for password protected pem files [cody]
+
+</li>
+<li>Add support for Concord Efsnet payment gateway [snacktime]
+
+</li>
+<li>Fix dependency loading for gateways that are subclasses [cody]
+
+</li>
+<li>Add Braintree payment gateway [Michael J. Mangino]
+
+</li>
+<li>Add support for PayPal API signatures [Benjamin Curtis, cody]
+
+</li>
+<li>Add payment gateway Viaklix [Sal Scotto, cody]
+
+</li>
+<li>Add Australian payment gateway NetRegistry [George Ogata]
+
+</li>
+<li>Take order email from the options hash instead of the address for
+CyberSource [cody]
+
+</li>
+<li>Use an array for LineItems when calculating tax in CyberSource gateway
+[cody]
+
+</li>
+<li>Add CyberSource gateway [Matt Margolis]
+
+</li>
+<li>Sanitize Protx order id [cody]
+
+</li>
+<li>Fix support for electron in Protx [cody]
+
+</li>
+<li>Add support for Protx [shiftx, cody]
+
+</li>
+<li>Use undef_method with a single argument in SecurePay to prevent JRuby from
+choking on it. [jonathan.l.bartlett]
+
+</li>
+<li>Default address_override to 0 for PayPal Website Payments Standard
+payments. [cody]
+
+</li>
+<li>Enhance credit card error messages [manfred]
+
+</li>
+<li>Use HashWithIndifferentAccess for CreditCard for compatibility with Rails
+applications [michael.j.mangino]
+
+</li>
+<li>Fix nil exception when no response reason text is found in Authorize.net
+[cody]
+
+</li>
+<li>Add support for PayJunction [Matt Sanders]
+
+</li>
+<li>Change billing_address to shipping_address in PayPal Integration helper, as
+billing_address was incorrect. Addresses passed to billing_address for the
+PayPal helper will no longer be added to the form. This will break existing
+code, as the address will not be passed.
+
+</li>
+<li>Remove switch patterns from card detection that were eliminated on July 1,
+2007 [cody]
+
+</li>
+<li>Format the issue number in Payflow requests to always be 2 digits [cody]
+
+</li>
+<li>Move application_id to Gateway and Helper class respectively [cody]
+
+</li>
+<li>Improve TrustCommerce documentation [cody]
+
+</li>
+<li>Add credit to Payflow [cody]
+
+</li>
+<li>Add support for the Plug &#8216;N Pay gateway [ryan.norbauer, cody]
+
+</li>
+<li>Add support for ItemTotal, Shipping, Handling, and Tax amounts in the
+PayPal Express and PayPal gateways [baldwindavid, cody]
+
+</li>
+<li>Add page customization options to the PaypalExpress, and PayflowExpress
+gateways [ cpjolicoeur, cody]
+
+</li>
+<li>Add Verifi gateway [Paul Hepworth]
+
+</li>
+<li>Add a PayflowResponse object with a profile_id accessor method. Return the
+correct authorization number on recurring actions [cody]
+
+</li>
+<li>Add support for an initial transaction with recurring payments [findchris,
+cody]
+
+</li>
+<li>Add support for email receipts to recurring Payflow Payments [Rick Olson]
+
+</li>
+<li>Ensure the ButtonSource isn&#8216;t too long [cody]
+
+</li>
+<li>Add ButtonSource to Paypal and PaypalExpress gateways [cody]
+
+</li>
+<li>Rename application to application_id and place it on Base, so it can be set
+once and forgotten about [cody]
+
+</li>
+<li>Add ButtonSource field to PayflowExpress gateway [cody]
+
+</li>
+<li>Add a field for the bn to the PayPal helper [cody]
+
+</li>
+<li>Add remote secure pay test and correctly define test? [cody]
+
+</li>
+<li>Undefine unsupported methods from SecurePay [cody]
+
+</li>
+<li>Enhance the TransFirst error message for declined transactions [cody]
+
+</li>
+<li>Add initial support for TransFirst gateway [cody]
+
+</li>
+<li>Deprecate certification_id in Payflow gateways [cody]
+
+</li>
+<li>Work around required PayPal state fields for countries that don&#8216;t
+require states [cody]
+
+</li>
+<li>Add metadata to SecurePay gateway [cody]
+
+</li>
+<li>Add initial support for the SecurePay gateway using the Authorize.net
+translator [cody]
+
+</li>
+<li>Add the homepage_url and display_name accessors to each gateway [cody]
+
+</li>
+<li>Remove Money dependency from main gateways. Cleanup tests. Add
+supported_countries class accessor which returns an array of 2 digit iso
+country codes for which countries the gateway supports accounts in [cody]
+
+</li>
+<li>Add American Express card to Psigate [cody]
+
+</li>
+<li>Send N/A to PayPal in the PayPal Helper when we don&#8216;t know the UK
+county [cody]
+
+</li>
+<li>Actually pass the amount of the capture through to Payflow [cody]
+
+</li>
+<li>Update ExactGateway test and test mode [cody]
+
+</li>
+<li>Remove unused method in PslCardGateway [cody]
+
+</li>
+<li>Add updated credit card tests [cody]
+
+</li>
+<li>Update and test PslCardGateway [cody]
+
+</li>
+<li>Add Laser card type [cody]
+
+</li>
+<li>Update Nochex documentation [cody]
+
+</li>
+<li>Sanitize the Realex order_id [cody]
+
+</li>
+<li>Add support for Irish Realex payment gateway [John Ward, cody]
+
+</li>
+<li>Move credit_card helper method to the test_helper [cody]
+
+</li>
+<li>Update PayflowExpressResponse to match the interface of the
+PayflowExpressResponse. Add :no_shipping and :address_override options to
+PayflowExpress [cody]
+
+</li>
+<li>Add a currency option to the Payflow and Paypal gateways [cody]
+
+</li>
+<li>PaypalExpress should use the shipping address, not the billing address
+[cody]
+
+</li>
+<li>Allow overriding the user with Payflow so that a vendor and user can be
+provided when making requests [cody]
+
+</li>
+<li>PayPal DirectPayment API requires a UK County to be sent as the state or
+province. Return N/A as the state when one isn&#8216;t provided to ensure
+that PayPal doesn&#8216;t reject the payment [cody]
+
+</li>
+<li>Add ability to perform reference transactions with Payflow [Al Evans, cody]
+
+</li>
+<li>Enhance recurring Payflow tests and recurring_inquiry [Al Evans]
+
+</li>
+<li>Add recurring payments to Payflow [Rick Olson]
+
+</li>
+<li>Improve the error message generated by requires! [cody]
+
+</li>
+<li>Update credit card regular expressions and update Quickpay gateway with
+tests for new cards [cody]
+
+</li>
+<li>Add support for token based payments to PaymentExpress [Nik Wakelin]
+
+</li>
+<li>Refactor default_currency to the base gateway class [cody]
+
+</li>
+<li>Clean unsupported characters from the Quickpay ordernum [cody]
+
+</li>
+<li>Call the :sale and :authorization in QuickpayGateway [cody]
+
+</li>
+<li>Add Danish gateway Quickpay [cody]
+
+</li>
+<li>Remove redundant hash brackets from generator template [cody]
+
+</li>
+<li>Add additional options to the PayPal Website Payments Standard Helper [Rick
+Olson]
+
+</li>
+<li>Move generate_unique_id method to Gateway class so other gateways can also
+use it [cody]
+
+</li>
+<li>Allow notification name / value pairs to have a . in the name like
+checkout.x = 400 [cody]
+
+</li>
+<li>Fix PaypalExpressGateway#purchase to have the same method signature as
+other gateways [cody]
+
+</li>
+<li>Cargo cult off the rails unique id generator instead of UUID library [cody]
+
+</li>
+<li>Add uuid-1.0.3 for generating random request UUIDs [cody]
+
+</li>
+<li>Remove mock_methods and http mock from the library [cody]
+
+</li>
+<li>PaypalExpress cannot setup a payment for 0 dollars. If the amount is zero
+then setup a payment for $1. [cody]
+
+</li>
+<li>Small changes to PslCard gateway [cody]
+
+</li>
+<li>Fix Money dependency with PslCard gateway [cody]
+
+</li>
+<li>Add PslCard payment gateway [MoneySpyder <a
+href="http://moneyspyder.co.uk">moneyspyder.co.uk</a>]
+
+</li>
+<li>Scrub the card number, expiry, and CVV code from the response [cody]
+
+</li>
+<li>Use test? query for checking test mode [cody]
+
+</li>
+<li>Add support for the E-xact Payment Gateway [James Edward Gray II, cody]
+
+</li>
+<li>Fix partially broken method of dealing with phone numbers in the PayPal
+Helper [cody]
+
+</li>
+<li>Update remote tests for PaymentExpress [cody]
+
+</li>
+<li>Add Content-Type header to PaymentExpress post [cody]
+
+</li>
+<li>Use DECLINED as the message for declined transactions in the PaymentExpress
+remote tests [cody]
+
+</li>
+<li>Add JCB as a supported card type for the PaymentExpressGateway [cody]
+
+</li>
+<li>Rename DpsGateway to PaymentExpressGateway [cody]
+
+</li>
+<li>Add DPS Payment Express gateway (NZ) [dgjones, cody]
+
+</li>
+<li>Remove duplicate and incorrect expdate method from Authorize.net [cody]
+
+</li>
+<li>Allow authorization and purchase using a billing_id retrieved from
+TrustCommerce citadel [jesse.c.scott]
+
+</li>
+<li>Don&#8216;t return a frozen string from CreditCard.type? [cody]
+
+</li>
+<li>Update remote Psigate test to ensure using a verification value
+doesn&#8216;t break anything [cody]
+
+</li>
+<li>Update remote Moneris test to ensure using a verification value
+doesn&#8216;t break anything [cody]
+
+</li>
+<li>Fix Solo issue number with CardStream gateway and improve test coverage
+[cody]
+
+</li>
+<li>Add CardStream gateway [Jonah Fox, Thomas Nichols, cody]
+
+</li>
+<li>Verify Peer in PayPal notifications and add account method [cody]
+
+</li>
+</ul>
+<h2>Version 1.1.0</h2>
+<ul>
+<li>Add unique_id option to PayPal mass payments [Haig]
+
+</li>
+<li>Fix expiry date in USA ePay [cody]
+
+</li>
+<li>Fix PayPal Payments Pro UK with Switch &amp; Solo cards [cody]
+
+</li>
+<li>Add reauthorization to PaypalGateway and PaypalExpressGateway [dorrenchen]
+
+</li>
+<li>Update DataCash tests and format merchant reference number to meet
+DataCash&#8216;s requirements [MoneySpyder, cody]
+
+</li>
+<li>Add Datacash gateway [MoneySpyder, cody]
+
+</li>
+<li>VERIFY_PEER on all SSL requests [cody]
+
+</li>
+<li>Add support for 2Checkout [cody]
+
+</li>
+</ul>
+<h2>Version 1.0.3</h2>
+<ul>
+<li>Add support for PayPal mass payments to the PaypalGateway and the
+PaypalExpressGateway [Brandon Keepers]
+
+</li>
+<li>Add a credit method to Authorize.net [cody]
+
+</li>
+</ul>
+<h2>Version 1.0.2</h2>
+<ul>
+<li>Add support for OrderDescription, Payer, and InvoiceID fields in
+PaypalGateway [cody]
+
+</li>
+</ul>
+<h2>Version 1.0.1</h2>
+<ul>
+<li>Add support for crediting to PayPal [cody, Haig]
+
+</li>
+</ul>
+<h2>Version 1.0.0</h2>
+<ul>
+<li>Add discover to list of supported card types for Authorize.net
+
+</li>
+<li>Fix Psigate crediting [sean.alien8@gmail.com]
+
+</li>
+<li>Fix dependency loading of tests
+
+</li>
+<li>Add methods for storing credit cards to the Bogus gateway [Jim Kane]
+
+</li>
+<li>Fix bugs in expiration dates. [Jim Kane]
+
+</li>
+<li>Fixed bugs related to authorized.net [Rick Olson]
+
+</li>
+<li>Linkpoint is now a full featured backend for active merchant [Ryan Heneise]
+
+</li>
+<li>Added linkpoint support [Ryan Heneise]
+
+</li>
+<li>Added trust commerce gateway [Hans Friedrich]
+
+</li>
+<li>Removed shipping stuff until there is time to implement it properly
+
+</li>
+<li>The library now rejects money amounts which are not either cents as integer
+or a Money object
+
+</li>
+<li>Moneris now uses the same layout as the authorized.net plugin
+
+</li>
+<li>Added authorized.net
+
+</li>
+<li>Changed default to :test mode. Set to production with
+ActiveMerchant::Billing::Base.gateway_mode = :production
+
+</li>
+<li>More refactoring
+
+</li>
+<li>Refactored a bit so that there is space for billing and shipping area. None
+of the shipping aids are fleshed out yet. Needs more work.
+
+</li>
+<li>Added Moneris support
+
+</li>
+<li>Credit card in memory object resembling a AR object
+
+</li>
+<li>Credit card validation methods as static methods of the credit card object
+
+</li>
+</ul>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

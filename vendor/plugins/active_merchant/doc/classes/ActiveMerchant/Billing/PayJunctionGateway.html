@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: ActiveMerchant::Billing::PayJunctionGateway</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">ActiveMerchant::Billing::PayJunctionGateway</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/lib/active_merchant/billing/gateways/pay_junction_rb.html">
+                lib/active_merchant/billing/gateways/pay_junction.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="Gateway.html">
+                Gateway
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+PayJunction <a href="Gateway.html">Gateway</a>
+</p>
+<p>
+This gateway accepts the following arguments:
+</p>
+<pre>
+  :login    =&gt; your PayJunction username
+  :password =&gt; your PayJunction pass
+</pre>
+<p>
+Example use:
+</p>
+<pre>
+  gateway = ActiveMerchant::Billing::Base.gateway(:pay_junction).new(
+              :login =&gt; &quot;my_account&quot;,
+              :password =&gt; &quot;my_pass&quot;
+           )
+
+  # set up credit card obj as in main ActiveMerchant example
+  creditcard = ActiveMerchant::Billing::CreditCard.new(
+    :type       =&gt; 'visa',
+    :number     =&gt; '4242424242424242',
+    :month      =&gt; 8,
+    :year       =&gt; 2009,
+    :first_name =&gt; 'Bob',
+    :last_name  =&gt; 'Bobsen'
+  )
+
+  # optionally specify address if using AVS
+  address = { :address1 =&gt; '101 Test Ave', :city =&gt; 'Test', :state =&gt; 'TS',
+              :zip  =&gt; '10101', :country =&gt; 'US' }
+
+  # run request
+  response = gateway.purchase(1000, creditcard, :address =&gt; address) # charge 10 dollars
+</pre>
+<p>
+1) <a href="Check.html">Check</a> whether the transaction was successful
+</p>
+<pre>
+  response.success?
+</pre>
+<p>
+2) Retrieve the message returned by PayJunction
+</p>
+<pre>
+  response.message
+</pre>
+<p>
+3) Retrieve the unique transaction ID returned by PayJunction
+</p>
+<pre>
+  response.authorization
+</pre>
+<p>
+This gateway supports &quot;instant&quot; transactions. These transactions
+allow you to execute an operation on a previously run card without card
+information provided you have the transaction id from a previous
+transaction with the same card. All functions that take a <a
+href="PayJunctionGateway.html#M000231">credit</a> card object for this
+gateway can take a transaction id string instead.
+</p>
+<p>
+Test Transactions
+</p>
+<p>
+See the source for initialize() for test account information. Note that
+PayJunction does not allow test transactions on your account, so if the
+gateway is running in :test mode your transaction will be run against
+PayJunction&#8216;s global test account and will not show up in your
+account.
+</p>
+<p>
+Transactions ran on this account go through a test processor, so there is
+no need to <a href="PayJunctionGateway.html#M000232">void</a> or otherwise
+cancel transactions. However, for further safety, please use the special
+card numbers 4433221111223344 or 4444333322221111 and keep transaction
+amounts below $4.00 when testing.
+</p>
+<p>
+Also note, transactions ran for an amount between $0.00 and $1.99 will
+likely result in denial. To demonstrate approvals, use amounts between
+$2.00 and $4.00.
+</p>
+<p>
+Test transactions can be checked by logging into PayJunction Web Login with
+username &#8216;pj-cm-01&#8217; and password &#8216;pj-cm-01p&#8216;
+</p>
+<p>
+Usage Details
+</p>
+<p>
+Below is a map of values accepted by PayJunction and how you should submit
+each to ActiveMerchant
+</p>
+<p>
+PayJunction Field ActiveMerchant Use
+</p>
+<p>
+dc_logon provide as :login value to gateway instantation dc_password
+provide as :password value to gateway instantiation
+</p>
+<p>
+dc_name will be retrieved from credit_card.name dc_first_name :first_name
+on <a href="CreditCard.html">CreditCard</a> object instantation
+dc_last_name :last_name on <a href="CreditCard.html">CreditCard</a> object
+instantation dc_number :number on <a href="CreditCard.html">CreditCard</a>
+object instantation dc_expiration_month :month on <a
+href="CreditCard.html">CreditCard</a> object instantation
+dc_expiration_year :year on <a href="CreditCard.html">CreditCard</a> object
+instantation dc_verification_number :verification_value on CC object
+instantation
+</p>
+<p>
+dc_transaction_amount include as argument to method for your transaction
+type dc_transaction_type do nothing, set by your transaction type
+dc_version do nothing, always &quot;1.2&quot;
+</p>
+<p>
+dc_transaction_id submit as a string in place of <a
+href="CreditCard.html">CreditCard</a> obj for
+</p>
+<pre>
+                        &quot;instant&quot; transactions.
+</pre>
+<p>
+dc_invoice :order_id in options for transaction method dc_notes
+:description in options for transaction method
+</p>
+<p>
+See example use above for address AVS fields See <a
+href="PayJunctionGateway.html#M000233">recurring</a> for periodic
+transaction fields
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000228">authorize</a>&nbsp;&nbsp;
+      <a href="#M000230">capture</a>&nbsp;&nbsp;
+      <a href="#M000231">credit</a>&nbsp;&nbsp;
+      <a href="#M000227">new</a>&nbsp;&nbsp;
+      <a href="#M000229">purchase</a>&nbsp;&nbsp;
+      <a href="#M000233">recurring</a>&nbsp;&nbsp;
+      <a href="#M000234">test?</a>&nbsp;&nbsp;
+      <a href="#M000232">void</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">API_VERSION</td>
+          <td>=</td>
+          <td class="context-item-value">'1.2'</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">URL</td>
+          <td>=</td>
+          <td class="context-item-value">'https://payjunction.com/quick_link'</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">TEST_LOGIN</td>
+          <td>=</td>
+          <td class="context-item-value">'pj-ql-01'</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">TEST_PASSWORD</td>
+          <td>=</td>
+          <td class="context-item-value">'pj-ql-01p'</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">SUCCESS_CODES</td>
+          <td>=</td>
+          <td class="context-item-value">[&quot;00&quot;, &quot;85&quot;]</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">SUCCESS_MESSAGE</td>
+          <td>=</td>
+          <td class="context-item-value">'The transaction was approved.'</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">FAILURE_MESSAGE</td>
+          <td>=</td>
+          <td class="context-item-value">'The transaction was declined.'</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DECLINE_CODES</td>
+          <td>=</td>
+          <td class="context-item-value">{         &quot;AE&quot;  =&gt; 'Address verification failed because address did not match.',         'ZE'  =&gt; 'Address verification failed because zip did not match.',         'XE'  =&gt; 'Address verification failed because zip and address did not match.',         'YE'  =&gt; 'Address verification failed because zip and address did not match.',         'OE'  =&gt; 'Address verification failed because address or zip did not match.',         'UE'  =&gt; 'Address verification failed because cardholder address unavailable.',         'RE'  =&gt; 'Address verification failed because address verification system is not working.',         'SE'  =&gt; 'Address verification failed because address verification system is unavailable.',         'EE'  =&gt; 'Address verification failed because transaction is not a mail or phone order.',         'GE'  =&gt; 'Address verification failed because international support is unavailable.',         'CE'  =&gt; 'Declined because CVV2/CVC2 code did not match.',         '04'  =&gt; 'Declined. Pick up card.',         '07'  =&gt; 'Declined. Pick up card (Special Condition).',         '41'  =&gt; 'Declined. Pick up card (Lost).',         '43'  =&gt; 'Declined. Pick up card (Stolen).',         '13'  =&gt; 'Declined because of the amount is invalid.',         '14'  =&gt; 'Declined because the card number is invalid.',         '80'  =&gt; 'Declined because of an invalid date.',         '05'  =&gt; 'Declined. Do not honor.',         '51'  =&gt; 'Declined because of insufficient funds.',         'N4'  =&gt; 'Declined because the amount exceeds issuer withdrawal limit.',         '61'  =&gt; 'Declined because the amount exceeds withdrawal limit.',         '62'  =&gt; 'Declined because of an invalid service code (restricted).',         '65'  =&gt; 'Declined because the card activity limit exceeded.',         '93'  =&gt; 'Declined because there a violation (the transaction could not be completed).',         '06'  =&gt; 'Declined because address verification failed.',         '54'  =&gt; 'Declined because the card has expired.',         '15'  =&gt; 'Declined because there is no such issuer.',         '96'  =&gt; 'Declined because of a system error.',         'N7'  =&gt; 'Declined because of a CVV2/CVC2 mismatch.',         'M4'  =&gt; 'Declined.',          &quot;FE&quot;  =&gt; &quot;There was a format error with your Trinity Gateway Service (API) request.&quot;,         &quot;LE&quot;  =&gt; &quot;Could not log you in (problem with dc_logon and/or dc_password).&quot;,         'NL'  =&gt; 'Aborted because of a system error, please try again later. ',         'AB'  =&gt; 'Aborted because of an upstream system error, please try again later.'</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000227" class="method-detail">
+        <a name="M000227"></a>
+
+        <div class="method-heading">
+          <a href="#M000227" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000227-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000227-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateways/pay_junction.rb, line 154</span>
+154:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">options</span> = {})
+155:         <span class="ruby-identifier">requires!</span>(<span class="ruby-identifier">options</span>, <span class="ruby-identifier">:login</span>, <span class="ruby-identifier">:password</span>)
+156:         <span class="ruby-ivar">@options</span> = <span class="ruby-identifier">options</span>
+157:         <span class="ruby-keyword kw">super</span>
+158:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000228" class="method-detail">
+        <a name="M000228"></a>
+
+        <div class="method-heading">
+          <a href="#M000228" class="method-signature">
+          <span class="method-name">authorize</span><span class="method-args">(money, payment_source, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+The first half of the preauth(<a
+href="PayJunctionGateway.html#M000228">authorize</a>)/postauth(<a
+href="PayJunctionGateway.html#M000230">capture</a>) model. Checks to make
+sure funds are available for a transaction, and returns a transaction_id
+that can be used later to postauthorize (<a
+href="PayJunctionGateway.html#M000230">capture</a>) the funds.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000228-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000228-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateways/pay_junction.rb, line 163</span>
+163:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">authorize</span>(<span class="ruby-identifier">money</span>, <span class="ruby-identifier">payment_source</span>, <span class="ruby-identifier">options</span> = {})
+164:         <span class="ruby-identifier">parameters</span> = {
+165:           <span class="ruby-identifier">:transaction_amount</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">amount</span>(<span class="ruby-identifier">money</span>),
+166:         }                                                             
+167:         
+168:         <span class="ruby-identifier">add_payment_source</span>(<span class="ruby-identifier">parameters</span>, <span class="ruby-identifier">payment_source</span>)
+169:         <span class="ruby-identifier">add_address</span>(<span class="ruby-identifier">parameters</span>, <span class="ruby-identifier">options</span>)
+170:         <span class="ruby-identifier">add_optional_fields</span>(<span class="ruby-identifier">parameters</span>, <span class="ruby-identifier">options</span>)
+171:         <span class="ruby-identifier">commit</span>(<span class="ruby-value str">'AUTHORIZATION'</span>, <span class="ruby-identifier">parameters</span>)
+172:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000230" class="method-detail">
+        <a name="M000230"></a>
+
+        <div class="method-heading">
+          <a href="#M000230" class="method-signature">
+          <span class="method-name">capture</span><span class="method-args">(money, authorization, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+The second half of the preauth(<a
+href="PayJunctionGateway.html#M000228">authorize</a>)/postauth(<a
+href="PayJunctionGateway.html#M000230">capture</a>) model. Retrieve funds
+that have been previously authorized with <em>authorization</em>
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000230-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000230-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateways/pay_junction.rb, line 189</span>
+189:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">capture</span>(<span class="ruby-identifier">money</span>, <span class="ruby-identifier">authorization</span>, <span class="ruby-identifier">options</span> = {})
+190:         <span class="ruby-identifier">parameters</span> = {
+191:           <span class="ruby-identifier">:transaction_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">authorization</span>,
+192:           <span class="ruby-identifier">:posture</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'capture'</span>
+193:         }
+194:         
+195:         <span class="ruby-identifier">add_optional_fields</span>(<span class="ruby-identifier">parameters</span>, <span class="ruby-identifier">options</span>)                                          
+196:         <span class="ruby-identifier">commit</span>(<span class="ruby-value str">'update'</span>, <span class="ruby-identifier">parameters</span>)
+197:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000231" class="method-detail">
+        <a name="M000231"></a>
+
+        <div class="method-heading">
+          <a href="#M000231" class="method-signature">
+          <span class="method-name">credit</span><span class="method-args">(money, authorization, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Return money to a card that was previously billed. <em>authorization</em>
+should be the transaction id of the transaction we are returning.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000231-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000231-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateways/pay_junction.rb, line 201</span>
+201:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">credit</span>(<span class="ruby-identifier">money</span>, <span class="ruby-identifier">authorization</span>, <span class="ruby-identifier">options</span> = {})  
+202:         <span class="ruby-identifier">parameters</span> = {
+203:           <span class="ruby-identifier">:transaction_amount</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">amount</span>(<span class="ruby-identifier">money</span>),
+204:           <span class="ruby-identifier">:transaction_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">authorization</span>
+205:         }
+206:                                                   
+207:         <span class="ruby-identifier">commit</span>(<span class="ruby-value str">'CREDIT'</span>, <span class="ruby-identifier">parameters</span>)
+208:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000229" class="method-detail">
+        <a name="M000229"></a>
+
+        <div class="method-heading">
+          <a href="#M000229" class="method-signature">
+          <span class="method-name">purchase</span><span class="method-args">(money, payment_source, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+A simple sale, capturing funds immediately. Execute authorization and <a
+href="PayJunctionGateway.html#M000230">capture</a> in a single step.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000229-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000229-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateways/pay_junction.rb, line 176</span>
+176:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">purchase</span>(<span class="ruby-identifier">money</span>, <span class="ruby-identifier">payment_source</span>, <span class="ruby-identifier">options</span> = {})        
+177:         <span class="ruby-identifier">parameters</span> = {
+178:           <span class="ruby-identifier">:transaction_amount</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">amount</span>(<span class="ruby-identifier">money</span>),
+179:         }                                                             
+180:         
+181:         <span class="ruby-identifier">add_payment_source</span>(<span class="ruby-identifier">parameters</span>, <span class="ruby-identifier">payment_source</span>)
+182:         <span class="ruby-identifier">add_address</span>(<span class="ruby-identifier">parameters</span>, <span class="ruby-identifier">options</span>)
+183:         <span class="ruby-identifier">add_optional_fields</span>(<span class="ruby-identifier">parameters</span>, <span class="ruby-identifier">options</span>)
+184:         <span class="ruby-identifier">commit</span>(<span class="ruby-value str">'AUTHORIZATION_CAPTURE'</span>, <span class="ruby-identifier">parameters</span>)
+185:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000233" class="method-detail">
+        <a name="M000233"></a>
+
+        <div class="method-heading">
+          <a href="#M000233" class="method-signature">
+          <span class="method-name">recurring</span><span class="method-args">(money, payment_source, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Set up a sale that will be made on a regular basis for the same amount (ex.
+$20 a month for 12 months)
+</p>
+<p>
+The parameter :periodicity should be specified as either :monthly, :weekly,
+or :daily The parameter :payments should be the number of payments to be
+made
+</p>
+<pre>
+  gateway.recurring('2000', creditcard, :periodicity =&gt; :monthly, :payments =&gt; 12)
+</pre>
+<p>
+The optional parameter :starting_at takes a date or time argument or a
+string in YYYYMMDD format and can be used to specify when the first charge
+will be made. If omitted the first charge will be immediate.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000233-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000233-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateways/pay_junction.rb, line 233</span>
+233:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">recurring</span>(<span class="ruby-identifier">money</span>, <span class="ruby-identifier">payment_source</span>, <span class="ruby-identifier">options</span> = {})        
+234:         <span class="ruby-identifier">requires!</span>(<span class="ruby-identifier">options</span>, [<span class="ruby-identifier">:periodicity</span>, <span class="ruby-identifier">:monthly</span>, <span class="ruby-identifier">:weekly</span>, <span class="ruby-identifier">:daily</span>], <span class="ruby-identifier">:payments</span>)
+235:       
+236:         <span class="ruby-identifier">periodic_type</span> = <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:periodicity</span>]
+237:         <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:monthly</span>
+238:           <span class="ruby-value str">'month'</span>
+239:         <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:weekly</span>
+240:           <span class="ruby-value str">'week'</span>
+241:         <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:daily</span>
+242:           <span class="ruby-value str">'day'</span>
+243:         <span class="ruby-keyword kw">end</span>
+244:         
+245:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:starting_at</span>].<span class="ruby-identifier">nil?</span>
+246:           <span class="ruby-identifier">start_date</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-value str">'%Y-%m-%d'</span>)
+247:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:starting_at</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>)
+248:           <span class="ruby-identifier">sa</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:starting_at</span>]
+249:           <span class="ruby-identifier">start_date</span> = <span class="ruby-node">&quot;#{sa[0..3]}-#{sa[4..5]}-#{sa[6..7]}&quot;</span>
+250:         <span class="ruby-keyword kw">else</span>
+251:           <span class="ruby-identifier">start_date</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:starting_at</span>].<span class="ruby-identifier">strftime</span>(<span class="ruby-value str">'%Y-%m-%d'</span>)
+252:         <span class="ruby-keyword kw">end</span>
+253:         
+254:         <span class="ruby-identifier">parameters</span> = {
+255:           <span class="ruby-identifier">:transaction_amount</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">amount</span>(<span class="ruby-identifier">money</span>),
+256:           <span class="ruby-identifier">:schedule_periodic_type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">periodic_type</span>,
+257:           <span class="ruby-identifier">:schedule_create</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'true'</span>,
+258:           <span class="ruby-identifier">:schedule_limit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:payments</span>].<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:payments</span>] <span class="ruby-operator">:</span> <span class="ruby-value">1</span>,
+259:           <span class="ruby-identifier">:schedule_periodic_number</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>,
+260:           <span class="ruby-identifier">:schedule_start</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">start_date</span>
+261:         }
+262:         
+263:         <span class="ruby-identifier">add_payment_source</span>(<span class="ruby-identifier">parameters</span>, <span class="ruby-identifier">payment_source</span>)
+264:         <span class="ruby-identifier">add_optional_fields</span>(<span class="ruby-identifier">parameters</span>, <span class="ruby-identifier">options</span>)
+265:         <span class="ruby-identifier">add_address</span>(<span class="ruby-identifier">parameters</span>, <span class="ruby-identifier">options</span>)                                   
+266:         <span class="ruby-identifier">commit</span>(<span class="ruby-value str">'AUTHORIZATION_CAPTURE'</span>, <span class="ruby-identifier">parameters</span>)
+267:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000234" class="method-detail">
+        <a name="M000234"></a>
+
+        <div class="method-heading">
+          <a href="#M000234" class="method-signature">
+          <span class="method-name">test?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000234-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000234-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateways/pay_junction.rb, line 269</span>
+269:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test?</span>
+270:         <span class="ruby-identifier">test_login?</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@options</span>[<span class="ruby-identifier">:test</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword kw">super</span>
+271:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000232" class="method-detail">
+        <a name="M000232"></a>
+
+        <div class="method-heading">
+          <a href="#M000232" class="method-signature">
+          <span class="method-name">void</span><span class="method-args">(money, authorization, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Cancel a transaction that has been charged but has not yet made it through
+the batch process.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000232-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000232-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateways/pay_junction.rb, line 212</span>
+212:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">void</span>(<span class="ruby-identifier">money</span>, <span class="ruby-identifier">authorization</span>, <span class="ruby-identifier">options</span> = {})
+213:         <span class="ruby-identifier">parameters</span> = {
+214:           <span class="ruby-identifier">:transaction_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">authorization</span>,
+215:           <span class="ruby-identifier">:posture</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'void'</span>
+216:         }
+217:         
+218:         <span class="ruby-identifier">add_optional_fields</span>(<span class="ruby-identifier">parameters</span>, <span class="ruby-identifier">options</span>)                                          
+219:         <span class="ruby-identifier">commit</span>(<span class="ruby-value str">'update'</span>, <span class="ruby-identifier">parameters</span>)
+220:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

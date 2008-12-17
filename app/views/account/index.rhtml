@@ -8,11 +8,14 @@
 			<div id="call_to_action" class="call_to_action">
 			  <%= link_to 'Sign up', :action => 'signup' %>  or <%= link_to 'Take a tour', :action => 'tour' %>
 	    </div>
-	    <div id="main_testimonial"class="main_testimonial">
+	   <!-- <div id="main_testimonial"class="main_testimonial">
 		    "I was on the pill, moody, and gaining weight. Now I'm charting, feeling better, and back in control of my body." <p style="color: #000000; font-size: .8em; font-weight: bold; font-style: italic;">–Sandra Johnson</p>
-		  </div>
+		  </div>-->
 	  </div>
 	</div>
+	<!--[if IE]>
+<div style="height: 1px;"></div 	<![endif]-->
+	
   <div id="product_space">
   </div>
   <div id="choose_because">
@@ -20,7 +23,7 @@
 <div id="content_big">
  <h2>Why ChartMyCycles?</h2><br />
 ChartMyCycles is the best in fertility charting software.
-It's user friendly and quick to use. It's a web-based application, so you don’t have to download and install software. Just sign up and use it in your browser.
+It's user friendly and quick to use. It's a web-based application, so all you need is the latest version of <%= link_to "Firefox", "http://firefox.com", :popup => 'true' %> or <%= link_to "Safari", "http://www.apple.com/safari/", :popup => 'true' %>. <!--Just sign up and use it in your browser.-->
 ChartMyCycles will save you time and make fertility charting a breeze.
 You won’t find better charting anywhere else.
 <br /><br /	>
@@ -44,5 +47,7 @@ Fertility charting is the most accurate way to predict ovulation to get pregnant
 
 <div id="last_call_to_action" class="call_to_action">
 	<%= link_to 'Take a tour', :action => 'tour' %> or <%= link_to 'Sign up', :action => 'signup' %>
+	<br />
 </div>  <br />
+
 

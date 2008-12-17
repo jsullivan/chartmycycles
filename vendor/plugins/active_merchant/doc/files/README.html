@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: README</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>README</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>README
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Sun Nov 23 12:09:26 -0800 2008</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>Active Merchant</h1>
+<p>
+This library is supposed to aid in creating e-commerce software in Ruby. In
+the future we want to support all &quot;good&quot; payment gateways.
+</p>
+<p>
+This library is the foundation of commerce for <a
+href="http://www.shopify.com">www.shopify.com</a>.
+</p>
+<p>
+Please visit the <a href="http://activemerchant.org">ActiveMerchant
+homepage</a> for more resources, tutorials and other information about this
+project.
+</p>
+<h2>Supported Direct Payment Gateways</h2>
+<p>
+The <a href="http://code.google.com/p/activemerchant/wiki">ActiveMerchant
+Wiki</a> contains a <a
+href="http://code.google.com/p/activemerchant/wiki/SupportedGatewayPaymentOperations">table
+of features supported by each gateway</a>.
+</p>
+<ul>
+<li><a href="http://www.authorize.net/">Authorize.net</a> - US
+
+</li>
+<li><a href="http://www.braintreepaymentsolutions.com">Braintree</a> - US
+
+</li>
+<li><a href="http://www.cardstream.com/">CardStream</a> - GB
+
+</li>
+<li><a href="http://www.cybersource.com">CyberSource</a> - US
+
+</li>
+<li><a href="http://www.datacash.com/">DataCash</a> - GB
+
+</li>
+<li><a href="http://www.concordefsnet.com/">Efsnet</a> - US
+
+</li>
+<li><a href="http://www.eway.com.au/">eWAY</a> - AU
+
+</li>
+<li><a href="http://www.e-xact.com">E-xact</a> - CA, US
+
+</li>
+<li><a href="http://www.linkpoint.com/">LinkPoint</a> - US
+
+</li>
+<li><a href="http://www.moneris.com/">Moneris</a> - CA
+
+</li>
+<li><a href="http://www.netregistry.com.au">NetRegistry</a> - AU
+
+</li>
+<li><a href="http://www.netbilling.com">NETbilling</a> - US
+
+</li>
+<li><a href="http://www.payjunction.com/">PayJunction</a> - US
+
+</li>
+<li><a href="http://www.commsecure.com.au/paysecure.shtml">PaySecure</a> - AU
+
+</li>
+<li><a
+href="https://www.paypal.com/cgi-bin/webscr?cmd=xpt/merchant/ExpressCheckoutIntro-outside">PayPal
+Express Checkout</a> - US, CA, SG, AU
+
+</li>
+<li><a
+href="https://www.paypal.com/uk/cgi-bin/webscr?cmd=_additional-payment-overview-outside">PayPal
+Express Checkout (UK)</a> - GB
+
+</li>
+<li><a
+href="https://www.paypal.com/cgi-bin/webscr?cmd=_payflow-pro-overview-outside">PayPal
+Payflow Pro</a> - US, CA, SG, AU
+
+</li>
+<li><a
+href="https://www.paypal.com/uk/cgi-bin/webscr?cmd=_wp-pro-overview-outside">PayPal
+Website Payments Pro (UK)</a> - GB
+
+</li>
+<li><a href="http://www.paymentexpress.com/">PaymentExpress</a> - AU, MY, NZ,
+SG, ZA, GB, US
+
+</li>
+<li><a
+href="https://www.paypal.com/cgi-bin/webscr?cmd=xpt/merchant/ExpressCheckoutIntro-outside">PayPal
+Express Checkout</a> - US
+
+</li>
+<li><a
+href="https://www.paypal.com/cgi-bin/webscr?cmd=_wp-pro-overview-outside">PayPal
+Website Payments Pro (US)</a> - US
+
+</li>
+<li><a href="http://www.plugnpay.com/">Plug'n Pay</a> - US
+
+</li>
+<li><a href="http://www.protx.com">Protx</a> - GB
+
+</li>
+<li><a href="http://www.psigate.com/">Psigate</a> - CA
+
+</li>
+<li><a href="http://www.paymentsolutionsltd.com/">PSL Payment Solutions</a> -
+GB
+
+</li>
+<li><a href="http://quickpay.dk/">Quickpay</a> - DK
+
+</li>
+<li><a href="http://www.realexpayments.com/">Realex</a> - IE, GB
+
+</li>
+<li><a href="http://www.securepay.com/">SecurePay</a> - US
+
+</li>
+<li><a href="http://www.securepaytech.com/">SecurePayTech</a> - NZ
+
+</li>
+<li><a href="http://www.skipjack.com/">SkipJack</a> - US, CA
+
+</li>
+<li><a href="http://www.transfirst.com/">TransFirst</a> - US
+
+</li>
+<li><a href="http://www.trustcommerce.com/">TrustCommerce</a> - US
+
+</li>
+<li><a href="http://www.usaepay.com/">USA ePay</a> - US
+
+</li>
+<li><a href="http://www.verifi.com/">Verifi</a> - US
+
+</li>
+<li><a href="http://viaklix.com">ViaKLIX</a> - US
+
+</li>
+</ul>
+<h2>Supported Offsite Payment Gateways</h2>
+<ul>
+<li><a
+href="https://www.paypal.com/cgi-bin/webscr?cmd=_wp-standard-overview-outside">PayPal
+Website Payments Standard</a>
+
+</li>
+<li><a href="http://www.chronopay.com">Chronopay</a>
+
+</li>
+<li><a href="http://www.nochex.com">Nochex</a>
+
+</li>
+<li><a href="https://www.sella.it/banca/ecommerce/gestpay/gestpay.jsp">Banca
+Sella GestPay</a>
+
+</li>
+<li><a href="http://www.2checkout.com">2 Checkout</a>
+
+</li>
+<li><a href="http://www.hitrust.com.hk/">HiTRUST</a>
+
+</li>
+</ul>
+<h2>Download</h2>
+<p>
+Currently this library is available with svn from:
+</p>
+<pre>
+  http://activemerchant.googlecode.com/svn/trunk/active_merchant
+</pre>
+<h2>Installation</h2>
+<h3>From Subversion</h3>
+<p>
+You can check out the latest source from svn:
+</p>
+<pre>
+  &gt; svn co http://activemerchant.googlecode.com/svn/trunk/active_merchant
+</pre>
+<h3>As a Rails plugin</h3>
+<p>
+ActiveMerchant includes an init.rb file. This means that Rails will
+automatically load ActiveMerchant on startup. Run the following command
+from the root directory of your Rails project to install ActiveMerchant as
+a Rails plugin:
+</p>
+<pre>
+  &gt; ./script/plugin install http://activemerchant.googlecode.com/svn/trunk/active_merchant
+</pre>
+<h3>From Ruby Gems</h3>
+<p>
+Installation from RubyGems
+</p>
+<pre>
+  &gt; gem install activemerchant
+</pre>
+<h2>Sample Usage</h2>
+<pre>
+  require 'rubygems'
+  require 'active_merchant'
+
+  # Use the TrustCommerce test servers
+  ActiveMerchant::Billing::Base.mode = :test
+
+  # ActiveMerchant accepts all amounts as Integer values in cents
+  # $10.00
+  amount = 1000
+
+  # The card verification value is also known as CVV2, CVC2, or CID
+  credit_card = ActiveMerchant::Billing::CreditCard.new(
+                  :first_name         =&gt; 'Bob',
+                  :last_name          =&gt; 'Bobsen',
+                  :number             =&gt; '4242424242424242',
+                  :month              =&gt; '8',
+                  :year               =&gt; '2012',
+                  :verification_value =&gt; '123'
+                )
+
+  # Validating the card automatically detects the card type
+  if credit_card.valid?
+
+    # Create a gateway object for the TrustCommerce service
+    gateway = ActiveMerchant::Billing::TrustCommerceGateway.new(
+                :login =&gt; 'TestMerchant',
+                :password =&gt; 'password'
+              )
+
+    # Authorize for the amount
+    response = gateway.purchase(amount, credit_card)
+
+    if response.success?
+      puts &quot;Successfully charged $#{sprintf(&quot;%.2f&quot;, amount / 100)} to the credit card #{credit_card.display_number}&quot;
+    else
+      raise StandardError, response.message
+    end
+  end
+</pre>
+<h2>Contributing</h2>
+<p>
+Please see the <a
+href="http://code.google.com/p/activemerchant/wiki/Contributing">ActiveMerchant
+Guide to Contributing</a> for information on adding a new gateway to
+ActiveMerchant.
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

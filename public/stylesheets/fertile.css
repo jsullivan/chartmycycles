@@ -40,7 +40,7 @@ h1 {
 	font-weight: bold;
 	font-family: Arial, Helvetica;
 	letter-spacing: -2px;
-	color: #000000;
+	color: #000000;	
 }
 h2 {
 	font-size: 1.3em;
@@ -114,7 +114,6 @@ color: #000000;
 	text-align: left;
 	padding-top: 40px;
 	margin-left: -9px;
-	line-height: 1.2em;
 	border-top: thin solid #8d9bfe;
 	border-bottom: thin solid #8d9bfe;
 	background: url(/images/banner_graphic.jpg);

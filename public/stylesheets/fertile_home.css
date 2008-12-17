@@ -62,6 +62,7 @@ a:hover {
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 #top_links {
 	text-align: right;
+	clear: right;
 	padding-top: 2px;
 	color: #ffffff;
 }

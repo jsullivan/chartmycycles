@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: ActiveMerchant::Billing::ProtxGateway</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">ActiveMerchant::Billing::ProtxGateway</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/lib/active_merchant/billing/gateways/protx_rb.html">
+                lib/active_merchant/billing/gateways/protx.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="Gateway.html">
+                Gateway
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000217">authorize</a>&nbsp;&nbsp;
+      <a href="#M000218">capture</a>&nbsp;&nbsp;
+      <a href="#M000220">credit</a>&nbsp;&nbsp;
+      <a href="#M000214">new</a>&nbsp;&nbsp;
+      <a href="#M000216">purchase</a>&nbsp;&nbsp;
+      <a href="#M000215">test?</a>&nbsp;&nbsp;
+      <a href="#M000219">void</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">TEST_URL</td>
+          <td>=</td>
+          <td class="context-item-value">'https://ukvpstest.protx.com/vspgateway/service'</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">LIVE_URL</td>
+          <td>=</td>
+          <td class="context-item-value">'https://ukvps.protx.com/vspgateway/service'</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">SIMULATOR_URL</td>
+          <td>=</td>
+          <td class="context-item-value">'https://ukvpstest.protx.com/VSPSimulator'</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">APPROVED</td>
+          <td>=</td>
+          <td class="context-item-value">'OK'</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">TRANSACTIONS</td>
+          <td>=</td>
+          <td class="context-item-value">{         :purchase =&gt; 'PAYMENT',         :credit =&gt; 'REFUND',         :authorization =&gt; 'DEFERRED',         :capture =&gt; 'RELEASE',         :void =&gt; 'VOID'</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">CREDIT_CARDS</td>
+          <td>=</td>
+          <td class="context-item-value">{         :visa =&gt; &quot;VISA&quot;,         :master =&gt; &quot;MC&quot;,         :delta =&gt; &quot;DELTA&quot;,         :solo =&gt; &quot;SOLO&quot;,         :switch =&gt; &quot;MAESTRO&quot;,         :maestro =&gt; &quot;MAESTRO&quot;,         :american_express =&gt; &quot;AMEX&quot;,         :electron =&gt; &quot;UKE&quot;,         :diners_club =&gt; &quot;DC&quot;,         :jcb =&gt; &quot;JCB&quot;</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">ELECTRON</td>
+          <td>=</td>
+          <td class="context-item-value">/^(424519|42496[23]|450875|48440[6-8]|4844[1-5][1-5]|4917[3-5][0-9]|491880)\d{10}(\d{3})?$/</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">AVS_CVV_CODE</td>
+          <td>=</td>
+          <td class="context-item-value">{         &quot;NOTPROVIDED&quot; =&gt; nil,          &quot;NOTCHECKED&quot; =&gt; 'X',         &quot;MATCHED&quot; =&gt; 'Y',         &quot;NOTMATCHED&quot; =&gt; 'N'</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000214" class="method-detail">
+        <a name="M000214"></a>
+
+        <div class="method-heading">
+          <a href="#M000214" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000214-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000214-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateways/protx.rb, line 50</span>
+50:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">options</span> = {})
+51:         <span class="ruby-identifier">requires!</span>(<span class="ruby-identifier">options</span>, <span class="ruby-identifier">:login</span>)
+52:         <span class="ruby-ivar">@options</span> = <span class="ruby-identifier">options</span>
+53:         <span class="ruby-keyword kw">super</span>
+54:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000217" class="method-detail">
+        <a name="M000217"></a>
+
+        <div class="method-heading">
+          <a href="#M000217" class="method-signature">
+          <span class="method-name">authorize</span><span class="method-args">(money, credit_card, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000217-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000217-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateways/protx.rb, line 74</span>
+74:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">authorize</span>(<span class="ruby-identifier">money</span>, <span class="ruby-identifier">credit_card</span>, <span class="ruby-identifier">options</span> = {})
+75:         <span class="ruby-identifier">requires!</span>(<span class="ruby-identifier">options</span>, <span class="ruby-identifier">:order_id</span>)
+76:         
+77:         <span class="ruby-identifier">post</span> = {}
+78:         
+79:         <span class="ruby-identifier">add_amount</span>(<span class="ruby-identifier">post</span>, <span class="ruby-identifier">money</span>, <span class="ruby-identifier">options</span>)
+80:         <span class="ruby-identifier">add_invoice</span>(<span class="ruby-identifier">post</span>, <span class="ruby-identifier">options</span>)
+81:         <span class="ruby-identifier">add_credit_card</span>(<span class="ruby-identifier">post</span>, <span class="ruby-identifier">credit_card</span>)
+82:         <span class="ruby-identifier">add_address</span>(<span class="ruby-identifier">post</span>, <span class="ruby-identifier">options</span>)
+83:         <span class="ruby-identifier">add_customer_data</span>(<span class="ruby-identifier">post</span>, <span class="ruby-identifier">options</span>)
+84: 
+85:         <span class="ruby-identifier">commit</span>(<span class="ruby-identifier">:authorization</span>, <span class="ruby-identifier">post</span>)
+86:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000218" class="method-detail">
+        <a name="M000218"></a>
+
+        <div class="method-heading">
+          <a href="#M000218" class="method-signature">
+          <span class="method-name">capture</span><span class="method-args">(money, identification, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+You can only <a href="ProtxGateway.html#M000218">capture</a> a transaction
+once, even if you didn&#8216;t <a
+href="ProtxGateway.html#M000218">capture</a> the full amount the first
+time.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000218-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000218-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateways/protx.rb, line 89</span>
+89:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">capture</span>(<span class="ruby-identifier">money</span>, <span class="ruby-identifier">identification</span>, <span class="ruby-identifier">options</span> = {})
+90:         <span class="ruby-identifier">post</span> = {}
+91:         
+92:         <span class="ruby-identifier">add_reference</span>(<span class="ruby-identifier">post</span>, <span class="ruby-identifier">identification</span>)
+93:         <span class="ruby-identifier">add_release_amount</span>(<span class="ruby-identifier">post</span>, <span class="ruby-identifier">money</span>, <span class="ruby-identifier">options</span>)
+94:         
+95:         <span class="ruby-identifier">commit</span>(<span class="ruby-identifier">:capture</span>, <span class="ruby-identifier">post</span>)
+96:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000220" class="method-detail">
+        <a name="M000220"></a>
+
+        <div class="method-heading">
+          <a href="#M000220" class="method-signature">
+          <span class="method-name">credit</span><span class="method-args">(money, identification, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Crediting requires a <a href="ProtxGateway.html#M000214">new</a> order_id
+to passed in, as well as a description
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000220-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000220-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateways/protx.rb, line 106</span>
+106:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">credit</span>(<span class="ruby-identifier">money</span>, <span class="ruby-identifier">identification</span>, <span class="ruby-identifier">options</span> = {})
+107:         <span class="ruby-identifier">requires!</span>(<span class="ruby-identifier">options</span>, <span class="ruby-identifier">:order_id</span>, <span class="ruby-identifier">:description</span>)
+108:         
+109:         <span class="ruby-identifier">post</span> = {}
+110:         
+111:         <span class="ruby-identifier">add_credit_reference</span>(<span class="ruby-identifier">post</span>, <span class="ruby-identifier">identification</span>)
+112:         <span class="ruby-identifier">add_amount</span>(<span class="ruby-identifier">post</span>, <span class="ruby-identifier">money</span>, <span class="ruby-identifier">options</span>)
+113:         <span class="ruby-identifier">add_invoice</span>(<span class="ruby-identifier">post</span>, <span class="ruby-identifier">options</span>)
+114:         
+115:         <span class="ruby-identifier">commit</span>(<span class="ruby-identifier">:credit</span>, <span class="ruby-identifier">post</span>)
+116:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000216" class="method-detail">
+        <a name="M000216"></a>
+
+        <div class="method-heading">
+          <a href="#M000216" class="method-signature">
+          <span class="method-name">purchase</span><span class="method-args">(money, credit_card, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000216-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000216-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateways/protx.rb, line 60</span>
+60:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">purchase</span>(<span class="ruby-identifier">money</span>, <span class="ruby-identifier">credit_card</span>, <span class="ruby-identifier">options</span> = {})
+61:         <span class="ruby-identifier">requires!</span>(<span class="ruby-identifier">options</span>, <span class="ruby-identifier">:order_id</span>)
+62:         
+63:         <span class="ruby-identifier">post</span> = {}
+64:         
+65:         <span class="ruby-identifier">add_amount</span>(<span class="ruby-identifier">post</span>, <span class="ruby-identifier">money</span>, <span class="ruby-identifier">options</span>)
+66:         <span class="ruby-identifier">add_invoice</span>(<span class="ruby-identifier">post</span>, <span class="ruby-identifier">options</span>)
+67:         <span class="ruby-identifier">add_credit_card</span>(<span class="ruby-identifier">post</span>, <span class="ruby-identifier">credit_card</span>)
+68:         <span class="ruby-identifier">add_address</span>(<span class="ruby-identifier">post</span>, <span class="ruby-identifier">options</span>)
+69:         <span class="ruby-identifier">add_customer_data</span>(<span class="ruby-identifier">post</span>, <span class="ruby-identifier">options</span>)
+70: 
+71:         <span class="ruby-identifier">commit</span>(<span class="ruby-identifier">:purchase</span>, <span class="ruby-identifier">post</span>)
+72:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000215" class="method-detail">
+        <a name="M000215"></a>
+
+        <div class="method-heading">
+          <a href="#M000215" class="method-signature">
+          <span class="method-name">test?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000215-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000215-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateways/protx.rb, line 56</span>
+56:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test?</span>
+57:         <span class="ruby-ivar">@options</span>[<span class="ruby-identifier">:test</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword kw">super</span>
+58:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000219" class="method-detail">
+        <a name="M000219"></a>
+
+        <div class="method-heading">
+          <a href="#M000219" class="method-signature">
+          <span class="method-name">void</span><span class="method-args">(identification, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000219-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000219-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateways/protx.rb, line 98</span>
+ 98:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">void</span>(<span class="ruby-identifier">identification</span>, <span class="ruby-identifier">options</span> = {})
+ 99:         <span class="ruby-identifier">post</span> = {}
+100:         
+101:         <span class="ruby-identifier">add_reference</span>(<span class="ruby-identifier">post</span>, <span class="ruby-identifier">identification</span>)
+102:         <span class="ruby-identifier">commit</span>(<span class="ruby-identifier">:void</span>, <span class="ruby-identifier">post</span>)
+103:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

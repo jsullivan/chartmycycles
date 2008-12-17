@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: ActiveMerchant::Billing::Gateway</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">ActiveMerchant::Billing::Gateway</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/lib/active_merchant/billing/gateway_rb.html">
+                lib/active_merchant/billing/gateway.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h2>Description</h2>
+<p>
+The <a href="Gateway.html">Gateway</a> class is the base class for all
+ActiveMerchant gateway implementations.
+</p>
+<p>
+The standard list of gateway functions that most concrete gateway
+subclasses implement is:
+</p>
+<ul>
+<li><tt>purchase(money, creditcard, options = {})</tt>
+
+</li>
+<li><tt>authorize(money, creditcard, options = {})</tt>
+
+</li>
+<li><tt>capture(money, authorization, options = {})</tt>
+
+</li>
+<li><tt>void(identification, options = {})</tt>
+
+</li>
+<li><tt>credit(money, identification, options = {})</tt>
+
+</li>
+</ul>
+<p>
+Some gateways include features for recurring billing
+</p>
+<ul>
+<li><tt>recurring(money, creditcard, options = {})</tt>
+
+</li>
+</ul>
+<p>
+Some gateways also support features for storing credit cards:
+</p>
+<ul>
+<li><tt>store(creditcard, options = {})</tt>
+
+</li>
+<li><tt>unstore(identification, options = {})</tt>
+
+</li>
+</ul>
+<h3><a href="Gateway.html">Gateway</a> Options</h3>
+<p>
+The options hash consists of the following options:
+</p>
+<ul>
+<li><tt>:order_id</tt> - The order number
+
+</li>
+<li><tt>:ip</tt> - The IP address of the customer making the purchase
+
+</li>
+<li><tt>:customer</tt> - The name, customer number, or other information that
+identifies the customer
+
+</li>
+<li><tt>:invoice</tt> - The invoice number
+
+</li>
+<li><tt>:merchant</tt> - The name or description of the merchant offering the
+product
+
+</li>
+<li><tt>:description</tt> - A description of the transaction
+
+</li>
+<li><tt>:email</tt> - The email address of the customer
+
+</li>
+<li><tt>:currency</tt> - The currency of the transaction. Only important when
+you are using a currency that is not the default with a gateway that
+supports multiple currencies.
+
+</li>
+<li><tt>:billing_address</tt> - A hash containing the billing address of the
+customer.
+
+</li>
+<li><tt>:shipping_address</tt> - A hash containing the shipping address of the
+customer.
+
+</li>
+</ul>
+<p>
+The <tt>:billing_address</tt>, and <tt>:shipping_address</tt> hashes can
+have the following keys:
+</p>
+<ul>
+<li><tt>:name</tt> - The full name of the customer.
+
+</li>
+<li><tt>:company</tt> - The company name of the customer.
+
+</li>
+<li><tt>:address1</tt> - The primary street address of the customer.
+
+</li>
+<li><tt>:address2</tt> - Additional line of address information.
+
+</li>
+<li><tt>:city</tt> - The city of the customer.
+
+</li>
+<li><tt>:state</tt> - The state of the customer. The 2 digit code for US and
+Canadian addresses. The full name of the state or province for foreign
+addresses.
+
+</li>
+<li><tt>:country</tt> - The [ISO 3166-1-alpha-2 code](<a
+href="http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm">www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm</a>)
+for the customer.
+
+</li>
+<li><tt>:zip</tt> - The zip or postal code of the customer.
+
+</li>
+<li><tt>:phone</tt> - The phone number of the customer.
+
+</li>
+</ul>
+<h2>Implmenting <a href="Gateway.html#M000292">new</a> gateways</h2>
+<p>
+See the <a
+href="http://code.google.com/p/activemerchant/wiki/Contributing">ActiveMerchant
+Guide to Contributing</a>
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000291">card_brand</a>&nbsp;&nbsp;
+      <a href="#M000290">card_brand</a>&nbsp;&nbsp;
+      <a href="#M000288">inherited</a>&nbsp;&nbsp;
+      <a href="#M000292">new</a>&nbsp;&nbsp;
+      <a href="#M000289">supports?</a>&nbsp;&nbsp;
+      <a href="#M000293">test?</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name">PostsData</span>
+        <span class="include-name">RequiresParameters</span>
+        <span class="include-name"><a href="CreditCardFormatting.html">CreditCardFormatting</a></span>
+        <span class="include-name">Utils</span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DEBIT_CARDS</td>
+          <td>=</td>
+          <td class="context-item-value">[ :switch, :solo ]</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">options</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000290" class="method-detail">
+        <a name="M000290"></a>
+
+        <div class="method-heading">
+          <a href="#M000290" class="method-signature">
+          <span class="method-name">card_brand</span><span class="method-args">(source)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000290-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000290-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateway.rb, line 106</span>
+106:       <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">card_brand</span>(<span class="ruby-identifier">source</span>)
+107:         <span class="ruby-identifier">result</span> = <span class="ruby-identifier">source</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:brand</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">brand</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">type</span>
+108:         <span class="ruby-identifier">result</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span>
+109:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000288" class="method-detail">
+        <a name="M000288"></a>
+
+        <div class="method-heading">
+          <a href="#M000288" class="method-signature">
+          <span class="method-name">inherited</span><span class="method-args">(subclass)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000288-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000288-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateway.rb, line 69</span>
+69:       <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">inherited</span>(<span class="ruby-identifier">subclass</span>)
+70:         <span class="ruby-keyword kw">super</span>
+71:         <span class="ruby-ivar">@@implementations</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">subclass</span>
+72:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000292" class="method-detail">
+        <a name="M000292"></a>
+
+        <div class="method-heading">
+          <a href="#M000292" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Initialize a <a href="Gateway.html#M000292">new</a> gateway.
+</p>
+<p>
+See the documentation for the gateway you will be using to make sure there
+are no other required options.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000292-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000292-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateway.rb, line 119</span>
+119:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">options</span> = {})
+120:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000289" class="method-detail">
+        <a name="M000289"></a>
+
+        <div class="method-heading">
+          <a href="#M000289" class="method-signature">
+          <span class="method-name">supports?</span><span class="method-args">(card_type)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Use this method to check if your gateway of interest supports a credit card
+of some type
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000289-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000289-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateway.rb, line 102</span>
+102:       <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">supports?</span>(<span class="ruby-identifier">card_type</span>)
+103:         <span class="ruby-identifier">supported_cardtypes</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">card_type</span>.<span class="ruby-identifier">to_sym</span>)
+104:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000291" class="method-detail">
+        <a name="M000291"></a>
+
+        <div class="method-heading">
+          <a href="#M000291" class="method-signature">
+          <span class="method-name">card_brand</span><span class="method-args">(source)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000291-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000291-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateway.rb, line 111</span>
+111:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">card_brand</span>(<span class="ruby-identifier">source</span>)
+112:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">card_brand</span>(<span class="ruby-identifier">source</span>)
+113:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000293" class="method-detail">
+        <a name="M000293"></a>
+
+        <div class="method-heading">
+          <a href="#M000293" class="method-signature">
+          <span class="method-name">test?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Are we running in test mode?
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000293-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000293-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/active_merchant/billing/gateway.rb, line 123</span>
+123:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test?</span>
+124:         <span class="ruby-constant">Base</span>.<span class="ruby-identifier">gateway_mode</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:test</span>
+125:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

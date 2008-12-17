@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: ActiveMerchant::Billing::Integrations::TwoCheckout::Notification</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">ActiveMerchant::Billing::Integrations::TwoCheckout::Notification</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../../../files/lib/active_merchant/billing/integrations/two_checkout/notification_rb.html">
+                lib/active_merchant/billing/integrations/two_checkout/notification.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="../Notification.html">
+                ActiveMerchant::Billing::Integrations::Notification
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000028">acknowledge</a>&nbsp;&nbsp;
+      <a href="#M000017">complete?</a>&nbsp;&nbsp;
+      <a href="#M000016">currency</a>&nbsp;&nbsp;
+      <a href="#M000024">gross</a>&nbsp;&nbsp;
+      <a href="#M000018">item_id</a>&nbsp;&nbsp;
+      <a href="#M000021">payer_email</a>&nbsp;&nbsp;
+      <a href="#M000020">received_at</a>&nbsp;&nbsp;
+      <a href="#M000022">receiver_email</a>&nbsp;&nbsp;
+      <a href="#M000023">security_key</a>&nbsp;&nbsp;
+      <a href="#M000026">status</a>&nbsp;&nbsp;
+      <a href="#M000025">test?</a>&nbsp;&nbsp;
+      <a href="#M000019">transaction_id</a>&nbsp;&nbsp;
+      <a href="#M000027">verify</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000028" class="method-detail">
+        <a name="M000028"></a>
+
+        <div class="method-heading">
+          <a href="#M000028" class="method-signature">
+          <span class="method-name">acknowledge</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000028-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000028-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/integrations/two_checkout/notification.rb, line 96</span>
+96:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">acknowledge</span>
+97:             <span class="ruby-keyword kw">true</span>
+98:           <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000017" class="method-detail">
+        <a name="M000017"></a>
+
+        <div class="method-heading">
+          <a href="#M000017" class="method-signature">
+          <span class="method-name">complete?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000017-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000017-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/integrations/two_checkout/notification.rb, line 40</span>
+40:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">complete?</span>
+41:             <span class="ruby-identifier">status</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'Completed'</span>
+42:           <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000016" class="method-detail">
+        <a name="M000016"></a>
+
+        <div class="method-heading">
+          <a href="#M000016" class="method-signature">
+          <span class="method-name">currency</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+order_number 2Checkout.com order number
+</p>
+<pre>
+     card_holder_name   Card holder's name
+     street_address     Card holder's address
+     city       Card holder's city
+     state      Card holder's state
+     zip        Card holder's zip
+     country    Card holder's country
+     email      Card holder's email
+     phone      Card holder's phone
+     credit_card_processed      Y if successful, K if waiting for approval
+     total       Total purchase amount
+     ship_name  Shipping information
+     ship_street_address        Shipping information
+     ship_city  Shipping information
+     ship_state Shipping information
+     ship_zip    Shipping information
+     ship_country       Shipping information
+     product_id 2Checkout product ID for purchased items will append a number if more than one item.
+</pre>
+<p>
+ex. product_id,product_id1,product_id2
+</p>
+<pre>
+     quantity   quantity of corresponding product will append a number if more than one item.
+</pre>
+<p>
+ex. quantity,quantity1,quantity2
+</p>
+<pre>
+     merchant_product_id         your product ID for purchased items will append a number if more than one item.
+</pre>
+<p>
+ex. merchant_product_id,merchant_product_id1,merchant_product_id2
+</p>
+<pre>
+     product_description        your description for purchased items will append a number if more than one item.
+</pre>
+<p>
+ex. product_description,product_description1,product_description2
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000016-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000016-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/integrations/two_checkout/notification.rb, line 36</span>
+36:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">currency</span>
+37:             <span class="ruby-value str">'USD'</span>
+38:           <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000024" class="method-detail">
+        <a name="M000024"></a>
+
+        <div class="method-heading">
+          <a href="#M000024" class="method-signature">
+          <span class="method-name">gross</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+the money amount we received in X.2 decimal.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000024-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000024-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/integrations/two_checkout/notification.rb, line 70</span>
+70:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">gross</span>
+71:             <span class="ruby-identifier">params</span>[<span class="ruby-value str">'total'</span>]
+72:           <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000018" class="method-detail">
+        <a name="M000018"></a>
+
+        <div class="method-heading">
+          <a href="#M000018" class="method-signature">
+          <span class="method-name">item_id</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000018-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000018-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/integrations/two_checkout/notification.rb, line 44</span>
+44:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">item_id</span>
+45:             <span class="ruby-identifier">params</span>[<span class="ruby-value str">'cart_order_id'</span>]
+46:           <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000021" class="method-detail">
+        <a name="M000021"></a>
+
+        <div class="method-heading">
+          <a href="#M000021" class="method-signature">
+          <span class="method-name">payer_email</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000021-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000021-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/integrations/two_checkout/notification.rb, line 56</span>
+56:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">payer_email</span>
+57:             <span class="ruby-identifier">params</span>[<span class="ruby-value str">'email'</span>]
+58:           <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000020" class="method-detail">
+        <a name="M000020"></a>
+
+        <div class="method-heading">
+          <a href="#M000020" class="method-signature">
+          <span class="method-name">received_at</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000020-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000020-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/integrations/two_checkout/notification.rb, line 52</span>
+52:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">received_at</span>
+53:             <span class="ruby-identifier">params</span>[<span class="ruby-value str">''</span>]
+54:           <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000022" class="method-detail">
+        <a name="M000022"></a>
+
+        <div class="method-heading">
+          <a href="#M000022" class="method-signature">
+          <span class="method-name">receiver_email</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000022-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000022-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/integrations/two_checkout/notification.rb, line 60</span>
+60:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">receiver_email</span>
+61:             <span class="ruby-identifier">params</span>[<span class="ruby-value str">''</span>]
+62:           <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000023" class="method-detail">
+        <a name="M000023"></a>
+
+        <div class="method-heading">
+          <a href="#M000023" class="method-signature">
+          <span class="method-name">security_key</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+The MD5 Hash
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000023-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000023-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/integrations/two_checkout/notification.rb, line 65</span>
+65:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">security_key</span>
+66:             <span class="ruby-identifier">params</span>[<span class="ruby-value str">'key'</span>]
+67:           <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000026" class="method-detail">
+        <a name="M000026"></a>
+
+        <div class="method-heading">
+          <a href="#M000026" class="method-signature">
+          <span class="method-name">status</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000026-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000026-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/integrations/two_checkout/notification.rb, line 79</span>
+79:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">status</span>
+80:             <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">params</span>[<span class="ruby-value str">'credit_card_processed'</span>]
+81:             <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'Y'</span>
+82:               <span class="ruby-value str">'Completed'</span>
+83:             <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'K'</span>
+84:               <span class="ruby-value str">'Pending'</span>
+85:             <span class="ruby-keyword kw">else</span>
+86:               <span class="ruby-value str">'Failed'</span>
+87:             <span class="ruby-keyword kw">end</span>
+88:           <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000025" class="method-detail">
+        <a name="M000025"></a>
+
+        <div class="method-heading">
+          <a href="#M000025" class="method-signature">
+          <span class="method-name">test?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Was this a test transaction? # Use the hash
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000025-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000025-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/integrations/two_checkout/notification.rb, line 75</span>
+75:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test?</span>
+76:             <span class="ruby-identifier">params</span>[<span class="ruby-value str">'demo'</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">'Y'</span>
+77:           <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000019" class="method-detail">
+        <a name="M000019"></a>
+
+        <div class="method-heading">
+          <a href="#M000019" class="method-signature">
+          <span class="method-name">transaction_id</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000019-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000019-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/integrations/two_checkout/notification.rb, line 48</span>
+48:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">transaction_id</span>
+49:             <span class="ruby-identifier">params</span>[<span class="ruby-value str">'order_number'</span>]
+50:           <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000027" class="method-detail">
+        <a name="M000027"></a>
+
+        <div class="method-heading">
+          <a href="#M000027" class="method-signature">
+          <span class="method-name">verify</span><span class="method-args">(secret)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000027-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000027-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_merchant/billing/integrations/two_checkout/notification.rb, line 90</span>
+90:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify</span>(<span class="ruby-identifier">secret</span>)
+91:             <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">security_key</span>.<span class="ruby-identifier">blank?</span>
+92:             
+93:             <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">MD5</span>.<span class="ruby-identifier">hexdigest</span>(<span class="ruby-node">&quot;#{secret}#{params['sid']}#{transaction_id}#{gross}&quot;</span>).<span class="ruby-identifier">upcase</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">security_key</span>.<span class="ruby-identifier">upcase</span>
+94:           <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

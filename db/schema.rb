@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081115233435) do
+ActiveRecord::Schema.define(:version => 20081217224506) do
 
   create_table "avatars", :force => true do |t|
     t.integer  "parent_id"
@@ -85,9 +85,21 @@ ActiveRecord::Schema.define(:version => 20081115233435) do
     t.string   "description"
   end
 
-  create_table "plugin_schema_info", :id => false, :force => true do |t|
-    t.string  "plugin_name"
-    t.integer "version"
+  create_table "orders", :force => true do |t|
+    t.string   "confirmation_number"
+    t.string   "payment_transaction_id"
+    t.string   "billing_address"
+    t.string   "billing_city"
+    t.string   "billing_state"
+    t.string   "billing_zip"
+    t.datetime "confirmed_at"
+    t.datetime "processed_at"
+    t.datetime "cancelled_at"
+    t.integer  "user_id"
+    t.integer  "status"
+    t.integer  "total_cost"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "posts", :force => true do |t|

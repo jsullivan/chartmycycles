@@ -429,14 +429,13 @@ border-style: none;
 /* BLANK STATE DIVS AND CLASSES
 =-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-*/
 #pointers {
-	background: url(/images/paper.jpg);
+/*	background: url(/images/paper.jpg);*/
 	font-weight: bold;
 	padding: 40px;
-	margin: 5px;
 	color: #ffffff;
-	border-width: 3px 0px 3px 0px;
+/*	border-width: 3px 0px 3px 0px;
 	border-style: solid;
-	border-color: #3c2f24;
+	border-color: #3c2f24;*/
 }
 #share_it {
 	background: #4f366c;

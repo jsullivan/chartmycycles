@@ -27,8 +27,26 @@ module ActiveMerchant #:nodoc:
       API_VERSION = '3.1'
 
       class_inheritable_accessor :test_url, :live_url, :arb_test_url, :arb_live_url
+   
+     # I commented out this test_url because of this message from authorize.net:
+=begin
+    • If you are posting your transaction requests to the gateway 
+    URLs https://test.authorize.net/gateway/transact.dll 
+    or https://certification.authorize.net/gateway/transact.dll 
+    and you are using an account given to you by an Authorize.Net Reseller 
+    or from Authorize.Net Sales, you may encounter this error. The gateway URLs 
+    mentioned above only work with specific test accounts, available upon request by 
+    completing the form at http://developer.authorize.net/testaccount/
 
-      self.test_url = "https://test.authorize.net/gateway/transact.dll"
+    Try posting your transaction request to https://secure.authorize.net/gateway/transact.dll instead. 
+    If you need to submit a test transaction, you may do so by setting the field x_test_request to "TRUE". 
+    You may then remove x_test_request or set it to "FALSE" when you have completed your testing.
+    
+    commented out on 12-29-08 josh sullivan
+    self.test_url = "https://test.authorize.net/gateway/transact.dll"
+=end
+
+      self.test_url = "https://secure.authorize.net/gateway/transact.dll"
       self.live_url = "https://secure.authorize.net/gateway/transact.dll"
 
       self.arb_test_url = 'https://apitest.authorize.net/xml/v1/request.api'

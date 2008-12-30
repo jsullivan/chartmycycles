@@ -190,8 +190,7 @@ color: #000000;
 	margin-top: 20px;
 }
 #content_big {
-	width: 395px;
-	margin: 20px 0px 0px 0px;
+  padding: 30px;
 	color: #000000;
 	float: left;
 	font: 1em;
@@ -242,7 +241,7 @@ color: #000000;
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
 #last_call_to_action {
-	margin-top: 150px;
+/*	margin-top: 150px;*/
 	text-align: center;
 }
 #footer {

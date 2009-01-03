@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081217224506) do
+ActiveRecord::Schema.define(:version => 20090102223135) do
 
   create_table "avatars", :force => true do |t|
     t.integer  "parent_id"
@@ -85,6 +85,17 @@ ActiveRecord::Schema.define(:version => 20081217224506) do
     t.string   "description"
   end
 
+  create_table "gateway_responses", :force => true do |t|
+    t.string   "email"
+    t.string   "message"
+    t.integer  "customer_cim_id"
+    t.integer  "customer_payment_profile_id"
+    t.integer  "customer_billing_address_id"
+    t.integer  "customer_shipping_address_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "orders", :force => true do |t|
     t.string   "confirmation_number"
     t.string   "payment_transaction_id"
@@ -102,6 +113,11 @@ ActiveRecord::Schema.define(:version => 20081217224506) do
     t.datetime "updated_at"
   end
 
+  create_table "plugin_schema_info", :id => false, :force => true do |t|
+    t.string  "plugin_name"
+    t.integer "version"
+  end
+
   create_table "posts", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -111,10 +127,18 @@ ActiveRecord::Schema.define(:version => 20081217224506) do
     t.text     "body"
   end
 
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "interval"
+    t.string   "status"
+    t.datetime "last_charged_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email"
-    t.string   "crypted_password",          :limit => 40
-    t.string   "salt",                      :limit => 40
+    t.string   "crypted_password",            :limit => 40
+    t.string   "salt",                        :limit => 40
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_token"
@@ -129,8 +153,13 @@ ActiveRecord::Schema.define(:version => 20081217224506) do
     t.datetime "last_login"
     t.integer  "children"
     t.string   "motto"
-    t.boolean  "member",                                  :default => false
+    t.boolean  "member",                                    :default => false
     t.datetime "member_start_date"
+    t.integer  "customer_cim_id"
+    t.integer  "customer_payment_profile_id"
+    t.integer  "customer_billing_address_id"
+    t.integer  "interval"
+    t.string   "address"
   end
 
 end

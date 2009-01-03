@@ -1,9 +1,0 @@
-production:
-  auth_net_user: 358gbVPPaM4q
-  auth_net_pass: 52D3duM39y3a7Y5j
-development:
-  auth_net_user: 358gbVPPaM4q
-  auth_net_pass: 52D3duM39y3a7Y5j
-test:
-  auth_net_user: 358gbVPPaM4q
-  auth_net_pass: 52D3duM39y3a7Y5j

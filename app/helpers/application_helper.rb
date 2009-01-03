@@ -113,5 +113,20 @@ module ApplicationHelper
      degree_hash = [99, 98.9, 98.8, 98.7, 98.6, 98.5, 98.4, 98.3, 98.2, 98.1, 98, 97.9, 97.8, 97.7, 97.6, 97.5, 97.4, 97.3, 97.2, 97.1, 97, 96.9]
   end
   
+  def expiration_month
+     result = "<option>--</option>"
+     1.upto(12) do |month|
+       result << "<option>#{month}</option>"
+     end
+     result
+   end
+
+   def expiration_year
+     result = "<option>----</option>"
+     2008.upto(2020) do |year|
+       result << "<option>#{year}</option>"
+     end
+     result
+   end
   
 end

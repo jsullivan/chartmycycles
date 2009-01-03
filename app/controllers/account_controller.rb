@@ -30,9 +30,81 @@ class AccountController < ApplicationController
   def contact
   end
 
+  def benefits
+  end
+  
   def signup
     @user = User.new(params[:user])
     return unless request.post?
+    
+########=-=-=-=-=-=-=-=-=-=-=-=-=-= Early attempt at billing code
+    # BEGIN construct
+    gateway = ActiveMerchant::Billing::AuthorizeNetGateway.new({
+      :login    => '358gbVPPaM4q',
+      :password => '98bM2RmsYw76C34F'
+    })
+    # END construct
+  
+    # Next, construct a CreditCard object that will be charged during the
+    # transaction
+    # BEGIN creditcard
+    creditcard = ActiveMerchant::Billing::CreditCard.new({
+      :first_name => params[:first_name],
+      :last_name  => params[:last_name],
+      :number     => params[:credit_card_number],
+      :month      => params[:month],
+      :year       => params[:year],
+      :verification_value => params[:verification]
+    })
+    # END credit_card
+
+    # BEGIN purchase_output
+    # => (TEST) The transaction was successful! The authorization is 3144302
+    # END purchase_output
+
+    # BEGIN purchase
+    options = {
+      :billing_address => {
+        :first_name     => params[:first_name],
+        :last_name      => params[:last_name],
+        :address1 => '20178 Lora Lane',
+        :city     => 'Bend',
+        :state    => 'OR',
+        :country  => 'USA',
+        :zip      => '97702',
+        :phone    => '541-504-6929'
+      },
+      :interval   => {
+        :unit     => :months,
+        :length   => 1
+      },
+      :duration   => {
+        :start_date   => Time.now.to_date,
+        :occurrences   => 240
+      },
+      :description => 'ChartMyCycles subscription'
+    }
+
+    if creditcard.valid?
+      response = gateway.recurring(1, creditcard, options)
+
+      print "(TEST) " if response.test?
+
+      if response.success?
+        RAILS_DEFAULT_LOGGER.error("\nThe transaction was successful! The authorization is #{response.authorization}\n")
+      else
+        RAILS_DEFAULT_LOGGER.error(response.message.to_s)
+        flash[:error] = response.message.to_s
+        
+        return 
+      end
+    else
+      RAILS_DEFAULT_LOGGER.error("\nThe credit card is invalid\n")
+      flash[:error] = "The credit card is invalid. Please try again."
+      return
+    end
+    # END purchase
+#######=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     @user.last_login = Time.now
     @user.save!
     self.current_user = @user

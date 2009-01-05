@@ -349,6 +349,8 @@ color: #000000;
 	border: thin solid #8d9bfe;
 	background: url(/images/thin_blank_banner.jpg);
 	padding: 10px 50px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
 }
 fieldset {  
 margin: 1.5em 0 0 0;  

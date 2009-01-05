@@ -59,7 +59,7 @@
 					<div id="tall_attributes">
 								
 						<div id="<%= @tall_attributes_div %>"> 
-							<%= entry.comment%>
+							<%= textilize(entry.comment) %>
 						<div id="fifteenpxspacer">
 						</div>
 								<span class="greenlink"><%= link_to 'Edit this entry', {:controller => 'entry', :action => 'edit_entry', :id => entry, :history_id => @cycle.id} %>

@@ -90,7 +90,7 @@
 
 	<br />
 	<label for="comments">Comments</label><br />
-		<%= text_area ("entry", "comment") %><br />
+		<%= textile_editor ("entry", "comment") %><br />
 	<div id="fivepxspacer"></div>
 	<div id="fivepxspacer"></div>
 	<div id="fivepxspacer"></div>
@@ -98,4 +98,5 @@
 <p>
 	<%= submit_tag 'Update' %> or <%= link_to_remote ('Cancel', :url => {:action => 'new_entry_form'}) %>
 </p>
+<%= textile_editor_initialize -%>
 <% end -%>

@@ -29,7 +29,7 @@
 			<div id="fifteenpxspacer"></div>
 			<h1><%= @post.title%></h1>
 				
-<%= @post.body %><br />
+<%= textilize(@post.body) %><br />
 <span class="writer_info">
 - posted <%= time_ago_in_words(@post.created_at)%> ago
 </span>
@@ -56,7 +56,7 @@
 	</tr>
 	</table>
 	<div id="fifteenpxspacer"></div>
-<%= comment.body %><br />
+<%= textilize(comment.body) %><br />
 <span class="writer_info">
 - written <%= time_ago_in_words(comment.created_at)%> ago
 </span>

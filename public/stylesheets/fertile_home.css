@@ -11,8 +11,9 @@ font-family: trebuchet, arial;
 font-size: .8em;
 }
 
-b{font-size: 110%;}
-em{color: red;}
+em{
+	font-style: italic;
+}
 
 .innertube{
 margin: 10px; /*Margins for inner DIV inside each column (to provide padding)*/
@@ -22,6 +23,9 @@ h1 {
 	font-size: 1.5em;
 	font-weight: bold;
 }
+strong {
+	font-weight: bold;
+	}
 #fivepxspacer {
 	height: 5px;
 }

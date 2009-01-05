@@ -194,6 +194,7 @@ color: #000000;
 	color: #000000;
 	float: left;
 	font: 1em;
+	z-index: 4;
 }
 #content_big_center {
 	width: 395px;
@@ -236,7 +237,14 @@ color: #000000;
 	border-bottom: thin solid #8d9bfe;
 	background: url(/images/contact_banner.jpg);
 }
-
+#app_details {
+	position: absolute;
+	height: 718px;
+	width: 758px;
+	text-align: left;
+	padding-top: 40px;
+	background: url(/images/app_details.png);
+}
 /* FOOTER
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 

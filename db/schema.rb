@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090102223135) do
+ActiveRecord::Schema.define(:version => 20090104232036) do
 
   create_table "avatars", :force => true do |t|
     t.integer  "parent_id"
@@ -85,34 +85,6 @@ ActiveRecord::Schema.define(:version => 20090102223135) do
     t.string   "description"
   end
 
-  create_table "gateway_responses", :force => true do |t|
-    t.string   "email"
-    t.string   "message"
-    t.integer  "customer_cim_id"
-    t.integer  "customer_payment_profile_id"
-    t.integer  "customer_billing_address_id"
-    t.integer  "customer_shipping_address_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "orders", :force => true do |t|
-    t.string   "confirmation_number"
-    t.string   "payment_transaction_id"
-    t.string   "billing_address"
-    t.string   "billing_city"
-    t.string   "billing_state"
-    t.string   "billing_zip"
-    t.datetime "confirmed_at"
-    t.datetime "processed_at"
-    t.datetime "cancelled_at"
-    t.integer  "user_id"
-    t.integer  "status"
-    t.integer  "total_cost"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "plugin_schema_info", :id => false, :force => true do |t|
     t.string  "plugin_name"
     t.integer "version"
@@ -127,12 +99,23 @@ ActiveRecord::Schema.define(:version => 20090102223135) do
     t.text     "body"
   end
 
+  create_table "subscription_infos", :force => true do |t|
+    t.string   "authorization"
+    t.string   "message"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "subscriptions", :force => true do |t|
     t.integer  "interval"
     t.string   "status"
     t.datetime "last_charged_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "authorization"
+    t.string   "message"
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|

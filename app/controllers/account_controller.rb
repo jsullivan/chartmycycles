@@ -72,7 +72,8 @@ class AccountController < ApplicationController
         :state    => 'OR',
         :country  => 'USA',
         :zip      => '97702',
-        :phone    => '541-504-6929'
+        :phone    => '541-504-6929',
+        :email => params[:user][:email]
       },
       :interval   => {
         :unit     => :months,
@@ -94,7 +95,7 @@ class AccountController < ApplicationController
         RAILS_DEFAULT_LOGGER.error("\nThe transaction was successful! The authorization is #{response.authorization}\n")
       else
         RAILS_DEFAULT_LOGGER.error(response.message.to_s)
-        flash[:error] = response.message.to_s
+        flash[:error] = "The credit card information didn't work. Try again."
         
         return 
       end
@@ -106,6 +107,10 @@ class AccountController < ApplicationController
     # END purchase
 #######=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     @user.last_login = Time.now
+    @user.subscription_info = SubscriptionInfo.new
+    @user.subscription_info.authorization = response.authorization
+    @user.subscription_info.message = response.message
+    @user.subscription_info.save
     @user.save!
     self.current_user = @user
     c = Cycle.new

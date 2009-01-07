@@ -14,8 +14,11 @@
 </head>
 <body>
 	<div id="container">
+		<% if controller.action_name == 'benefits'%>
 		<div id="ribbon">
 		</div>
+		<% end %>
+
 		<div id="logo_space">
 				<% if logged_in? %>
 					<div id="logo_div">

@@ -7,7 +7,7 @@
 
 <br />
 <div id="login_box" style="width: 600px; margin-left: 28px; color: #202020;">
-	<div class="call_to_action" style="margin-top: 20px;">
+	<div class="call_to_action" style="margin-top: 20px; text-align: right;">
 		<%= link_to "Sign up now", :action => 'signup' %>
 	</div>
 	<br />
@@ -86,21 +86,41 @@ of your symptoms.<br /><br />
 All of the staples of fertility charting are here and more. Now charting your fertility can be easy, fun, and accessible.<br /><br />
 	</td>
 </tr>
-	<tr>
-		<td style="vertical-align:top">
-			<%= image_tag 'plus_button.png'%>
-		</td>
-		<td style="vertical-align:top">
-<h2>Cancel anytime - it’s a monthly membership</h2><br />
-We think our fertility software is the best. That's why we don't believe in lengthy contracts. And, if you aren’t satisfied, simply cancel within the first two months and get a full refund.<br /><br />
+
+		</table>
+
+		</div>
+		<div style="padding: 28px;"></div>
+		<div id="login_box" style="width: 600px; margin-left: 28px; color: #202020;">
+
+			<br />
+			<table>
+				<tr>
+					<td width=60 style="vertical-align:top;">
+						<%= image_tag 'plus_button.png'%>
+					</td>
+					
+		<td style="vertical-align:bottom">
+<h2>Cancel anytime</h2><br />
+We think our fertility software is the best. That's why we don't believe in lengthy contracts. Monthly membership means you can cancel whenever you want.<br /><br />
+</td>
+</tr>
+		<tr>
+			<td width=60 style="vertical-align:top;">
+				<%= image_tag 'plus_button.png'%>
+			</td>
+			<td>
+				<h2>If you're not happy, get a full refund.</h2><br />
+				
+If you aren’t satisfied, simply cancel within the first two months and get a full refund.<br /><br />
 	</td>
 </tr>
 </table>
-	<div class="call_to_action" style="text-align: right">
-		<%= link_to "Sign up now", :action => 'signup' %>
-	</div>
-	<br />
-	<br />
+<div class="call_to_action" style="margin-top: 20px; text-align: right;">
+	<%= link_to "Sign up now", :action => 'signup' %>
 </div>
+<br />
+</div>
+
 
 <br />

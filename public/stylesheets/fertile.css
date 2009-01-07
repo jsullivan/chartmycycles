@@ -344,6 +344,15 @@ color: #000000;
 	margin: 0px 0px 0px 220px;
 }
 
+#ribbon {
+	background: url(/images/ribbon.png) 0 0 no-repeat;
+	height: 177px;
+	width: 319px;
+	position: absolute;
+	margin-left:448px;
+	margin-top: 915px;
+	z-index: 10;
+}
 /* FORMS
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
 

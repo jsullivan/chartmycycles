@@ -7,7 +7,9 @@
 	<tr>
 		<td>
 <div id="login_box">
-	<%= flash[:notice] %><br /	>
+	<p style="color: red;">
+		<%= flash[:notice] %>
+	</p><br /	>
 <%= link_to 'Create a new account', :action => "signup" %>
 <% form_tag do -%>
 <fieldset>

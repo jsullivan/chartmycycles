@@ -1,5 +1,9 @@
 class EntryController < ApplicationController
 layout 'home'
+
+def new
+end
+
 def create
   current_cycle = Cycle.find(current_user.current_cycle)
   start_date = current_cycle.started

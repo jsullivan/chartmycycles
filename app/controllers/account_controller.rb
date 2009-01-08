@@ -23,7 +23,8 @@ class AccountController < ApplicationController
       redirect_back_or_default(:controller => '/home', :action => 'index')
       flash[:notice] = "Logged in successfully"
     else
-        flash[:notice] = "Invalid Login/Password!"
+        flash[:notice] = "That didn't work. <br />
+        Try entering your login info again."
     end
   end
   
@@ -128,7 +129,7 @@ class AccountController < ApplicationController
     self.current_user.forget_me if logged_in?
     cookies.delete :auth_token
     reset_session
-    flash[:notice] = "You have been logged out."
+    flash[:notice] = "You've been logged out."
     redirect_back_or_default(:controller => '/account', :action => 'login')
   end
 end

@@ -123,7 +123,7 @@ padding-top: 15px;
 /* MAIN COLUMN
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 #maincontainer {
-	background: url(/images/body_bkgrnd3.png) repeat;
+	background: #303030;
 }
 #contentwrapper{
 float: left;
@@ -277,7 +277,7 @@ margin-right: 10px;}
 #dark_blue {
 	background: repeat-y #4469ee;
 	/*url(/images/dark_blue.png)*/
-	height: 53px;
+	height: 48px;
 	font-size: .8em;
 	padding-left: 3px;
 	padding-top: 2px;
@@ -293,7 +293,7 @@ margin-right: 10px;}
 #light_blue {
 	background: repeat-y #92a5ee;
 	/* url(/images/light_blue.png) */
-	height: 53px;
+	height: 48px;
 	font-size: .8em;
   padding-left: 3px;
 	padding-top: 2px;
@@ -317,7 +317,7 @@ margin-right: 10px;}
 }
 #white {
 	background: #d9f4d8;
-	height: 53px;
+	height: 48px;
 	font-size: .8em;
   padding-left: 3px;
 	padding-top: 2px;
@@ -332,7 +332,7 @@ margin-right: 10px;}
 }
 
 #blankies {
-	height: 57px;
+	height: 48px;
 	font-size: .8em;
   padding: 0px 5px 0px 5px;
 	margin-right: 3px;
@@ -434,9 +434,11 @@ border-style: none;
 =-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-*/
 #pointers {
 /*	background: url(/images/paper.jpg);*/
-	font-weight: bold;
 	padding: 40px;
 	color: #ffffff;
+	background: #0a5294;
+	margin-top: 5px;
+	-moz-border-radius: 10px 0px 0px 10px;
 /*	border-width: 3px 0px 3px 0px;
 	border-style: solid;
 	border-color: #3c2f24;*/
@@ -460,26 +462,29 @@ border-style: none;
 	background: #4f366c;
 	font-weight: bold;
 	padding: 5px;
-	margin: 5px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
 	color: #ffffff;
 	text-align: center;
 	font-size: 1.5em;
+	-moz-border-radius: 0px 0px 0px 10px;
+	
 }
 #fertile_toggle_red {
 	background: #ff3838;
 	font-weight: bold;
 	padding: 5px;
-	margin: 5px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
 	color: #ffffff;
 	text-align: center;
 	font-size: 1.5em;
+	-moz-border-radius: 0px 0px 0px 10px;
 }
 /* VERTICAL CAL TEXT DIVS 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
 #fertile{
 	background: repeat-y #ff3838;
-	height: 53px;
+	height: 48px;
 	font-size: .8em;
   padding-left: 3px;
 	padding-top: 2px;
@@ -495,7 +500,7 @@ border-style: none;
 
 #infertile{
 	background: repeat-y #695240;
-	height: 53px;
+	height: 48px;
 	font-size: .8em;
   padding-left: 3px;
 	padding-top: 2px;
@@ -511,7 +516,7 @@ border-style: none;
 
 #unsure{
 	background: repeat-y #ffbd4b;
-	height: 53px;
+	height: 48px;
 	font-size: .8em;
   padding-left: 3px;
 	padding-top: 2px;

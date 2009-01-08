@@ -443,6 +443,9 @@ border-style: none;
 	border-style: solid;
 	border-color: #3c2f24;*/
 }
+#pointers a {
+	color: #ffffff;
+}
 #share_it {
 	background: #4f366c;
 	font-weight: bold;

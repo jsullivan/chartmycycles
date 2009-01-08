@@ -2,7 +2,7 @@
 	<% if logged_in? && current_user.avatar %>	
 		<%= image_tag(current_user.avatar.public_filename) %>	
 	<% else %>	
-		<img src="/images/blankavatar.jpg">
+		<img src="/images/blankavatar.png">
 	<% end %>
 	<br />
 	<% if logged_in? %>

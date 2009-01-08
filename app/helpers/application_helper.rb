@@ -98,7 +98,7 @@ module ApplicationHelper
     end
     
      def position_hash
-        position_hash = ["", "high", "middle", "low"]
+        position_hash = ["", "low", "middle", "high"]
       end
       
       def firmness_hash

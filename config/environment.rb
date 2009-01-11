@@ -59,7 +59,7 @@ Rails::Initializer.run do |config|
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
 end
-ExceptionNotifier.exception_recipients = %w(josh@dipperstove.com)
+#ExceptionNotifier.exception_recipients = %w(josh@dipperstove.com)
 require "smtp_tls"
 ActionMailer::Base.smtp_settings = {
 :address => "smtp.gmail.com",

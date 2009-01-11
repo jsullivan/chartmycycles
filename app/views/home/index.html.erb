@@ -29,7 +29,7 @@ You are probably infertile right now. <br />
 </div>
 	<% if @user.cycles.count == 1 && @user.current_cycle.entries.count == 1 %>
 		<%= render :partial => 'first_entry' %>
-	<% elsif @user.cycles.count == 1 && @user.current_cycle.entries.count == 2 %>
+	<% elsif @user.cycles.cot == 1 && @user.current_cycle.entries.count == 2 %>
 		<%= render :partial => 'second_entry'%>
 	<% elsif @user.cycles.count == 1 && @user.current_cycle.entries.count == 3%>
 		<%= render :partial => 'third_entry'%>

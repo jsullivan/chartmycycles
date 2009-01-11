@@ -35,10 +35,16 @@ ssl_required  :login, :signup
   def benefits
   end
   
+  def tour
+  end
+  
   def signup
     @user = User.new(params[:user])
     return unless request.post?
-    
+      if params[:terms] != '1'
+        flash[:error] = "Please accept the terms of service before you proceed."      
+        return
+      end
 ########=-=-=-=-=-=-=-=-=-=-=-=-=-= Early attempt at billing code
     # BEGIN construct
     gateway = ActiveMerchant::Billing::AuthorizeNetGateway.new({

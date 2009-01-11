@@ -90,11 +90,11 @@ module ApplicationHelper
    end
    
    def sensation_hash
-     sensation_hash = ["", "wet", "dry", "other"]
+     sensation_hash = ["", "dry", "other", "wet"]
    end
 
    def mucus_hash
-      mucus_hash = ["", "fertile", "infertile", "unsure"]
+      mucus_hash = ["", "dry", "unsure", "fertile"]
     end
     
      def position_hash

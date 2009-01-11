@@ -13,7 +13,7 @@
 		<td align="center" width="8.3%">
 				<% if entry.mucus == "unsure"%>
 					<div id="unsure">
-				<% elsif entry.mucus == "infertile"%>
+				<% elsif entry.mucus == "dry"%>
 					<div id="infertile">
 				<% elsif entry.mucus == "fertile" %>
 					<div id="fertile">
@@ -32,7 +32,7 @@
 			<% elsif entry.vaginal_sensation == "dry"%>
 				<div id="infertile">
 			<% elsif entry.vaginal_sensation == "other" %>
-				<div id="infertile">
+				<div id="unsure">
 			<% else %>
 				<div id="white">
 			<% end %>
@@ -93,7 +93,8 @@
 			<% else%>
 				<div id="white">
 			<% end %>
-			period
+			period/<br />
+			spotting
 			</div>		
 		</td>
 		

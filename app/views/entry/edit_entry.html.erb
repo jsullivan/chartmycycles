@@ -29,7 +29,7 @@
 		<div id="mucus_explained" style="background: #ffffff; padding: 20px; margin-top: 5px; display: none; -moz-border-radius: 15px;">
 
 			If you are dry or have no mucus today, choose
-		  "infertile". Once you have wetness or any mucus, choose
+		  "dry". Once you have wetness or any mucus, choose
 		  "fertile".
 			<br />
 			<br />
@@ -37,7 +37,7 @@
 		  are the type of woman who has mucus at all times, but can
 		  effectively distinguish between fertile (slippery) and infertile
 		  (for some people sticky or crumbly mucus is infertile mucus),
-		  then you can choose "unsure" or "infertile".
+		  then you can choose "unsure" or "dry".
 			<br />
 			<br />
 
@@ -65,7 +65,7 @@
 		  practice, so keep practicing.
 		<br />
 		<br />
-
+		
 			<%= link_to_remote ('Close', :after => "Element.toggle('mucus_explained')")%>
 		</div>
 	
@@ -87,7 +87,7 @@
 		<div id="fivepxspacer"></div>
 	<div id="fivepxspacer"></div>
 	
-	<%= check_box( :entry, :period)%> <label for="acne">Period</label>
+	<%= check_box( :entry, :period)%> <label for="acne">Period or Spotting</label>
 	  <br />
 	
 	<%= check_box( :entry, :intercourse)%> <label for="acne">Sex</label>

@@ -360,6 +360,8 @@ min-height: 750px;
 width: 200px; /*Width of left column*/
 margin-left: -100%;
 background: url(/images/left_column_bkgrnd.png) repeat-y;
+-moz-border-radius: 10px 0px 0px 10px;
+-webkit-border-radius: 10px;
 }
 #avatar {
 	margin: 7px 0px 0px 5px;
@@ -439,6 +441,8 @@ border-style: none;
 	background: #0a5294;
 	margin-top: 5px;
 	-moz-border-radius: 10px 0px 0px 10px;
+	-webkit-border-radius: 10px 0px 0px 10px;
+	
 /*	border-width: 3px 0px 3px 0px;
 	border-style: solid;
 	border-color: #3c2f24;*/
@@ -453,6 +457,9 @@ border-style: none;
 	margin: 5px 0px 0px 0px;
 	color: #ffffff;
 	text-align: center;
+	-moz-border-radius: 10px 0px 0px 10px;
+	-webkit-border-radius: 10px 0px 0px 10px;
+	
 }
 .share_it a {
 	color: #ffffff;

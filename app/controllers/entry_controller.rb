@@ -19,12 +19,16 @@ def create
     flash[:notice] = "You have already charted on this day."
   else 
   entry = Entry.new
+ 
   chart_day = params[:chart]  
   form = params[:entry]
   entry.chart_date = chart_day
   entry.user = current_user
   entry.cycle = current_cycle
   entry.update_attributes(form)
+  if params[:entry][:temp] == "--"
+     entry.temp = "96.9"
+   end
   entry.save
   if entry.mucus == "fertile"
     unless entry.cycle.phase_one_end
@@ -45,6 +49,9 @@ end
 def update
    @entry = Entry.find(params[:entry_id])
     if @entry.update_attributes(params[:entry])
+      if params[:entry][:temp] == "--"
+         @entry.temp = "96.9"
+       end
        chart_day = params[:chart]
        @entry.chart_date = chart_day
        @entry.save

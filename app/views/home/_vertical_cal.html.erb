@@ -24,6 +24,9 @@
 					<br />
 				</span>
 				<span class="tempnumber">
+					<% if entry.temp == 96.9 %>
+						<p style="color: white;">
+					<%end%>
 					<%= entry.temp %>&deg;
 					<br />
 				</span>
@@ -42,9 +45,12 @@
 						temp.
 						<br />
 					</span>
-					<span class="tempnumber">
+							<span class="tempnumber">
+					<% if entry.temp == 96.9 %>
+						<p style="color: white;">
+					<%end%>
 						<%= entry.temp %>&deg;
-						<br />			
+						<br />	
 					</span>
 					<span class="less_button">
 						<%= link_to_remote ('', :url => {:action => 'toggle_expand', :entry_id => @entry_div, :default => @default})%>

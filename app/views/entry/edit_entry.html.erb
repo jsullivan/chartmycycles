@@ -24,7 +24,7 @@
 		<div id="fivepxspacer"></div>
 	<div id="fivepxspacer"></div>
 	
-	<label for="waking_temp">Mucus</label><%= link_to_remote ('Need help deciding if your mucus is fertile?', :after => "Element.toggle('mucus_explained')")%><br />
+	<label for="waking_temp">Mucus</label><%= link_to_remote ('Help me decide about my mucus!', :after => "Element.toggle('mucus_explained')")%><br />
 		<%= select_with_mucus_options ("entry", "mucus", mucus_hash, @entry.mucus) %><br />
 		<div id="mucus_explained" style="background: #ffffff; padding: 20px; margin-top: 5px; display: none; -moz-border-radius: 15px;">
 

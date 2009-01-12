@@ -3,7 +3,7 @@ class AccountController < ApplicationController
 #  include AuthenticatedSystem
   # If you want "remember me" functionality, add this before_filter to Application Controller
   before_filter :login_from_cookie
-  ssl_required  :login, :signup
+ # ssl_required  :login, :signup
 
   
   # say something nice, you goof!  something sweet.
@@ -127,7 +127,7 @@ class AccountController < ApplicationController
     c.save
     redirect_back_or_default(:controller => '/home', :action => 'index')
     flash[:notice] = "Thanks for signing up!"
-   # PostOffice.deliver_welcome(@user.email)
+    Postoffice.deliver_welcome(@user.email)
   rescue ActiveRecord::RecordInvalid
     render :action => 'signup'
   end

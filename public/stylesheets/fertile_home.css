@@ -451,14 +451,13 @@ border-style: none;
 	color: #ffffff;
 }
 #share_it {
-	background: #4f366c;
+	background: #1ebe1a;
 	font-weight: bold;
 	padding: 5px;
-	margin: 5px 0px 0px 0px;
 	color: #ffffff;
 	text-align: center;
-	-moz-border-radius: 10px 0px 0px 10px;
-	-webkit-border-radius: 10px 0px 0px 10px;
+	-moz-border-radius: 10px 0px 0px 0px;
+	-webkit-border-radius: 10px 0px 0px 0px;
 	
 }
 .share_it a {

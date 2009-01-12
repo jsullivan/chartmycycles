@@ -11,7 +11,7 @@
 <p><label for="last">Chart date </label><%= calendar_date_select_tag "chart", Time.now, :embedded => false, :year_range => 100 %></p>
 <br />
 <label for="waking_temp">Waking temperature</label><br />
-	<%= select_with_temp_options ("entry", "temp", degree_hash, "select") %><br />
+	<%= select_with_temp_options ("entry", "temp", degree_hash, "") %><br />
 	<div id="fivepxspacer"></div>
 <div id="fivepxspacer"></div>
 
@@ -20,7 +20,7 @@
 	<div id="fivepxspacer"></div>
 <div id="fivepxspacer"></div>
 
-<label for="waking_temp">Mucus</label> <%= link_to_remote ('Need help deciding if your mucus is fertile?', :after => "Element.toggle('mucus_explained')")%><br />
+<label for="waking_temp">Mucus</label> <%= link_to_remote ('Help me decide about my mucus!', :after => "Element.toggle('mucus_explained')")%><br />
 	<%= select_with_mucus_options ("entry", "mucus", mucus_hash, "") %><br />
 	
 	<div id="mucus_explained" style="background: #ffffff; padding: 20px; margin-top: 5px; display: none; -moz-border-radius: 15px;">

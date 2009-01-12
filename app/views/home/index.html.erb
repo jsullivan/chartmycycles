@@ -1,6 +1,12 @@
 <div id="contentwrapper">
 <div id="contentcolumn">
 <div id="entry_and_stats">
+	<% if @user.current_cycle.shared%>
+	<div id="share_it" class="share_it" >
+		<% share_link = "www.chartmycycles.com/share/cycle/#{current_user.current_cycle.id}"%>
+		This cycle is shared at: <%= link_to share_link, "http://www.chartmycycles.com/share/cycle/#{current_user.current_cycle.id}" %><br />
+	</div>
+	<% end %>
 <div id="graph">
 	<% if @user.current_cycle.entries.count >= 1%>
 		<%= @graph %>
@@ -29,7 +35,7 @@ You are probably infertile right now. <br />
 </div>
 	<% if @user.cycles.count == 1 && @user.current_cycle.entries.count == 1 %>
 		<%= render :partial => 'first_entry' %>
-	<% elsif @user.cycles.cot == 1 && @user.current_cycle.entries.count == 2 %>
+	<% elsif @user.cycles.count == 1 && @user.current_cycle.entries.count == 2 %>
 		<%= render :partial => 'second_entry'%>
 	<% elsif @user.cycles.count == 1 && @user.current_cycle.entries.count == 3%>
 		<%= render :partial => 'third_entry'%>
@@ -38,12 +44,7 @@ You are probably infertile right now. <br />
 	<% elsif @user.cycles.count == 1 && @user.current_cycle.entries.count == 5%>
 		<%= render :partial => 'fifth_entry'%>
 	<% end %>
-	<% if @user.current_cycle.shared%>
-	<div id="share_it" class="share_it" >
-		<% share_link = "www.chartmycycles.com/share/cycle/#{current_user.current_cycle.id}"%>
-		This cycle is shared at: <%= link_to share_link, "http://www.chartmycycles.com/share/cycle/#{current_user.current_cycle.id}" %><br />
-	</div>
-	<% end %>
+
 	<%= render :partial => 'vertical_cal'%>
 	<br />
 	<br />

@@ -11,7 +11,9 @@
 <p><label for="last">Chart date </label><%= calendar_date_select_tag "chart", Time.now, :embedded => false, :year_range => 100 %></p>
 <br />
 <label for="waking_temp">Waking temperature</label><br />
-	<%= select_with_temp_options ("entry", "temp", degree_hash, "") %><br />
+	<%= select_with_temp_options ("entry", "temp", degree_hash, "") %>
+	<%= check_box( :entry, :inaccurate)%> My temp for this entry may be inaccurate.
+	<br />
 	<div id="fivepxspacer"></div>
 <div id="fivepxspacer"></div>
 
@@ -100,7 +102,7 @@
 	<% if current_user.current_cycle.custom3 && current_user.current_cycle.custom3.length >= 1%>
 	<label for="acne"><%= current_user.current_cycle.custom3.capitalize %></label>
 	<% else %>
-		<label for="acne">Insomnia</label>
+		<label for="acne">Trouble sleeping</label>
 	<% end %>
 	  <br />
 

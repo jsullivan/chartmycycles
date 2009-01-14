@@ -24,8 +24,17 @@
 					temp.
 					<br />
 				</span>
-				<span class="tempnumber">
-					<%= entry.temp %>&deg;
+						<span class="tempnumber">
+							<% if entry.temp == 0 %>
+							<% else %>
+					    	<% if entry.inaccurate %>
+									<del>
+								<% end%>
+							<%= entry.temp %>&deg;
+								<% if entry.inaccurate %>
+									</del>
+								<% end %>
+							<%end%>
 					<br />
 				</span>
 				<span class="more_button">
@@ -43,9 +52,17 @@
 						temp.
 						<br />
 					</span>
-					<span class="tempnumber">
-						<%= entry.temp %>&deg;
-						<br />			
+							<span class="tempnumber">
+								<% if entry.temp == 0 %>
+								<% else %>
+						    	<% if entry.inaccurate %>
+										<del>
+									<% end%>
+								<%= entry.temp %>&deg;
+									<% if entry.inaccurate %>
+										</del>
+									<% end %>
+								<%end%>
 					</span>
 					<span class="less_button">
 						<%= link_to_remote ('', :url => {:action => 'toggle_expand', :entry_id => @entry_div, :default => @default})%>
@@ -62,6 +79,9 @@
 							<%= textilize(entry.comment) %>
 						<div id="fifteenpxspacer">
 						</div>
+							<% if entry.inaccurate%>
+							<p class="bluetext">The temperatue for this entry may be inaccurate.</p><br />
+							<% end%>
 								<span class="greenlink"><%= link_to 'Edit this entry', {:controller => 'entry', :action => 'edit_entry', :id => entry, :history_id => @cycle.id} %>
 								</span> | 
 								<span class="redlink">

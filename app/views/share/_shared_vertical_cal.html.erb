@@ -24,8 +24,17 @@
 					temp.
 					<br />
 				</span>
-				<span class="tempnumber">
-					<%= entry.temp %>&deg;
+						<span class="tempnumber">
+							<% if entry.temp == 0 %>
+							<% else %>
+					    	<% if entry.inaccurate %>
+									<del>
+								<% end%>
+							<%= entry.temp %>&deg;
+								<% if entry.inaccurate %>
+									</del>
+								<% end %>
+							<%end%>
 					<br />
 				</span>
 				<span class="more_button">
@@ -43,8 +52,17 @@
 						temp.
 						<br />
 					</span>
-					<span class="tempnumber">
-						<%= entry.temp %>&deg;
+							<span class="tempnumber">
+								<% if entry.temp == 0 %>
+								<% else %>
+						    	<% if entry.inaccurate %>
+										<del>
+									<% end%>
+								<%= entry.temp %>&deg;
+									<% if entry.inaccurate %>
+										</del>
+									<% end %>
+								<%end%>
 						<br />			
 					</span>
 					<span class="less_button">
@@ -62,7 +80,9 @@
 							<%= textilize(entry.comment)%>
 						<div id="fifteenpxspacer">
 						</div>
-						
+							<% if entry.inaccurate%>
+							<p class="bluetext">The temperatue for this entry may be inaccurate.</p><br />
+							<% end%>
 						<div id="fifteenpxspacer">
 						</div>
 					</div>

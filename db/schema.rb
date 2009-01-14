@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090104232036) do
+ActiveRecord::Schema.define(:version => 20090114055235) do
 
   create_table "avatars", :force => true do |t|
     t.integer  "parent_id"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20090104232036) do
     t.string   "mucus"
     t.string   "vaginal_sensation"
     t.string   "cervix_opening"
+    t.boolean  "inaccurate"
   end
 
   create_table "forums", :force => true do |t|

@@ -27,7 +27,7 @@ def create
   entry.cycle = current_cycle
   entry.update_attributes(form)
   if params[:entry][:temp] == "--"
-     entry.temp = "96.9"
+     entry.temp = "0"
    end
   entry.save
   if entry.mucus == "fertile"
@@ -50,7 +50,7 @@ def update
    @entry = Entry.find(params[:entry_id])
     if @entry.update_attributes(params[:entry])
       if params[:entry][:temp] == "--"
-         @entry.temp = "96.9"
+         @entry.temp = "0"
        end
        chart_day = params[:chart]
        @entry.chart_date = chart_day

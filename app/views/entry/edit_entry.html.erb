@@ -16,7 +16,8 @@
 <p><label for="chart_date">Chart date </label><%= calendar_date_select_tag "chart", @entry.chart_date, :embedded => false, :year_range => 100 %></p>
 <br />
 <label for="waking_temp">Waking temperature</label>
-	<%= select_with_temp_options ("entry", "temp", degree_hash, @entry.temp) %><br />
+	<%= select_with_temp_options ("entry", "temp", degree_hash, @entry.temp) %>
+		<%= check_box( :entry, :inaccurate)%> My temp for this entry may be inaccurate.<br />
 	<div id="fivepxspacer"></div>
 
 	<label for="waking_temp">Vaginal sensation</label><br />

@@ -113,10 +113,19 @@ class HomeController < ApplicationController
     graph_array = [].fill(96.9, 0, max_entry)
     
     # Now, populate that array with the actual temp values from the entries. Correspond the temp in each
-    # entry to that day in the cycle. 
+    # entry to that day in the cycle.
     for entry in entries
+      unless entry.temp == 0
+        last_good_entry = entry.temp 
+      end
       day = (entry.chart_date.to_date - @user.current_cycle.started.to_date).to_i
-      graph_array[day] = entry.temp
+      temperature = entry.temp
+      if entry.temp == 0
+        temperature = last_good_entry
+      else 
+        temperature = entry.temp
+      end
+      graph_array[day] = temperature
     end
     
     #Create an empty area for a phase 2 area graph. Fill it with a baseline value of 96.9 for the amount

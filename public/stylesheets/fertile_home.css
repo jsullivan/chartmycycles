@@ -62,6 +62,12 @@ a:hover {
 	color: #ffffff;
 	background-color: green;
 }
+.bluetext {
+	color: #0d6fc9;
+}
+.purpletext {
+	color: #4f366c;
+}
 /* HEADER
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 #top_links {

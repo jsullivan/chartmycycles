@@ -24,10 +24,17 @@
 					<br />
 				</span>
 				<span class="tempnumber">
-					<% if entry.temp == 96.9 %>
-						<p style="color: white;">
-					<%end%>
+					<% if entry.temp == 0 %>
+					<% else %>
+			    	<% if entry.inaccurate %>
+							<del>
+						<% end%>
 					<%= entry.temp %>&deg;
+						<% if entry.inaccurate %>
+							</del>
+						<% end %>
+					<%end%>
+					
 					<br />
 				</span>
 				<span class="more_button">
@@ -46,10 +53,16 @@
 						<br />
 					</span>
 							<span class="tempnumber">
-					<% if entry.temp == 96.9 %>
-						<p style="color: white;">
-					<%end%>
-						<%= entry.temp %>&deg;
+								<% if entry.temp == 0 %>
+								<% else %>
+						    	<% if entry.inaccurate %>
+										<del>
+									<% end%>
+								<%= entry.temp %>&deg;
+									<% if entry.inaccurate %>
+										</del>
+									<% end %>
+								<%end%>
 						<br />	
 					</span>
 					<span class="less_button">
@@ -67,6 +80,9 @@
 							<%= textilize(entry.comment)%>
 						<div id="fifteenpxspacer">
 						</div>
+						<% if entry.inaccurate%>
+						<p class="bluetext">The temperatue for this entry may be inaccurate.</p><br />
+						<% end%>
 						<span class="greenlink"><%= link_to 'Edit this entry', {:controller => 'entry', :action => 'edit_entry', :id => entry} %>
 						</span> | 
 						<span class="redlink">

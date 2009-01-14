@@ -328,6 +328,17 @@ color: #000000;
 	border-bottom: thin solid #8d9bfe;
 	background: url(/images/last_step_banner.jpg);
 }
+#tour_banner {
+	position: absolute;
+	height: 146px;
+	width: 775px;
+	text-align: left;
+	margin-left: -9px;
+	line-height: 1.2em;
+	border-top: thin solid #8d9bfe;
+	border-bottom: thin solid #8d9bfe;
+	background: url(/images/tour_banner.jpg);
+}
 
 #best_plan {
 /*	background: url(/images/best_rollover.png) 0 0 no-repeat;*/

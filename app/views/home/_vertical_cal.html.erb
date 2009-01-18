@@ -27,11 +27,11 @@
 					<% if entry.temp == 0 %>
 					<% else %>
 			    	<% if entry.inaccurate %>
-							<del>
+							<del><span style="color: #79afe0;">
 						<% end%>
 					<%= entry.temp %>&deg;
 						<% if entry.inaccurate %>
-							</del>
+							</del></span>
 						<% end %>
 					<%end%>
 					
@@ -56,11 +56,11 @@
 								<% if entry.temp == 0 %>
 								<% else %>
 						    	<% if entry.inaccurate %>
-										<del>
+										<del><span style="color: #79afe0;">
 									<% end%>
 								<%= entry.temp %>&deg;
 									<% if entry.inaccurate %>
-										</del>
+										</del></span>
 									<% end %>
 								<%end%>
 						<br />	
@@ -77,7 +77,9 @@
 					<div id="tall_attributes">
 								
 						<div id="<%= @tall_attributes_div %>"> 
+							<span class="purpletext">
 							<%= textilize(entry.comment)%>
+							</span>
 						<div id="fifteenpxspacer">
 						</div>
 						<% if entry.inaccurate%>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090114055235) do
+ActiveRecord::Schema.define(:version => 20090118030143) do
 
   create_table "avatars", :force => true do |t|
     t.integer  "parent_id"
@@ -44,14 +44,16 @@ ActiveRecord::Schema.define(:version => 20090114055235) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "current",           :default => true
-    t.boolean  "shared",            :default => false
+    t.boolean  "current",               :default => true
+    t.boolean  "shared",                :default => false
     t.string   "custom1"
     t.string   "custom2"
     t.string   "custom3"
     t.string   "custom4"
     t.datetime "phase_one_end"
     t.datetime "phase_three_start"
+    t.integer  "cover_line_entry_day"
+    t.integer  "cover_line_entry_temp"
   end
 
   create_table "entries", :force => true do |t|

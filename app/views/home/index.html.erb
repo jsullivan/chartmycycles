@@ -43,6 +43,8 @@ You are probably infertile right now. <br />
 		<%= render :partial => 'fourth_entry'%>
 	<% elsif @user.cycles.count == 1 && @user.current_cycle.entries.count == 5%>
 		<%= render :partial => 'fifth_entry'%>
+		<% elsif @user.cycles.count == 1 && @user.current_cycle.entries.count == 20%>
+			<%= render :partial => 'fifth_entry'%>
 	<% end %>
 
 	<%= render :partial => 'vertical_cal'%>

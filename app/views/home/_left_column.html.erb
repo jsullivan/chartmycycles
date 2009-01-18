@@ -22,7 +22,7 @@
 
 
 <div class="innertube">
-	<span class="redlink"><%= link_to 'End this cycle', {:action => 'end_cycle', :id => @user.current_cycle}, :confirm => 'Are you sure you want to end this cycle? This will put your cycle into your history and create a new cycle.', :method => :post %></span>
+	<span class="redlink"><%= link_to '[-] End this cycle', {:action => 'end_cycle', :id => @user.current_cycle}, :confirm => 'Are you sure you want to end this cycle? This will put your cycle into your history and create a new cycle.', :method => :post %></span>
 	<br />
 	<div id="fivepxspacer"></div>	
 	<% if current_user.current_cycle.shared%>

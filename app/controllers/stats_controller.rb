@@ -133,7 +133,7 @@ class StatsController < ApplicationController
 
     g.set_y_label_steps(cycle_day_count)
     g.set_y_legend("Days this cycle", 12, '#7d5f9e')
-    tip = "#key#<br>#val# days"
+    tip = "#key#<br>#val# of #{cycle_day_count} days"
     g.set_tool_tip(tip)
     render :text => g.render
   end

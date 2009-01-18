@@ -149,9 +149,22 @@ class HomeController < ApplicationController
       if cycle.phase_three_start
         phase_two_last_entry = (cycle.phase_three_start.to_date - cycle.started.to_date).to_i
       else
-        phase_two_last_entry = max_entry
+        # If there is a cover line drawn already, check to see if there have been three consecutive temps above
+        # the cover line. if there have, declare the end of phase two (the start of phase three). If there haven't
+        # been three consecutive temps above the cover line, check to see if there have been 4 days of infertile
+        # mucus since the cover line was drawn. If yes, declare end of phase two (start of phase three). Otherwise, keep user in phase two.
+        #phase_two_last_entry = max_entry
+        if cycle.cover_line_entry_day
+          total_entries_since_cover_line = max_entry - cycle.cover_line_entry_day
+          if total_entries_since_cover_line >= 1
+            cycle.phase_three_start = Time.now - 6.days
+            cycle.save
+          end
+          phase_two_last_entry = (cycle.phase_three_start.to_date - cycle.started.to_date).to_i
+        else
+          phase_two_last_entry = (max_entry - phase_one_end_day) + 1
+        end
       end
-      phase_two_last_entry = (phase_two_last_entry - phase_one_end_day) + 1
       phase2.fill(99, phase_one_end_day, phase_two_last_entry)
        
       # Begin Cover Line logic. 
@@ -209,15 +222,19 @@ class HomeController < ApplicationController
       # End Cover Line logic.
     
     #This is my area graph for the phases
-    g.area_hollow(1,0,25,'#7f61a1', 'Phase two', 10)
-    g.set_data(phase2)
-      
+    if cycle.phase_one_end
+      g.area_hollow(1,0,25,'#7f61a1', 'Phase two', 10)
+      g.set_data(phase2)
+    end
+    
     #This is my line graph for the waking temperatures
     g.line_dot( 5, 8, '#1f76e3', 'Waking temperature', 10 )
     g.set_data(graph_array)
     
     #This is the scatter graph for inaccurate temps
-    g.scatter(b, 8, '#92a5ee', 'Possible inaccurate temp', 10)
+    if b.length >= 1
+      g.scatter(b, 2, '#1f76e3', 'Possible inaccurate temp', 10)
+    end
     
     #This is the HLC graph for the cover line
     if a

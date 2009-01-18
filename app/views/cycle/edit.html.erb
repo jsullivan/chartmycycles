@@ -25,16 +25,15 @@
 
 <p><label for="chart_date">Phase two start date </label><br /><%= calendar_date_select_tag "cycle[phase_one_end]", @cycle.phase_one_end, :embedded => false, :year_range => 100 %></p>
 <br />
-<br />
 
 <p><label for="chart_date">Phase two end date </label><br /><%= calendar_date_select_tag "cycle[phase_three_start]", @cycle.phase_three_start, :embedded => false, :year_range => 100 %></p>
 <br />
 <br />
 
 
-<%= select_with_entry_options ("cycle", "cover_line_entry_day", 0, 30, @cycle.cover_line_entry_day) %> <label>Set cover line entry day</label>
+<%= select_with_entry_options ("cycle", "cover_line_entry_day", 0, 30, @cycle.cover_line_entry_day) %> <label> Set cover line entry day</label>
 <br />
-	<%= select_with_temp_options ("cycle", "cover_line_entry_temp", degree_hash, "") %><label>Set cover line temperature</label>
+	<%= select_with_temp_options ("cycle", "cover_line_entry_temp", degree_hash, "") %><label> Set cover line temperature</label>
 <br />
 <br />
 

@@ -76,6 +76,16 @@ module ApplicationHelper
          end  
          output + "</select>"  
        end
+       
+       def select_with_entry_options (object, column, start, stop, default = nil)  
+         output = "<select id=\"#{object}_#{column}\" name=\"#{object}[#{column}]\">"  
+         for i in start..stop  
+           output << "\n<option value=\"#{i}\""  
+           output << " selected=\"selected\"" if i == default  
+           output << ">#{i}"  
+         end  
+         output + "</select>"  
+       end
   
   def nice_date(date)
       h date.strftime("%b %d, %Y")

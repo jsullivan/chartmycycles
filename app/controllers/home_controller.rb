@@ -198,8 +198,8 @@ class HomeController < ApplicationController
             6.times do
               a << Hlc.new(cover_line_temp, cover_line_temp, cover_line_temp) 
             end
-            cycle.cover_line_entry_day = max_entry
-            cycle.cover_line_entry_temp = last_good_entry
+            cycle.cover_line_entry_day = max_entry + 1
+            cycle.cover_line_entry_temp = cover_line_temp
             cycle.save            
           end          
         end

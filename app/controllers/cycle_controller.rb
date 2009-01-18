@@ -9,10 +9,16 @@ class CycleController < ApplicationController
      @user = current_user
       @cycle = current_user.current_cycle
       if @cycle.update_attributes(params[:cycle])
-        clear = params[:clear]
-        if clear == "1"
+        clear_phase_dates = params[:clear_phase_dates]
+        clear_cover_line = params[:clear_cover_line]
+        if clear_phase_dates == "1"
           @cycle.phase_one_end = nil
           @cycle.phase_three_start = nil
+          @cycle.save
+        end
+        if clear_cover_line == "1"
+          @cycle.cover_line_entry_day = nil
+          @cycle.cover_line_entry_temp = nil
           @cycle.save
         end
           redirect_to(:controller => 'home', :action => 'index')

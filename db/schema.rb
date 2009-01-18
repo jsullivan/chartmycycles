@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(:version => 20090118030143) do
     t.datetime "phase_one_end"
     t.datetime "phase_three_start"
     t.integer  "cover_line_entry_day"
-    t.integer  "cover_line_entry_temp"
+    t.float    "cover_line_entry_temp"
   end
 
   create_table "entries", :force => true do |t|

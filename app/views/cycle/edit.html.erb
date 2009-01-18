@@ -4,7 +4,7 @@
 	<div id="mystats" class="little_gray_text">
 <%= error_messages_for :entry %>
 <div id="big_blue_header">
-	Editing Entry
+	Customize this cycle
 </div>
 
 <div id="fivepxspacer"></div>
@@ -12,6 +12,11 @@
 
 <% form_for(:cycle, :url => {:controller => 'cycle', :action => 'update'}, 
                       :html => { :multipart => true }) do |f| -%>
+											<%= check_box_tag "clear_phase_dates" %> <label for="acne">Clear phase two dates</label><br />
+											<%= check_box_tag "clear_cover_line" %> <label for="acne">Clear cover line</label>
+
+											<br />
+											<br />
 <% if @user.cycles.count == 1%>
 <p><label for="chart_date">Cycle start date </label><br /><%= calendar_date_select_tag "cycle[started]", @cycle.started, :embedded => false, :year_range => 100 %></p>
 <br />
@@ -25,9 +30,14 @@
 <p><label for="chart_date">Phase two end date </label><br /><%= calendar_date_select_tag "cycle[phase_three_start]", @cycle.phase_three_start, :embedded => false, :year_range => 100 %></p>
 <br />
 <br />
-<%= check_box_tag "clear" %> <label for="acne">Clear phase two dates</label>
+
+
+<%= select_with_entry_options ("cycle", "cover_line_entry_day", 0, 30, @cycle.cover_line_entry_day) %> <label>Set cover line entry day</label>
+<br />
+	<%= select_with_temp_options ("cycle", "cover_line_entry_temp", degree_hash, "") %><label>Set cover line temperature</label>
 <br />
 <br />
+
   <br />
 	<p><label for="custom1">Change Acne to</label><br />
 	<%= f.text_field :custom1 %></p>

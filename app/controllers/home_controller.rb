@@ -4,8 +4,9 @@ class HomeController < ApplicationController
 
   def index 
     @user = current_user
+    @cycle = @user.current_cycle
     @entries = current_user.current_cycle.entries.find(:all, :order => 'chart_date ASC')
-    @graph = open_flash_chart_object("100%",300, 'home/y_right')#, true, '../' used to be here, too.
+    @graph = open_flash_chart_object("100%",300, "home/y_right/#{@cycle.id}")#, true, '../' used to be here, too.
     @fertile_toggle = false
     if @entries.length > 0
     if @entries.last.period == true
@@ -83,15 +84,15 @@ class HomeController < ApplicationController
     end
   end
 
-  #=-=-=-=-=GRAPH CODE=-=-=-=-=-=
+#=-=-=-=-=GRAPH CODE=-=-=-=-=-=
       
   def y_right
     g = Graph.new
-   # g.title( 'Fertility Cycle #1', '{color: #7E97A6; font-size: 18; text-align: center}' )
     g.set_bg_color('#e7d2fc')
-    
-    @user = current_user
-    cycle = @user.current_cycle
+    cycle = Cycle.find(params[:id])
+      @user = cycle.user
+   # @user = current_user
+  #  cycle = @user.current_cycle
     entries = cycle.entries.find(:all, :order => 'chart_date ASC')
     max_entry = (entries.last.chart_date.to_date - cycle.started.to_date).to_i
     
@@ -121,7 +122,7 @@ class HomeController < ApplicationController
       unless entry.temp == 0
         last_good_entry = entry.temp 
       end
-      day = (entry.chart_date.to_date - @user.current_cycle.started.to_date).to_i
+      day = (entry.chart_date.to_date - cycle.started.to_date).to_i
       temperature = entry.temp
       if entry.temp == 0
         temperature = last_good_entry
@@ -131,7 +132,7 @@ class HomeController < ApplicationController
         temperature = entry.temp
       end
       
-      #This is my Scatter graph for inaccurate tempss
+      #INACURRATE TEMPS SCATTER GRAPH
       if entry.inaccurate
         b << Point.new(day, entry.temp, 8)        
       end
@@ -143,31 +144,73 @@ class HomeController < ApplicationController
     phase2 = [].fill(96.9, 0, day_length)
     if cycle.phase_one_end
       phase_one_end_day = (cycle.phase_one_end.to_date - cycle.started.to_date).to_i
-      
-      # If there's a phase_three_date attribute, make the last day of phase 2 line up with it. else, make the latest
-      # entry the last day of phase 2.
+=begin
+If there's a phase_three_date attribute, make the last day of phase 2 line up with it. else, make the latest
+entry the last day of phase 2.
+=end
       if cycle.phase_three_start
-        phase_two_last_entry = (cycle.phase_three_start.to_date - cycle.started.to_date).to_i
+        phase_two_ending = (cycle.phase_three_start.to_date - cycle.started.to_date).to_i - phase_one_end_day + 1
+         # Now populate the area graph for phase 2
+        phase2.fill(99, phase_one_end_day, phase_two_ending)
       else
-        # If there is a cover line drawn already, check to see if there have been three consecutive temps above
-        # the cover line. if there have, declare the end of phase two (the start of phase three). If there haven't
-        # been three consecutive temps above the cover line, check to see if there have been 4 days of infertile
-        # mucus since the cover line was drawn. If yes, declare end of phase two (start of phase three). Otherwise, keep user in phase two.
-        #phase_two_last_entry = max_entry
+=begin 
+If there is a cover line drawn already, check to see if there have been three consecutive temps above
+the cover line. if there have, declare the end of phase two (the start of phase three). If there haven't
+been three consecutive temps above the cover line, check to see if there have been 4 days of infertile
+mucus since the cover line was drawn. If yes, declare end of phase two (start of phase three). 
+Otherwise, keep user in phase two.
+=end
         if cycle.cover_line_entry_day
-          total_entries_since_cover_line = max_entry - cycle.cover_line_entry_day
-          if total_entries_since_cover_line >= 1
-            cycle.phase_three_start = Time.now - 6.days
-            cycle.save
+          total_entries_since_cover_line = max_entry - cycle.cover_line_entry_day + 1
+=begin      
+Check to see if there are 3 or more entries since cover line
+=end
+          if total_entries_since_cover_line >= 3
+            cover_line_temp = cycle.cover_line_entry_temp
+            entry_day_temp_check = cycle.cover_line_entry_day - 1
+=begin    
+Loop through the same amount of times as there are entries since cover line entry day.
+Check to see if there are three consecutive temps above the cover line. Here's how it works.
+I create an empty hash. Each new entry is checked to see if its temp is above the cover line.
+            
+If it is, add the chart_date to the temp_check hash. Then, check the temp_check hash length.
+If the length = 2 (three entries, 0,1,2) then populate the end_phase_two variable with the value of 
+the third string in the hash, which is the chart_date of that last temp. That chart_date is what 
+triggers the end of phase 2.
+=end
+            temp_check = []
+            total_entries_since_cover_line.times do
+              if entries[entry_day_temp_check].temp - cover_line_temp >= 0.2
+                temp_check << entries[entry_day_temp_check].chart_date
+                if temp_check.length == 3
+                  cycle.phase_three_start = temp_check[2].to_date
+                  cycle.save
+                end 
+              else
+                temp_check.clear
+              end
+                entry_day_temp_check = entry_day_temp_check + 1
+            end
+=begin
+Now check to see if there are three consecutive entries in the temp_check hash. if so, make 
+the phase_two_last_entry the entry day number that will end phase two. otherwise, make the
+phase_two_last_entry the entry day of the most recent entry (max_entry).
+=end
           end
-          phase_two_last_entry = (cycle.phase_three_start.to_date - cycle.started.to_date).to_i
         else
-          phase_two_last_entry = (max_entry - phase_one_end_day) + 1
+          phase_two_end_day = (max_entry - phase_one_end_day) + 1
         end
+        if cycle.phase_three_start
+          phase_two_end_day = (cycle.phase_three_start.to_date - cycle.started.to_date).to_i - phase_one_end_day + 1
+          
+        else
+          phase_two_end_day = (max_entry - phase_one_end_day) + 1
+        end  
+        phase2.fill(99, phase_one_end_day, phase_two_end_day)
+        
       end
-      phase2.fill(99, phase_one_end_day, phase_two_last_entry)
-       
-      # Begin Cover Line logic. 
+             
+      # COVER LINE HLC GRAPH 
       
       # Make sure there are six days of entries from the beginning of phase two in
       # order to do cover line logic. User has to be into phase two before this can take place.

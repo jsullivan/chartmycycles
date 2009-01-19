@@ -12,7 +12,7 @@ You don't have any archived cycles yet.
 <%= cycle.entries.count %> entries<br />
 <% if cycle.shared%>
 This cycle is shared. Friends can see this cycle
-at <%= link_to "www.chartmycycles.com/cycle/share/#{cycle.id}", "http://chartmycycles.com/share/cycle/#{cycle.id}"%>.<br />
+at <%= link_to "www.chartmycycles.com/share/cycle/#{cycle.id}", "http://chartmycycles.com/share/cycle/#{cycle.id}"%>.<br />
 <% end %>
 <%= link_to 'View Details', :action => 'details', :id => cycle.id %> | 
 <% if cycle.shared%>

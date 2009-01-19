@@ -5,7 +5,7 @@ def cycle
   @user = @cycle.user
   @entries = @cycle.entries.find(:all, :order => 'chart_date ASC')
   if @cycle.shared
-    @graph = open_flash_chart_object("100%",300, "/share/y_right2/#{@cycle.id}")#, true, '../' used to be here, too.
+    @graph = open_flash_chart_object("100%",300, "/home/y_right/#{@cycle.id}")#, true, '../' used to be here, too.
   else
     redirect_to :controller => 'home', :action => 'index'
   end

@@ -13,7 +13,7 @@ class HistoryController < ApplicationController
   def details
     @cycle = Cycle.find(params[:id])
     @user = current_user
-    @graph = open_flash_chart_object("100%",300, "/history/y_right2/#{@cycle.id}")#, true, '../' used to be here, too.
+    @graph = open_flash_chart_object("100%",300, "/home/y_right/#{@cycle.id}")#, true, '../' used to be here, too.
     @entries = @cycle.entries.find(:all, :order => 'chart_date ASC')
   end
 

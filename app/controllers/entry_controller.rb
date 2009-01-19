@@ -47,7 +47,6 @@ def edit_entry
 end
 
 def update
-  current_cycle = Cycle.find(current_user.current_cycle)
    @entry = Entry.find(params[:entry_id])
     if @entry.update_attributes(params[:entry])
       if params[:entry][:temp] == "--"
@@ -58,7 +57,7 @@ def update
        @entry.save
        if @entry.mucus == "fertile"
           unless @entry.cycle.phase_one_end
-            current_cycle.phase_one_end = chart_day
+            @entry.cycle.phase_one_end = chart_day
             @entry.cycle.save
           end
         end

@@ -11,7 +11,7 @@
 				<br />
 			</span>
 			<span class="daynumber">
-				<%= (entry.chart_date.to_date - @user.current_cycle.started.to_date + 1).to_i %>
+				<%= (entry.chart_date.to_date - entry.cycle.started.to_date + 1).to_i %>
 			</span>
 			<br />
 			<span class="daydetails">

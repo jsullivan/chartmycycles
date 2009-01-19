@@ -79,6 +79,7 @@ module ApplicationHelper
        
        def select_with_entry_options (object, column, start, stop, default = nil)  
          output = "<select id=\"#{object}_#{column}\" name=\"#{object}[#{column}]\">"  
+         output << "\n<option value=\"\""
          for i in start..stop  
            output << "\n<option value=\"#{i}\""  
            output << " selected=\"selected\"" if i == default  

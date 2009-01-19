@@ -55,6 +55,20 @@
 		</div>
 <%= @graph%>
 
+	<% if @fertile_toggle == 1 %>
+		<div id="fertile_toggle_red">
+			<%= @user.name %> is probably fertile right now. <br />
+		</div>
+	<% elsif @fertile_toggle == 0 %>
+		<div id="fertile_toggle_purple">
+			<%= @user.name %> is probably infertile right now. <br />
+		</div>
+	<% elsif @fertile_toggle == 2 %>
+		<div id="fertile_toggle_orange">
+			<%= @user.name %> may be fertile right now. <br />
+		</div>
+	<% end %>
+
 	<%= render :partial => 'shared_vertical_cal'%>
 	<br />
 	<br />

@@ -1,7 +1,7 @@
 /* GENERAL
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 html {
-	background: #808080;
+	background: #303030;
 }
 
 body {
@@ -486,8 +486,6 @@ border-style: none;
 	font-size: 1.5em;
 	-moz-border-radius: 0px 0px 0px 10px;
 	-webkit-border-bottom-left-radius: 10px;
-	
-	
 }
 #fertile_toggle_red {
 	background: #ff3838;
@@ -499,7 +497,17 @@ border-style: none;
 	font-size: 1.5em;
 	-moz-border-radius: 0px 0px 0px 10px;
 	-webkit-border-bottom-left-radius: 10px;
-	
+}
+#fertile_toggle_orange {
+	background: #e8a631;
+	font-weight: bold;
+	padding: 5px;
+	margin: 0px 0px 0px 0px;
+	color: #ffffff;
+	text-align: center;
+	font-size: 1.5em;
+	-moz-border-radius: 0px 0px 0px 10px;
+	-webkit-border-bottom-left-radius: 10px;
 }
 /* VERTICAL CAL TEXT DIVS 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
@@ -541,7 +549,7 @@ border-style: none;
 }
 
 #unsure{
-	background: repeat-y #ffbd4b;
+	background: repeat-y #e8a631;
 	height: 48px;
 	font-size: .8em;
   padding-left: 3px;
@@ -553,7 +561,7 @@ border-style: none;
 	-webkit-border-radius: 5px;
 	border-width: 2px;
 	border-style: solid;
-	border-color: #dfa542;
+	border-color: #ca8e24;
 	-webkit-box-shadow: 2px 2px 2px #333;
  
 }
@@ -591,7 +599,7 @@ border-style: none;
 }
 
 #unsure_small{
-	background: repeat-y #ffbd4b;
+	background: repeat-y #e8a631;
 	font-size: .8em;
   padding-left: 3px;
 	margin-right: 3px;
@@ -601,7 +609,7 @@ border-style: none;
 	-webkit-border-radius: 2px;
 	border-width: 0px 2px 0px 2px;
 	border-style: solid;
-	border-color: #dfa542;
+	border-color: #ca8e24;
 	-webkit-box-shadow: 2px 2px 2px #333;
 	
 }

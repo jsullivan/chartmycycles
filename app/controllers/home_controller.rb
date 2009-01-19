@@ -5,21 +5,26 @@ class HomeController < ApplicationController
   def index 
     @user = current_user
     @cycle = @user.current_cycle
-    @entries = current_user.current_cycle.entries.find(:all, :order => 'chart_date ASC')
+    @entries = @cycle.entries.find(:all, :order => 'chart_date ASC')
     @graph = open_flash_chart_object("100%",300, "home/y_right/#{@cycle.id}")#, true, '../' used to be here, too.
-    @fertile_toggle = false
+    @fertile_toggle = 0
     if @entries.length > 0
-    if @entries.last.period == true
-      @fertile_toggle = true
+      if @entries.last.period == true
+        @fertile_toggle = 1
+      end
+      if @entries.last.mucus == "fertile" or @entries.last.mucus == "unsure"
+        @fertile_toggle = 1
+      end 
+      if @entries.last.vaginal_sensation == "wet" or @entries.last.vaginal_sensation == "other"
+        @fertile_toggle = 1
+      end
+     if @cycle.phase_three_start
+       @fertile_toggle = 0
+       if @entries.last.mucus == "fertile" or @entries.last.mucus == "unsure"
+         @fertile_toggle = 2
+       end
+     end
     end
-    if @entries.last.mucus == "fertile" or @entries.last.mucus == "unsure"
-      @fertile_toggle = true
-    end 
-    if @entries.last.vaginal_sensation == "wet" or @entries.last.vaginal_sensation == "other"
-      @fertile_toggle = true
-    end
-  end
-    
   end
  
   def edit
@@ -139,6 +144,7 @@ class HomeController < ApplicationController
       graph_array[day] = temperature
     end
     
+    #PHASE II LOGIC AND AREA GRAPH
     # Create an empty area for a phase 2 area graph. Fill it with a baseline value of 96.9 for the amount
     # of days in the cycle.
     phase2 = [].fill(96.9, 0, day_length)
@@ -168,6 +174,8 @@ Check to see if there are 3 or more entries since cover line
           if total_entries_since_cover_line >= 3
             cover_line_temp = cycle.cover_line_entry_temp
             entry_day_temp_check = cycle.cover_line_entry_day - 1
+            entry_day_mucus_check = cycle.cover_line_entry_day - 1
+            
 =begin    
 Loop through the same amount of times as there are entries since cover line entry day.
 Check to see if there are three consecutive temps above the cover line. Here's how it works.
@@ -189,7 +197,22 @@ triggers the end of phase 2.
               else
                 temp_check.clear
               end
-                entry_day_temp_check = entry_day_temp_check + 1
+              entry_day_temp_check = entry_day_temp_check + 1
+            end
+            if !cycle.phase_three_start
+              infertile_mucus_check = []
+              entry_day_mucus_check = cycle.cover_line_entry_day - 1
+              total_entries_since_cover_line.times do
+                if entries[entry_day_mucus_check].mucus == "dry"
+                  infertile_mucus_check << entries[entry_day_mucus_check].chart_date
+                  if infertile_mucus_check.length == 4
+                    cycle.phase_three_start = infertile_mucus_check[3].to_date
+                    cycle.save
+                  end
+                end
+                entry_day_mucus_check = entry_day_mucus_check + 1
+                            
+              end
             end
 =begin
 Now check to see if there are three consecutive entries in the temp_check hash. if so, make 
@@ -201,13 +224,11 @@ phase_two_last_entry the entry day of the most recent entry (max_entry).
           phase_two_end_day = (max_entry - phase_one_end_day) + 1
         end
         if cycle.phase_three_start
-          phase_two_end_day = (cycle.phase_three_start.to_date - cycle.started.to_date).to_i - phase_one_end_day + 1
-          
+          phase_two_end_day = (cycle.phase_three_start.to_date - cycle.started.to_date).to_i - phase_one_end_day + 1   
         else
           phase_two_end_day = (max_entry - phase_one_end_day) + 1
         end  
         phase2.fill(99, phase_one_end_day, phase_two_end_day)
-        
       end
              
       # COVER LINE HLC GRAPH 
@@ -240,8 +261,6 @@ phase_two_last_entry the entry day of the most recent entry (max_entry).
           end
           cover_line_check = cover_line_check + 1
         end
-        
- 
         
           hlc_offset = entries.length - 7 
           # Create empty hash for cover line graph coordinates

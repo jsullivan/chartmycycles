@@ -19,17 +19,23 @@
 	<% end %>
 </div>
 </div>
+
 	<% if @user.current_cycle.entries.count > 0 %>
-<% if @fertile_toggle == true %>
-<div id="fertile_toggle_red">
-	You are probably fertile right now. <br />
-</div>
-<% else %>
-<div id="fertile_toggle_purple">
-You are probably infertile right now. <br />
-</div>
-<% end %>
-<% end %>
+		<% if @fertile_toggle == 1 %>
+			<div id="fertile_toggle_red">
+				You are probably fertile right now. <br />
+			</div>
+		<% elsif @fertile_toggle == 0 %>
+			<div id="fertile_toggle_purple">
+				You are probably infertile right now. <br />
+			</div>
+		<% elsif @fertile_toggle == 2 %>
+			<div id="fertile_toggle_orange">
+				You may be fertile right now. <br />
+			</div>
+		<% end %>
+	<% end %>
+	
 <div id="new_entry_form" style="display: none;">
  <%= render :partial => 'new_entry'%>
 </div>

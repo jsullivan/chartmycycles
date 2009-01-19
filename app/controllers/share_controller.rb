@@ -6,6 +6,24 @@ def cycle
   @user = @cycle.user
   @entries = @cycle.entries.find(:all, :order => 'chart_date ASC')
   @graph = open_flash_chart_object("100%",300, "/share/y_right/#{@cycle.id}")#, true, '../' used to be here, too.
+  @fertile_toggle = 0
+  if @entries.length > 0
+    if @entries.last.period == true
+      @fertile_toggle = 1
+    end
+    if @entries.last.mucus == "fertile" or @entries.last.mucus == "unsure"
+      @fertile_toggle = 1
+    end 
+    if @entries.last.vaginal_sensation == "wet" or @entries.last.vaginal_sensation == "other"
+      @fertile_toggle = 1
+    end
+   if @cycle.phase_three_start
+     @fertile_toggle = 0
+     if @entries.last.mucus == "fertile" or @entries.last.mucus == "unsure"
+       @fertile_toggle = 2
+     end
+   end
+  end
   else
     redirect_to :controller => 'home', :action => 'index'
   end

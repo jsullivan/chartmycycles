@@ -1,48 +1,43 @@
 <div id="contentwrapper">
 <div id="contentcolumn">
-	<div id="forum_container">
+	<div id="purple_pointers">
 		<h1><%= @forum.topic %>.</h1>
 		<%= @forum.description%><br />
 		<%= link_to 'Back', :controller => 'forums'%>
+	</div>
+		<div id="mystats" class="little_gray_text" style="min-height: 570px;">
+		
 		<div id="create_new_post">
 			<span class="create_new_post">
 				<%= link_to_remote ('', :url => {:action => 'new_post_form', :forum_id => @forum.id}) %>
 		  </span>
 		</div>
+		
 		<br />
+		
 		<div id="new_post" style="display:none;">
 			<%= render :partial => 'new_post'%>
 		</div>
+		<div id="fivepxspacer" style="margin-top: 30px;"></div>
 		<% if @posts.length >= 1 %>	
-					<table width="100%" >
-						<tr>
 							<% for post in @posts %>
 
-					<td align="center" valign="middle" id="forum_topics">
 							<% if post.user.avatar %>	
 							<%= image_tag(post.user.avatar.public_filename(:thumb)) %>	
 							<% else %>	
 							<img src="/images/blankavatar_thumb.jpg">
 							<% end %>
-							</td>
-							<td width="60%" valign="middle" id="forum_topics">
 						<%= link_to post.title, :action => 'details', :id => post %> <br />
 						by <b><%= post.user.full_name %></b>, posted <%= time_ago_in_words(post.created_at) %> ago.
 						
-						</td>
 
-						<td align="center" id="topic_read">
-							<%= post.comments.count%> comments
-							</td>
-								<td align="center" id="topic_read">
+							<%= post.comments.count%> comments<br />
 									<% if post.comments.count >= 1%>
 									Last comment <%= time_ago_in_words(post.comments.find(:last).created_at) %> ago<br />
 									by <%= post.comments.find(:last).user.full_name %>
+									<br />
 									<% end%>
-									</td>
-							</tr>
 									<% end %>
-					</table>
 				
 				
 		<% else %>

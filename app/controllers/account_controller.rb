@@ -75,12 +75,12 @@ class AccountController < ApplicationController
       :billing_address => {
         :first_name     => params[:first_name],
         :last_name      => params[:last_name],
-        :address1 => '20178 Lora Lane',
-        :city     => 'Bend',
-        :state    => 'OR',
+        :address1 =>  params[:billing_address][:address],
+        :city     => params[:billing_address][:city],
+        :state    => params[:billing_address][:state],
         :country  => 'USA',
-        :zip      => '97702',
-        :phone    => '541-504-6929',
+        :zip      => params[:billing_address][:zip],
+        :phone    => params[:billing_address][:phone],
         :email => params[:user][:email]
       },
       :interval   => {
@@ -127,7 +127,13 @@ class AccountController < ApplicationController
     c.save
     redirect_back_or_default(:controller => '/home', :action => 'index')
     flash[:notice] = "Thanks for signing up!"
-    Postoffice.deliver_welcome(@user.email)
+    
+    email = {
+      :email => @user.email,
+      :authorization => @user.subscription.authorization,
+      :creditcard => params[:credit_card_number].slice(12, 16)
+    }
+    Postoffice.deliver_welcome(email, options)
   rescue ActiveRecord::RecordInvalid
     render :action => 'signup'
   end

@@ -130,10 +130,21 @@ class AccountController < ApplicationController
     
     email = {
       :email => @user.email,
-      :authorization => @user.subscription.authorization,
+      :authorization => @user.subscription_info.authorization,
       :creditcard => params[:credit_card_number].slice(12, 16)
     }
-    Postoffice.deliver_welcome(email, options)
+    extras = {
+       :first_name     => params[:first_name],
+        :last_name      => params[:last_name],
+        :address1 =>  params[:billing_address][:address],
+        :city     => params[:billing_address][:city],
+        :state    => params[:billing_address][:state],
+        :country  => 'USA',
+        :zip      => params[:billing_address][:zip],
+        :phone    => params[:billing_address][:phone],
+        :email => params[:user][:email]
+    }
+    Postoffice.deliver_welcome(email, extras)
   rescue ActiveRecord::RecordInvalid
     render :action => 'signup'
   end

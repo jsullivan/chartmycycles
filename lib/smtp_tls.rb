@@ -9,7 +9,7 @@ Net::SMTP.class_eval do
     # See this for why: 
     # http://blog.inspired.no/smtp-error-while-using-gmail-in-rails-271
     #    check_auth_args user, secret, authtype if user or secret
-    check_auth_args user, secret, authtype if user or secret
+    check_auth_args user, secret
     
     sock = timeout(@open_timeout) { TCPSocket.open(@address, @port) }
     @socket = Net::InternetMessageIO.new(sock)

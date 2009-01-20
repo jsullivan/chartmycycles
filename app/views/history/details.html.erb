@@ -15,7 +15,7 @@
 					<%= @user.full_name %>'s cycle<br />
 					<h1><%= nice_date(@cycle.started) %> to <%= nice_date(@cycle.ended) %>.</h1>
 					<br />
-					You have charted <%= @user.cycles.count%> 
+					You have completed <%= @user.cycles.find(:all, :conditions => 'current = 0').length %> 
 					cycles.
 					<br />
 				

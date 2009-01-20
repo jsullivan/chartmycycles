@@ -1,5 +1,6 @@
+<div id="pointers">
 <h1>Stats</h1>
-<%= image_tag 'triangle_bullet.png' %><b>This cycle</b> started 
+<b>This cycle</b> started 
 
 <% if @user.current_cycle.started.to_date == Time.now.to_date %>
 today.
@@ -7,8 +8,13 @@ today.
 
 <%= nice_date (@user.current_cycle.started) %> (<%= time_ago_in_words(@user.cycle_start_date)%> ago).
 <% end %>
+</div>
+<div id="mystats" class="little_gray_text">
+
 <%= @graph%>
 <br />
+</div>
+<div id="mystats" class="little_gray_text">
 
 <table width="100%">
 	<tr>
@@ -32,3 +38,4 @@ today.
 
 	</tr>
 </table>	
+</div>

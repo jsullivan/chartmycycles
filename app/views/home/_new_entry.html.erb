@@ -17,10 +17,6 @@
 	<div id="fivepxspacer"></div>
 <div id="fivepxspacer"></div>
 
-<label for="waking_temp">Vaginal sensation</label><br />
-	<%= select_with_sensation_options ("entry", "vaginal_sensation", sensation_hash, "") %><br />
-	<div id="fivepxspacer"></div>
-<div id="fivepxspacer"></div>
 
 <label for="waking_temp">Mucus</label> <%= link_to_remote ('Help me decide about my mucus!', :after => "Element.toggle('mucus_explained')")%><br />
 	<%= select_with_mucus_options ("entry", "mucus", mucus_hash, "") %><br />
@@ -64,10 +60,16 @@
 		  practice, so keep practicing.
 		<br />
 		<br />
+			<%= link_to_remote ('Close', :after => "Element.toggle('mucus_explained')")%>
+		</div>
+			<div id="fivepxspacer"></div>
+		<div id="fivepxspacer"></div>
+		<label for="waking_temp">Vaginal sensation</label><br />
+			<%= select_with_sensation_options ("entry", "vaginal_sensation", sensation_hash, "") %><br />
+			<div id="fivepxspacer"></div>
+		<div id="fivepxspacer"></div>
 		
-		
-		<%= link_to_remote ('Close', :after => "Element.toggle('mucus_explained')")%>
-	</div>
+	
 	
 	<div id="fivepxspacer"></div>
 <div id="fivepxspacer"></div>

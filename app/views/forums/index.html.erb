@@ -1,18 +1,24 @@
 <div id="contentwrapper">
 <div id="contentcolumn">
-	<div id="forum_container" class="little_gray_text">
-		<h1>Forums <%= image_tag 'black_beta.png' %> </h1>
+	<div id="purple_pointers">
+		<h1>Forums <%= image_tag 'beta.png' %> </h1>
 		We realize sometimes you've got to get a little help from your friends. That's why we've taken the time to create custom, integrated forums. Take a few minutes to meet other women who took control of their fertility. Ask questions, help others, and build your community.<br />
+		</div>
+		
+		<div id="mystats" class="little_gray_text" style="min-height: 570px;">
+		
 		<div id="fifteenpxspacer"></div>
 
 		<% for forum in @forums %>
 			<td width="60%">
+				<div id="forum_title">
 		<h1><%= link_to forum.topic, :action => 'topic', :id => forum %></h1>
-		<%= forum.posts.count%> posts<br />
+		<%= forum.posts.count%> posts, 
 		<% if forum.posts.count >= 1%>
-		Last post <%= time_ago_in_words(forum.posts.find(:last).created_at) %> ago
+		last post <%= time_ago_in_words(forum.posts.find(:last).created_at) %> ago
 		<% end%>
-		<br /><br />
+		</div>
+		<br />
 						<% end %>
 
 </div>

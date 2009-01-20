@@ -79,25 +79,25 @@ class StatsController < ApplicationController
       bar4_key = "Bloating"
     end
     
-        bar1 = BarGlass.new(60, '#D54C78', '#C31812')
+        bar1 = BarGlass.new(90, '#D54C78', '#C31812')
     bar1.key(bar1_key, 10)
 
-    bar2 = BarGlass.new(60, '#5E83BF', '#424581')
+    bar2 = BarGlass.new(90, '#5E83BF', '#424581')
     bar2.key(bar2_key, 10)
     
-    bar3 = BarGlass.new(60, '#63d54c', '#424581')
+    bar3 = BarGlass.new(90, '#63d54c', '#424581')
     bar3.key('Period', 10)
     
-    bar4 = BarGlass.new(60, '#d5ad4c', '#424581')
+    bar4 = BarGlass.new(90, '#d5ad4c', '#424581')
     bar4.key('Sex', 10)
     
-    bar5 = BarGlass.new(60, '#d04cd5', '#424581')
+    bar5 = BarGlass.new(90, '#d04cd5', '#424581')
     bar5.key('Moodiness', 10)
 
-    bar6 = BarGlass.new(60, '#4cd5d3', '#424581')
+    bar6 = BarGlass.new(90, '#4cd5d3', '#424581')
     bar6.key(bar3_key, 10)
 
-    bar7 = BarGlass.new(60, '#d5794c', '#424581')
+    bar7 = BarGlass.new(90, '#d5794c', '#424581')
     bar7.key(bar4_key, 10)
 
     1.times do |t|
@@ -166,7 +166,7 @@ class StatsController < ApplicationController
     g.set_bg_color('#e7d2fc')  
     g.pie(90, '#505050', '{font-size: 12px; color: #404040;}')
     g.pie_values(data, %w(Fertile Infertile Unsure Empty))
-    g.pie_slice_colors(%w(#ffffff #cc9bff #9c76c3 #48375a))
+    g.pie_slice_colors(%w(#ffffff #cc9bff #1ebe1a #0d6fc9))
     g.set_tool_tip("#val# of #{these_entries.count} entries")
     g.title("Mucus", '{font-size:18px; color: #d01f3c}' )
     render :text => g.render
@@ -200,7 +200,7 @@ class StatsController < ApplicationController
     g.set_bg_color('#e7d2fc')  
     g.pie(90, '#505050', '{font-size: 12px; color: #404040;}')
     g.pie_values(data, %w(Wet Dry Other Empty))
-    g.pie_slice_colors(%w(#ffffff #cc9bff #9c76c3 #48375a))
+    g.pie_slice_colors(%w(#ffffff #cc9bff #1ebe1a #0d6fc9))
     g.set_tool_tip("#val# of #{these_entries.count} entries")
     g.title("Sensation", '{font-size:18px; color: #d01f3c}' )
     render :text => g.render
@@ -234,7 +234,7 @@ class StatsController < ApplicationController
      g.set_bg_color('#e7d2fc')  
      g.pie(90, '#505050', '{font-size: 12px; color: #404040;}')
      g.pie_values(data, %w(Firm Medium Soft Empty))
-     g.pie_slice_colors(%w(#ffffff #cc9bff #9c76c3 #48375a))
+     g.pie_slice_colors(%w(#ffffff #cc9bff #1ebe1a #0d6fc9))
      g.set_tool_tip("#val# of #{these_entries.count} entries")
      g.title("Cervical firmness", '{font-size:18px; color: #d01f3c}' )
      render :text => g.render
@@ -268,7 +268,7 @@ class StatsController < ApplicationController
        g.set_bg_color('#e7d2fc')  
        g.pie(90, '#505050', '{font-size: 12px; color: #404040;}')
        g.pie_values(data, %w(High Medium Low Empty))
-       g.pie_slice_colors(%w(#ffffff #cc9bff #9c76c3 #48375a))
+       g.pie_slice_colors(%w(#ffffff #cc9bff #1ebe1a #0d6fc9))
        g.set_tool_tip("#val# of #{these_entries.count} entries")
        g.title("Cervical position", '{font-size:18px; color: #d01f3c}' )
        render :text => g.render
@@ -302,7 +302,7 @@ class StatsController < ApplicationController
          g.set_bg_color('#e7d2fc')  
          g.pie(90, '#505050', '{font-size: 12px; color: #404040;}')
          g.pie_values(data, %w(Closed Partly_Open Open Empty))
-         g.pie_slice_colors(%w(#ffffff #cc9bff #9c76c3 #48375a))
+         g.pie_slice_colors(%w(#ffffff #cc9bff #1ebe1a #0d6fc9))
          g.set_tool_tip("#val# of #{these_entries.count} entries")
          g.title("Cervical opening", '{font-size:18px; color: #d01f3c}' )
          render :text => g.render

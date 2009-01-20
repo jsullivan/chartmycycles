@@ -77,7 +77,7 @@ class User < ActiveRecord::Base
     if self.motto && self.motto.length > 1
       return self.motto
     else
-      return "You don't have a motto yet. Click edit to create a new one."
+      return "You haven't set your status. Click edit to create a new one."
     end
   end
 

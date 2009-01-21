@@ -15,9 +15,20 @@
 			</div>
 			<%= @user.display_motto %> 
 			<br />
-	
-			<div id="fifteenpxspacer">
-			</div>
+				<div id="fifteenpxspacer">
+				</div>
+				
+				<div id="blue_header">
+					Your forum stats
+				</div>
+			<%= current_user.posts.count %> posts  <br />
+
+						<%= current_user.comments.count %> comments  
+
+					<br />
+							<div id="fifteenpxspacer">
+							</div>
+		
 				<div id="blue_header">
 					Profile 
 				</div>

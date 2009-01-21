@@ -13,6 +13,8 @@
 <body>
 	<div id="maincontainer">
 	<div id="topsection">
+		<![if !IE]>
+		
 	<div class="innertube">
 	<div id="logo">
 	</div>
@@ -37,6 +39,7 @@
 </div>
 
 		</div>
-	
+		<![endif]>
+<%= render :partial => '/layouts/ie' %>
 </body>
 </html>

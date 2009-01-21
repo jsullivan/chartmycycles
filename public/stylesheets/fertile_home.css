@@ -58,6 +58,10 @@ a:hover {
 	color: green;
 	font-weight: bold;
 }
+.whitelink a {
+	color: white;
+	font-weight: bold;
+}
 .greenlink a:hover {
 	color: #ffffff;
 	background-color: green;
@@ -326,19 +330,19 @@ margin-right: 10px;}
 	background: none;
 }
 #white {
-	background: #ffffff;
+	background: #d3bbea;
 	height: 48px;
 	font-size: .8em;
   padding-left: 3px;
 	padding-top: 2px;
 	margin-right: 3px;
 	font-weight: bold;
-	color: #C8C8C8;	
+	color: #ffffff;	
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-width: 2px;
 	border-style: solid;
-	border-color: #ffffff;
+	border-color: #b097c9;
 }
 
 #blankies {
@@ -617,7 +621,7 @@ border-style: none;
 	
 }
 #white_small {
-	background: #ffffff;
+	background: #d3bbea;
 	font-size: .8em;
   padding-left: 3px;
 	margin-right: 3px;

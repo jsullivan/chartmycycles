@@ -154,7 +154,7 @@ class HomeController < ApplicationController
 If there's a phase_three_date attribute, make the last day of phase 2 line up with it. else, make the latest
 entry the last day of phase 2.
 =end
-      if cycle.phase_three_start
+      if cycle.phase_three_start?
         phase_two_ending = (cycle.phase_three_start.to_date - cycle.started.to_date).to_i - phase_one_end_day + 1
          # Now populate the area graph for phase 2
         phase2.fill(99, phase_one_end_day, phase_two_ending)
@@ -166,7 +166,7 @@ been three consecutive temps above the cover line, check to see if there have be
 mucus since the cover line was drawn. If yes, declare end of phase two (start of phase three). 
 Otherwise, keep user in phase two.
 =end
-        if cycle.cover_line_entry_day
+        if cycle.cover_line_entry_day?
           total_entries_since_cover_line = max_entry - cycle.cover_line_entry_day + 1
 =begin      
 Check to see if there are 3 or more entries since cover line
@@ -199,7 +199,7 @@ triggers the end of phase 2.
               end
               entry_day_temp_check = entry_day_temp_check + 1
             end
-            if !cycle.phase_three_start
+            if !cycle.phase_three_start?
               infertile_mucus_check = []
               entry_day_mucus_check = cycle.cover_line_entry_day - 1
               total_entries_since_cover_line.times do

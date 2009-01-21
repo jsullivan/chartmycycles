@@ -149,7 +149,7 @@ class StatsController < ApplicationController
     for entry in these_entries
       if entry.mucus && entry.mucus == 'fertile'
         fertile = fertile + 1
-      elsif entry.mucus && entry.mucus == 'infertile'
+      elsif entry.mucus && entry.mucus == 'dry'
         infertile = infertile + 1
       elsif entry.mucus && entry.mucus == 'unsure'
         unsure = unsure + 1
@@ -168,7 +168,7 @@ class StatsController < ApplicationController
     g.pie_values(data, %w(Fertile Infertile Unsure Empty))
     g.pie_slice_colors(%w(#ffffff #cc9bff #1ebe1a #0d6fc9))
     g.set_tool_tip("#val# of #{these_entries.count} entries")
-    g.title("Mucus", '{font-size:18px; color: #d01f3c}' )
+    g.title("Mucus", '{font-size:18px; color: #0a5294}' )
     render :text => g.render
   end
   
@@ -202,7 +202,7 @@ class StatsController < ApplicationController
     g.pie_values(data, %w(Wet Dry Other Empty))
     g.pie_slice_colors(%w(#ffffff #cc9bff #1ebe1a #0d6fc9))
     g.set_tool_tip("#val# of #{these_entries.count} entries")
-    g.title("Sensation", '{font-size:18px; color: #d01f3c}' )
+    g.title("Sensation", '{font-size:18px; color: #0a5294}' )
     render :text => g.render
   end
   
@@ -236,7 +236,7 @@ class StatsController < ApplicationController
      g.pie_values(data, %w(Firm Medium Soft Empty))
      g.pie_slice_colors(%w(#ffffff #cc9bff #1ebe1a #0d6fc9))
      g.set_tool_tip("#val# of #{these_entries.count} entries")
-     g.title("Cervical firmness", '{font-size:18px; color: #d01f3c}' )
+     g.title("Cervical firmness", '{font-size:18px; color: #0a5294}' )
      render :text => g.render
    end
   
@@ -270,7 +270,7 @@ class StatsController < ApplicationController
        g.pie_values(data, %w(High Medium Low Empty))
        g.pie_slice_colors(%w(#ffffff #cc9bff #1ebe1a #0d6fc9))
        g.set_tool_tip("#val# of #{these_entries.count} entries")
-       g.title("Cervical position", '{font-size:18px; color: #d01f3c}' )
+       g.title("Cervical position", '{font-size:18px; color: #0a5294}' )
        render :text => g.render
      end
      
@@ -304,7 +304,7 @@ class StatsController < ApplicationController
          g.pie_values(data, %w(Closed Partly_Open Open Empty))
          g.pie_slice_colors(%w(#ffffff #cc9bff #1ebe1a #0d6fc9))
          g.set_tool_tip("#val# of #{these_entries.count} entries")
-         g.title("Cervical opening", '{font-size:18px; color: #d01f3c}' )
+         g.title("Cervical opening", '{font-size:18px; color: #0a5294}' )
          render :text => g.render
        end
   

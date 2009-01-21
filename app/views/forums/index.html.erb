@@ -2,12 +2,54 @@
 <div id="contentcolumn">
 	<div id="purple_pointers">
 		<h1>Forums <%= image_tag 'beta.png' %> </h1>
-		We realize sometimes you've got to get a little help from your friends. That's why we've taken the time to create custom, integrated forums. Take a few minutes to meet other women who took control of their fertility. Ask questions, help others, and build your community.<br />
+		We realize that sometimes you've got to get a little help from your friends. That's why we've taken the time to create custom, integrated forums. Take a few minutes to meet other women who took control of their fertility. Ask questions, help others, and build your community.<br />
 		</div>
 		
 		<div id="mystats" class="little_gray_text" style="min-height: 570px;">
 		
 		<div id="fifteenpxspacer"></div>
+<% if current_user.posts.count < 1 %>
+<div id="forum_title">
+	<h1>Introduce yourself!</h1>
+	By now we all know what forums are about. We know that there's value in connecting with other people over common bonds. If you're like us, it can take a while to warm up enough to actually participate.
+	<br />
+	<br />
+	That's why we're making a change. We want you to participate, starting now. After all, we're trying to build a 
+	community. We can't build one if all of us are sitting on the sidelines. 
+	<br /><br />
+	So, we are going to ask you to make an inaugural post before you jump into the forums. Go ahead, tell us
+	about yourself. Even if it's short, just give us a little intro. 
+	<br /><br />
+	We wouldn't ask you to do anything if we weren't willing to do it ourselves. Click on the link below to see 
+	<i>our</i> inaugural post. Feel free to use it as a framework for your own if you need a little help. Most of 
+	all, welcome to ChartMyCycles. We hope that you can call this place home.
+	<br /><br />
+	<span class="whitelink">
+<%= link_to_remote ('Our short introduction', :after => "Element.toggle('intro')")%><br /><br />	</span>
+		<div id="intro" style="background: #0a5294; color: #ffffff; padding: 20px; margin: 5px 0px 10px 0px; display: none; -moz-border-radius: 15px;">
+			<%= image_tag '12345.png'%>
+			<br /><br />
+		Our names are Katherine and Josh. We first started fertility charting after years of trying other forms of contraception. After being let down and frustrated by other contraceptives, we turned to fertility charting. It's natural, healthy, and it let us feel in control of our family.
+<br /><br />
+		We found that learning how to chart fertility wasn't so easy. We read books, studied different methods, scoured the internet, and took a 6-week long course in Natural Family Planning. 
+<br /><br />
+		And then we started charting. Everything felt so dated! The paper charts, the terminology, the books, most of the material available to us looked yanked straight out of the sixties. 
+<br /><br />
+		That's where the idea for a web-based fertility charting application came from. We knew if we could benefit from a better way to chart, then others could, too. 
+<br /><br />
+		We finally hit the right stage in life and switched from charting for conception to charting for pregnancy. It worked like a charm. Nine months later, our family grew by one. 
+<br /><br />
+		Our experience with fertility charting has been wonderful. It has changed our lives. We hope your experience is the same. 
+<br /><br />
+		-Katherine and Josh
+	</div>
+	Now it's your turn.<br /><br />
+	<span class="whitelink">
+	<h1><%= link_to 'Introduce yourself!' %></h1>
+	</span>
+	
+	</div>
+<% else %>
 
 		<% for forum in @forums %>
 			<td width="60%">
@@ -20,7 +62,7 @@
 		</div>
 		<br />
 						<% end %>
-
+<% end%>
 </div>
 <p></p>
 </div>

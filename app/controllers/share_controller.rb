@@ -124,7 +124,7 @@ triggers the end of phase 2.
 =end
             temp_check = []
             total_entries_since_cover_line.times do
-              if entries[entry_day_temp_check].temp - cover_line_temp >= 0.2
+              if entries[entry_day_temp_check].temp - cover_line_temp >= 0.1
                 temp_check << entries[entry_day_temp_check].chart_date
                 if temp_check.length == 3
                   cycle.phase_three_start = temp_check[2].to_date

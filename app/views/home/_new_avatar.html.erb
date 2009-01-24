@@ -3,7 +3,7 @@
 <% form_for(:avatar, :url => {:action => 'create_avatar'}, 
                       :html => { :multipart => true }) do |f| -%>
   <p>
-    Upload a picture:<br />
+    Upload a picture (max size 700kb):<br />
     <%= f.file_field :uploaded_data, :size => 17%>
   </p>
 <br />

@@ -1,39 +1,43 @@
 <div id="contentwrapper">
 <div id="contentcolumn">
-	<div id="forum_container">
-		<div id="post_div">
-
-	<table>
-		<tr>
-			<td valign="middle">
-				
-		<% if @post.user.avatar %>	
-			<%= image_tag(@post.user.avatar.public_filename) %>	
-		<% else %>	
-			<img src="/images/blankavatar.png">
-		<% end %>	
-		</td>
-		<td valign="bottom" class="writer_info">
-			
-			by <%= @post.user.full_name%><br />
-			posted at <%= nice_time(@post.created_at)%><br />
-			<% if @post.user.motto %>
-			"<i><%= @post.user.motto%>"</i><br />
-			<% end %>
-			
-			a <%= @post.user.member_check%> since <%= nice_date(@post.user.user_since) %><br />
-		</td>
-		</tr>
-		</table>
-
-			<div id="fifteenpxspacer"></div>
-			<h1><%= @post.title%></h1>
-				
-<%= textilize(@post.body) %><br />
-<span class="writer_info">
-- posted <%= time_ago_in_words(@post.created_at)%> ago
-</span>
+		<div id="purple_pointers">
+			<h1>Introductions</h1>
 		</div>
+	<div id="forum_container">
+	<div id="post_div">
+		
+			<table>
+				<tr>
+					<td valign="middle">
+
+				<% if @post.user.avatar %>	
+					<%= image_tag(@post.user.avatar.public_filename) %>	
+				<% else %>	
+					<img src="/images/blankavatar.png">
+				<% end %>	
+				</td>
+				<td valign="bottom" class="writer_info">
+
+					by <%= @post.user.full_name%><br />
+					posted at <%= nice_time(@post.created_at)%><br />
+					<% if @post.user.motto %>
+					"<i><%= @post.user.motto%>"</i><br />
+					<% end %>
+
+					a <%= @post.user.member_check%> since <%= nice_date(@post.user.user_since) %><br />
+				</td>
+				</tr>
+				</table>
+
+					<div id="fifteenpxspacer"></div>
+					<h1><%= @post.title%></h1>
+
+		<%= textilize(@post.body) %><br />
+		<span class="writer_info">
+		- posted <%= time_ago_in_words(@post.created_at)%> ago
+		</span>
+		<br />
+		<br />
 <% if @post.comments%>
 <% for comment in @post.comments %>
 <div id="comment_div">
@@ -61,8 +65,11 @@
 - written <%= time_ago_in_words(comment.created_at)%> ago
 </span>
 </div>
+<br />
 <% end %>
 <% end %>
+</div>
+
 <div id="comment_button">
 	<span class="comment_button">
 		<%= link_to_remote ('', :url => {:action => 'new_comment_form', :post_id => @post.id}) %>

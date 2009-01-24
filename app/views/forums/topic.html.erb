@@ -20,6 +20,7 @@
 		</div>
 		<div id="fivepxspacer" style="margin-top: 30px;"></div>
 		<% if @posts.length >= 1 %>	
+		<div id="post_div">
 							<% for post in @posts %>
 
 							<% if post.user.avatar %>	
@@ -27,17 +28,18 @@
 							<% else %>	
 							<img src="/images/blankavatar_thumb.jpg">
 							<% end %>
-						<%= link_to post.title, :action => 'details', :id => post %> <br />
-						by <b><%= post.user.full_name %></b>, posted <%= time_ago_in_words(post.created_at) %> ago.
+						<h1><%= link_to post.title, :action => 'details', :id => post %></h1> <br />
+						by <b><%= post.user.full_name %></b>, posted <%= time_ago_in_words(post.created_at) %> ago.<br />
 						
 
-							<%= post.comments.count%> comments<br />
+							<%= post.comments.count%> comments.
 									<% if post.comments.count >= 1%>
-									Last comment <%= time_ago_in_words(post.comments.find(:last).created_at) %> ago<br />
+									Last comment <%= time_ago_in_words(post.comments.find(:last).created_at) %> ago
 									by <%= post.comments.find(:last).user.full_name %>
 									<br />
 									<% end%>
 									<% end %>
+									</div>
 				
 				
 		<% else %>

@@ -14,7 +14,7 @@
 		<div id="mystats" class="little_gray_text" style="min-height: 570px;">
 		
 		<div id="fifteenpxspacer"></div>
-<% if !current_user.about? %>
+<% if current_user.about.nil? %>
 <div id="forum_title">
 	<h1>Introduce yourself!</h1>
 	By now we all know what forums are about. We know that there's value in connecting with other people over common bonds. If you're like us, it can take a while to warm up enough to actually participate.
@@ -31,8 +31,8 @@
 	all, welcome to ChartMyCycles. We hope that you can call this place home.
 	<br /><br />
 	<span class="whitelink">
-<%= link_to_remote ('Our short introduction', :after => "Element.toggle('intro')")%><br /><br />	</span>
-		<div id="intro" style="background: #0a5294; color: #ffffff; padding: 20px; margin: 5px 0px 10px 0px; display: none; -moz-border-radius: 15px;">
+<%= link_to_remote ('Our short introduction', :after => "Element.toggle('hidden_intro')")%><br /><br />	</span>
+		<div id="hidden_intro" style="background: #0a5294; color: #ffffff; padding: 20px; margin: 5px 0px 10px 0px; display: none; -moz-border-radius: 15px;">
 			<%= image_tag '12345.png'%>
 			<br /><br />
 		Our names are Katherine and Josh. We first started fertility charting after years of trying other forms of contraception. After realizing the unhealthy effects of other contraceptives, we turned to fertility charting. It's natural, healthy, and it let us feel in control of our family.
@@ -66,8 +66,17 @@
 
 <% else %>
 
+	<div id="forum_title">
+<h1><%= link_to 'Introductions', :controller => 'forums', :action => 'intro', :id => current_user.id%></h1>
+<%= @abouts.length%> posts, 
+<% if @abouts.length >= 1%>
+last post <%= time_ago_in_words(@abouts.last.created_at) %> ago
+<% end%>
+</div>
+<br />
+		<% for intro in @abouts %>
+		<% end %>
 		<% for forum in @forums %>
-			<td width="60%">
 				<div id="forum_title">
 		<h1><%= link_to forum.topic, :action => 'topic', :id => forum %></h1>
 		<%= forum.posts.count%> posts, 

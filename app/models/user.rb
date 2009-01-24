@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :entries
   has_many :forums
   has_many :posts
+  has_one :about
   has_many :comments
   has_one :subscription_info
   belongs_to :charting_for

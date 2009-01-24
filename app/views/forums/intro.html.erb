@@ -1,0 +1,45 @@
+<div id="contentwrapper">
+<div id="contentcolumn">
+	<div id="purple_pointers">
+		<h1>Introductions</h1>
+		<%= link_to 'Back', :controller => 'forums'%>
+	</div>
+		<div id="mystats" class="little_gray_text" style="min-height: 570px;">
+		<div id="fivepxspacer" style="margin-top: 30px;"></div>
+		<% if @abouts.length >= 1 %>	
+		<div id="post_div">
+							<% for about in @abouts %>
+
+							<% if about.user.avatar %>	
+							<%= image_tag(post.user.avatar.public_filename(:thumb)) %>	
+							<% else %>	
+							<img src="/images/blankavatar_thumb.jpg">
+							<% end %>
+						<h1><%= link_to "Introducing #{about.user.full_name}", :action => 'about_details', :id => about %></h1> <br />
+						by <b><%= about.user.full_name %></b>, posted <%= time_ago_in_words(about.created_at) %> ago.<br />
+						
+
+							<%= about.about_comments.count%> comments.
+									<% if about.about_comments.count >= 1%>
+									Last comment <%= time_ago_in_words(about.about_comments.find(:last).created_at) %> ago
+									by <%= about.about_comments.find(:last).user.full_name %>
+									<br />
+									<% end%>
+									<% end %>
+									</div>
+				
+				
+		<% else %>
+		<br />
+			There aren't any posts yet in this topic. Be the first! <br /><br />
+		<% end %>
+		<div id="thirtypxspacer"></div>
+
+</div>
+<p></p>
+</div>
+</div>
+<div id="leftcolumn">
+	<%= render :partial => 'forums_left_column'%>
+</div>
+

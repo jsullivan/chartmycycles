@@ -3,12 +3,18 @@ class ForumsController < ApplicationController
   def index
     @forums = Forum.find(:all, :order => 'created_at DESC')
     @user = current_user
+    @abouts = About.find(:all, :order => 'created_at ASC')
   end
 
   def topic
     @forum = Forum.find(params[:id])
     @user = current_user
     @posts = Post.find(:all, :conditions => "forum_id = #{@forum.id}", :order => 'updated_at DESC')
+  end
+  
+  def intro
+    @user = User.find(params[:id])
+    @abouts = About.find(:all, :order => 'created_at ASC')
   end
   
   def create_post

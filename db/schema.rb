@@ -9,7 +9,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090122023515) do
+ActiveRecord::Schema.define(:version => 20090124225454) do
+
+  create_table "about_comments", :force => true do |t|
+    t.integer  "about_id"
+    t.integer  "user_id"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "abouts", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "avatars", :force => true do |t|
     t.integer  "parent_id"
@@ -146,7 +162,6 @@ ActiveRecord::Schema.define(:version => 20090122023515) do
     t.integer  "customer_billing_address_id"
     t.integer  "interval"
     t.string   "address"
-    t.string   "about"
   end
 
 end

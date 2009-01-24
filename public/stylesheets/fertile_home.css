@@ -402,7 +402,20 @@ color: #ffffff;
 }
 /* FORMS
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
-
+#title_div {
+	padding: 20px;
+	background: #0d6fc9;
+	width: 80%;
+	margin-left: -40px;
+	margin-top: -20px;
+	-moz-border-radius: 0px 10px 10px 0px;
+	-webkit-border-top-right-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	color: #ffffff;
+}
+#title_div h1 a {
+	color: #ffffff;
+}
 #new_entry_form {
 	padding: 40px;
 	background: #e7d2fc;

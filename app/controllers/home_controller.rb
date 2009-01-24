@@ -93,8 +93,9 @@ class HomeController < ApplicationController
     if request.post?
       about = params[:user][:about]
       if about.length > 1
-        current_user.about = about
-        current_user.save
+        current_user.about = About.new
+        current_user.about.body = about
+        current_user.about.save
         redirect_to :controller => 'forums'
       end
     end

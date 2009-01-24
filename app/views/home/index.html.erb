@@ -19,7 +19,9 @@
 	<% end %>
 </div>
 </div>
-
+<div id="new_entry_form" style="display: none;">
+ <%= render :partial => 'new_entry'%>
+</div>
 	<% if @user.current_cycle.entries.count > 0 %>
 		<% if @fertile_toggle == 1 %>
 			<div id="fertile_toggle_red">
@@ -36,9 +38,7 @@
 		<% end %>
 	<% end %>
 	
-<div id="new_entry_form" style="display: none;">
- <%= render :partial => 'new_entry'%>
-</div>
+
 	<% if @user.cycles.count == 1 && @user.current_cycle.entries.count == 1 %>
 		<%= render :partial => 'first_entry' %>
 	<% elsif @user.cycles.count == 1 && @user.current_cycle.entries.count == 2 %>

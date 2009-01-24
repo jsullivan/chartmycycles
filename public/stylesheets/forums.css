@@ -78,24 +78,29 @@ height: 60px;
 /* end css-based rollover button */
 #post_div {
 	padding: 20px;
-	background: url(/images/blue_paper.jpg) repeat #dce1f0;
-	font-size: 1.2em;
+	background: #0d6fc9;
+	width: 80%;
+	margin-left: -10px;
+	-moz-border-radius: 0px 10px 10px 0px;
+	-webkit-border-top-right-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
 	color: #ffffff;
-	clear: both;
-	border-color: #1f2a4d;
-	border-width: 3px 0px 3px 0px;
-	border-style: solid;
 }
+#post_div h1 a {
+	color: #ffffff;
+}
+
 #comment_div {
 	padding: 20px;
-	background: url(/images/green_paper.jpg) repeat-y #f0dcef;
-	font-size: 1.1em;
-	clear: both;
-	border-color: #192111;
-	border-width: 3px 0px 3px 0px;
-	border-style: solid;
-	margin-right: 30%;
-	margin-top: 10px;
+	background: #0a5294;
+	width: 90%;
+	margin-left: -20px;
+	-moz-border-radius: 0px 10px 10px 0px;
+	-webkit-border-top-right-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	color: #ffffff;
+}
+#comment_div h1 a {
 	color: #ffffff;
 }
 .writer_info {
@@ -103,4 +108,6 @@ height: 60px;
 	font-size: .8em;
 	color: #ffffff;
 	font-weight: bold;
+}
+
 }

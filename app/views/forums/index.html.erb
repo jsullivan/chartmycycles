@@ -1,14 +1,20 @@
 <div id="contentwrapper">
 <div id="contentcolumn">
+		<% if @user.current_cycle.shared %>
+		<div id="share_it" class="share_it" style="-moz-border-radius: 0px; -webkit-border-radius: 0px;">
+			<% share_link = "www.chartmycycles.com/share/cycle/#{current_user.current_cycle.id}"%>
+			your current cycle is shared at: <b><%= link_to share_link, "http://www.chartmycycles.com/share/cycle/#{current_user.current_cycle.id}" %></b><br />
+		</div>
+		<% end %>
 	<div id="purple_pointers">
 		<h1>Forums <%= image_tag 'beta.png' %> </h1>
 		We realize that sometimes you've got to get a little help from your friends. That's why we've taken the time to create custom, integrated forums. Take a few minutes to meet other women who took control of their fertility. Ask questions, help others, and build your community.<br />
 		</div>
-		
+	
 		<div id="mystats" class="little_gray_text" style="min-height: 570px;">
 		
 		<div id="fifteenpxspacer"></div>
-<% if current_user.posts.count < 1 %>
+<% if !current_user.about? %>
 <div id="forum_title">
 	<h1>Introduce yourself!</h1>
 	By now we all know what forums are about. We know that there's value in connecting with other people over common bonds. If you're like us, it can take a while to warm up enough to actually participate.
@@ -45,10 +51,19 @@
 	</div>
 	Now it's your turn.<br /><br />
 	<span class="whitelink">
-	<h1><%= link_to 'Introduce yourself!' %></h1>
+	<h1><%= link_to_remote ('Introduce yourself!', :url => {:action => 'toggle_aboutus'})%></h1>
 	</span>
+	<div id="aboutus" style="display: none;">
+		<br />
+		 <%= form_tag :controller => 'home', :action => 'create_about' %>
+		<%= textile_editor ("user", "about") %><br />
+	<br />
+	<%= textile_editor_initialize -%>
 	
+		   <%= submit_tag 'Submit'%> or <span class="whitelink"><%= link_to_remote ('Cancel', :url => {:action => 'toggle_aboutus'})%></span>
 	</div>
+	</div>
+
 <% else %>
 
 		<% for forum in @forums %>

@@ -7,8 +7,12 @@
 	<br />
 	<% if logged_in? %>
 		<br />
-		<%= link_to 'Share your current cycle' %><br />
-		<span class="little_gray_text">
+		<% if current_user.current_cycle.shared%>
+		<%= link_to 'Stop sharing your current cycle', {:controller => 'home', :action => 'share_cycle', :id => current_user.current_cycle}, :method => :post %>
+		<% else %>
+		<%= link_to 'Share your current cycle', {:controller => 'home', :action => 'share_cycle', :id => current_user.current_cycle.id}, :method => :post %>
+		<% end %>
+		<br />		<span class="little_gray_text">
 			<br />
 			<div id="blue_header">
 				Status 
@@ -17,7 +21,7 @@
 			<br />
 				<div id="fifteenpxspacer">
 				</div>
-				
+
 				<div id="blue_header">
 					Your forum stats
 				</div>

@@ -77,7 +77,7 @@ class HomeController < ApplicationController
     if request.post?
       cycle = Cycle.find(params[:id])
       cycle.toggle_share(cycle)
-      redirect_to :action => 'index'
+      redirect_to :back
     end
   end
   
@@ -89,6 +89,17 @@ class HomeController < ApplicationController
     end
   end
 
+  def create_about
+    if request.post?
+      about = params[:user][:about]
+      if about.length > 1
+        current_user.about = about
+        current_user.save
+        redirect_to :controller => 'forums'
+      end
+    end
+  end
+  
 #=-=-=-=-=GRAPH CODE=-=-=-=-=-=
       
   def y_right

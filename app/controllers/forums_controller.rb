@@ -12,9 +12,15 @@ class ForumsController < ApplicationController
     @posts = Post.find(:all, :conditions => "forum_id = #{@forum.id}", :order => 'updated_at DESC')
   end
   
-  def intro
+  def about
     @user = User.find(params[:id])
     @abouts = About.find(:all, :order => 'created_at ASC')
+  end
+  
+  def about_details
+    @user = current_user
+    @about = About.find(params[:id])
+    @comments = @about.about_comments.find(:all, :order => 'created_at ASC')
   end
   
   def create_post
@@ -58,4 +64,20 @@ class ForumsController < ApplicationController
     comment.save
     redirect_to :action => 'details' , :id => @post.id
   end
+  
+  def new_about_comment
+     @about = params[:about_id]
+   end
+
+   def create_about_comment
+     @about = About.find(params[:about_id])
+     @about_comment = params[:about_comment]
+     @user = current_user
+     about_comment = AboutComment.new
+     about_comment.user = current_user
+     about_comment.about = @about
+     about_comment.update_attributes(@about_comment)
+     about_comment.save
+     redirect_to :action => 'about_details' , :id => @about.id
+   end
 end

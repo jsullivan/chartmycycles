@@ -5,13 +5,13 @@
 		<%= link_to 'Back', :controller => 'forums'%>
 	</div>
 		<div id="mystats" class="little_gray_text" style="min-height: 570px;">
-		<div id="fivepxspacer" style="margin-top: 30px;"></div>
+		<br />
 		<% if @abouts.length >= 1 %>	
 		<div id="post_div">
 							<% for about in @abouts %>
 
 							<% if about.user.avatar %>	
-							<%= image_tag(post.user.avatar.public_filename(:thumb)) %>	
+							<%= image_tag(about.user.avatar.public_filename(:thumb)) %>	
 							<% else %>	
 							<img src="/images/blankavatar_thumb.jpg">
 							<% end %>

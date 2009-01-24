@@ -1,0 +1,18 @@
+<% form_for(:about_comment, :url => {:controller => 'forums', :action => 'create_about_comment'}, 
+                      :html => { :multipart => true }) do |f| -%>
+
+<p><label for="body">Comment</label><br />
+<%= textile_editor :about_comment, :body %></p>
+<p>	
+	<%= hidden_field_tag("about_id", @about.id) %>
+	<div id="fifteenpxspacer"></div>
+
+<div id="fifteenpxspacer"></div>
+
+<%= submit_tag 'Create' %> or <%= link_to_remote ('Cancel', :url => {:action => 'new_about_comment_form'}) %>
+</p>
+<%= textile_editor_initialize -%>
+<% end -%>
+<div id="fifteenpxspacer"></div>
+<div id="big_blue_header"></div>
+

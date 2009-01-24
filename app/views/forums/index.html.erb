@@ -67,7 +67,7 @@
 <% else %>
 
 	<div id="forum_title">
-<h1><%= link_to 'Introductions', :controller => 'forums', :action => 'intro', :id => current_user.id%></h1>
+<h1><%= link_to 'User introductions', :controller => 'forums', :action => 'about', :id => current_user.id%></h1>
 <%= @abouts.length%> posts, 
 <% if @abouts.length >= 1%>
 last post <%= time_ago_in_words(@abouts.last.created_at) %> ago

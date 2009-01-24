@@ -1,0 +1,89 @@
+<div id="contentwrapper">
+<div id="contentcolumn">
+		<div id="purple_pointers">
+			<h1>Introductions</h1>
+		</div>
+	<div id="forum_container">
+	<div id="post_div">
+		
+			<table>
+				<tr>
+					<td valign="middle">
+
+				<% if @about.user.avatar %>	
+					<%= image_tag(@about.user.avatar.public_filename) %>	
+				<% else %>	
+					<img src="/images/blankavatar.png">
+				<% end %>	
+				</td>
+				<td valign="bottom" class="writer_info">
+
+					by <%= @about.user.full_name%><br />
+					posted at <%= nice_time(@about.created_at)%><br />
+					<% if @about.user.motto %>
+					"<i><%= @about.user.motto%>"</i><br />
+					<% end %>
+
+					a <%= @about.user.member_check%> since <%= nice_date(@about.user.user_since) %><br />
+				</td>
+				</tr>
+				</table>
+
+					<div id="fifteenpxspacer"></div>
+					<h1><%= @about.title%></h1>
+
+		<%= textilize(@about.body) %><br />
+		<span class="writer_info">
+		- posted <%= time_ago_in_words(@about.created_at)%> ago
+		</span>
+		<br />
+		<br />
+<% if @about.comments%>
+<% for comment in @about.about_comments %>
+<div id="comment_div">
+	<table>
+		<tr>
+			<td valign="middle">
+		<% if comment.user.avatar %>	
+		<%= image_tag(comment.user.avatar.public_filename(:thumb)) %>	
+		<% else %>	
+		<img src="/images/blankavatar_thumb.jpg">
+		<% end %>
+	</td>
+	<td valign="bottom" class="writer_info">
+		
+		by <%= comment.user.full_name%><br />
+		posted at <%= nice_time(comment.created_at)%><br />
+		
+		a <%= comment.user.member_check%> since <%= nice_date(comment.user.user_since) %><br />
+	</td>
+	</tr>
+	</table>
+	<div id="fifteenpxspacer"></div>
+<%= textilize(comment.body) %><br />
+<span class="writer_info">
+- written <%= time_ago_in_words(comment.created_at)%> ago
+</span>
+</div>
+<br />
+<% end %>
+<% end %>
+</div>
+
+<div id="comment_button">
+	<span class="comment_button">
+		<%= link_to_remote ('', :url => {:action => 'new_about_comment_form', :about_id => @about.id}) %>
+  </span>
+</div>
+<div id="create_new_about_comment" style="display: none; margin-top: 20px;">
+	<%= render :partial => 'new_about_comment'%>
+</div>
+<div id="sixtypxspacer">
+	</div>
+</div>
+</div>
+</div>
+<div id="leftcolumn">
+	<%= render :partial => 'forums_left_column'%>
+</div>
+

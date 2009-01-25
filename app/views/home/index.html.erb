@@ -1,6 +1,9 @@
 <div id="contentwrapper">
 <div id="contentcolumn">
-<div id="entry_and_stats">
+	<div id="new_entry_form" style="display: none;">
+	 <%= render :partial => 'new_entry'%>
+	</div>
+	<div id="myhome" class="little_gray_text">
 	<% if @user.current_cycle.shared %>
 	<div id="share_it" class="share_it" >
 		<% share_link = "www.chartmycycles.com/share/cycle/#{current_user.current_cycle.id}"%>
@@ -19,9 +22,7 @@
 	<% end %>
 </div>
 </div>
-<div id="new_entry_form" style="display: none;">
- <%= render :partial => 'new_entry'%>
-</div>
+
 	<% if @user.current_cycle.entries.count > 0 %>
 		<% if @fertile_toggle == 1 %>
 			<div id="fertile_toggle_red" class="toggle_text">
@@ -35,7 +36,7 @@
 			<div id="fertile_toggle_purple" class="toggle_text">
 				<h2>You are probably infertile right now.</h2> <%= link_to_function("more...",
 				"Element.toggle('infertile_more')") %> <br />
-				<div id="infertile_more" style="display: none;">
+				<div id="infertile_more" style="font-size: 1em; display: none;">
 					this is more information about you being probably fertile.
 				</div>
 			</div>

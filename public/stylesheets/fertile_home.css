@@ -157,7 +157,13 @@ margin-left: 200px; /*Set left margin to LeftColumnWidth*/
 	-moz-border-radius: 10px 0px 0px 10px;
 	-webkit-border-top-left-radius: 10px;
 	-webkit-border-bottom-left-radius: 10px;
-	
+}
+#myhome {
+	background: #e7d2fc;
+	padding: 10px;
+	-moz-border-radius: 10px 0px 0px 0px;
+	-webkit-border-top-left-radius: 10px;
+
 }
 #add_new_entry {
 float:right;
@@ -420,10 +426,7 @@ color: #ffffff;
 #title_div h1 a {
 	color: #ffffff;
 }
-#new_entry_form {
-	padding: 40px;
-	background: #e7d2fc;
-}
+
 #login_box {
 	padding: 50px;
 	color: black;
@@ -493,6 +496,9 @@ border-style: none;
 #share_it {
 	background: #1ebe1a;
 	padding: 5px;
+	margin-top: -10px;
+	margin-right: -10px;
+	margin-left: -10px;
 	color: #ffffff;
 	text-align: center;
 	-moz-border-radius: 10px 0px 0px 0px;
@@ -512,17 +518,17 @@ border-style: none;
 	margin: 0px 0px 0px 0px;
 	color: #ffffff;
 	text-align: center;
+	font-size: 1.1em;
 	-moz-border-radius: 0px 0px 0px 10px;
 	-webkit-border-bottom-left-radius: 10px;
 }
 #fertile_toggle_red {
 	background: #ff3838;
-	font-weight: bold;
 	padding: 5px;
 	margin: 0px 0px 0px 0px;
 	color: #ffffff;
 	text-align: center;
-	font-size: 1.5em;
+	font-size: 1.1em;
 	-moz-border-radius: 0px 0px 0px 10px;
 	-webkit-border-bottom-left-radius: 10px;
 }

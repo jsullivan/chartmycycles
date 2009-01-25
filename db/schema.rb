@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090124225454) do
+ActiveRecord::Schema.define(:version => 20090125023800) do
 
   create_table "about_comments", :force => true do |t|
     t.integer  "about_id"
@@ -162,6 +162,7 @@ ActiveRecord::Schema.define(:version => 20090124225454) do
     t.integer  "customer_billing_address_id"
     t.integer  "interval"
     t.string   "address"
+    t.boolean  "menopause"
   end
 
 end

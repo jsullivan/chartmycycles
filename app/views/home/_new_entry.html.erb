@@ -1,9 +1,8 @@
 <%= error_messages_for :entry %>
-<div id="title_div">
+<div id="pointers">
 	<h1>New Entry</h1>
 </div>
-<div id="fivepxspacer"></div>
-<div id="fivepxspacer"></div>
+<div id="mystats">
 
 <% form_for(:entry, :url => {:controller => 'entry', :action => 'create'}, 
                       :html => { :multipart => true }) do |f| -%>
@@ -153,4 +152,4 @@
 <%= textile_editor_initialize -%>
 
 <% end -%>
-
+</div>

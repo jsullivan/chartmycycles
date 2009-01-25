@@ -1,12 +1,14 @@
 <div id="contentwrapper">
 <div id="contentcolumn">
+	<div id="pointers">
+		<h1>Profile Details</h1>
+	</div>
 	<div id="mystats">
+
 <% form_for @user, :url => {:action => 'update'} do |f| -%>
 <%= f.error_messages%>
 <fieldset>
-<div id="big_blue_header">
-	Profile Details
-</div>
+
 	<ol>
 		<li>
 <p><label for="email" style="display: block;">Email</label>
@@ -42,6 +44,9 @@
 <li>
 <div id="fivepxspacer"></div>
 <p><label for="chart_type" >Charting for</label> <%=select("user", "charting_for_id", ChartingFor.find(:all).collect {|p| [ p.chart_type, p.id ] })%></p>
+</li>
+<div id="fivepxspacer"></div>
+<p> 	<%= check_box( :user, :menopause)%> <label for="menopause" >Signs of menopause?</label></p>
 </li>
 <li>
 	<div id="fivepxspacer"></div>

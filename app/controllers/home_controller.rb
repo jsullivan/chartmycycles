@@ -9,9 +9,7 @@ class HomeController < ApplicationController
     @graph = open_flash_chart_object("100%",300, "home/y_right/#{@cycle.id}")#, true, '../' used to be here, too.
     @fertile_toggle = 0
     if @entries.length > 0
-      if @entries.last.period == true
-        @fertile_toggle = 1
-      end
+     
       if @entries.last.mucus == "fertile" or @entries.last.mucus == "unsure"
         @fertile_toggle = 1
       end 
@@ -23,6 +21,9 @@ class HomeController < ApplicationController
        if @entries.last.mucus == "fertile" or @entries.last.mucus == "unsure"
          @fertile_toggle = 2
        end
+        if @entries.last.period == true && @user.menopause?
+           @fertile_toggle = 1
+         end
      end
     end
   end
@@ -253,7 +254,8 @@ phase_two_last_entry the entry day of the most recent entry (max_entry).
       
       # Make sure there are six days of entries from the beginning of phase two in
       # order to do cover line logic. User has to be into phase two before this can take place.
-      if  (max_entry + 1) - phase_one_end_day >= 6
+# NOTE: apparently you don't have to be 6 days in to the cycle.    
+     # if  (max_entry + 1) - phase_one_end_day >= 6
         
         #Check to see if the cover line has been set already
         if cycle.cover_line_entry_day
@@ -297,7 +299,7 @@ phase_two_last_entry the entry day of the most recent entry (max_entry).
           end          
         end
       end
-    end    
+   # end    
     
       # End Cover Line logic.
     

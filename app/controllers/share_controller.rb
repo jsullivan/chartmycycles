@@ -158,7 +158,9 @@ phase_two_last_entry the entry day of the most recent entry (max_entry).
       
       # Make sure there are six days of entries from the beginning of phase two in
       # order to do cover line logic. User has to be into phase two before this can take place.
-      if  (max_entry + 1) - phase_one_end_day >= 6
+      # NOTE: apparently you don't have to be 6 days in to the cycle.    
+  
+  #    if  (max_entry + 1) - phase_one_end_day >= 6
         
         #Check to see if the cover line has been set already
         if cycle.cover_line_entry_day
@@ -204,7 +206,7 @@ phase_two_last_entry the entry day of the most recent entry (max_entry).
           end          
         end
       end
-    end    
+ #   end    
     
       # End Cover Line logic.
     

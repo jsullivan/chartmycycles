@@ -238,6 +238,14 @@ color: #000000;
 	border-bottom: thin solid #8d9bfe;
 	background: url(/images/contact_banner.jpg);
 }
+#tourtour {
+	height: 418px;
+	width: 758px;
+	text-align: left;
+	padding-top: 40px;
+	margin-top: 10px;
+	background: url(/images/tourtour.png);
+}	
 #app_details {
 	position: absolute;
 	height: 718px;
@@ -247,6 +255,7 @@ color: #000000;
 	margin-top: 10px;
 	background: url(/images/app_details.png);
 }
+
 /* FOOTER
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 

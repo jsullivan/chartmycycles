@@ -37,10 +37,10 @@ class AccountController < ApplicationController
   end
   
   def tour
-    @mucus_pie = open_flash_chart_object('100%',300, '/account/mucus_pie')          
-    @position_pie = open_flash_chart_object('100%',300, '/account/position_pie')          
+    @mucus_pie = open_flash_chart_object('90%',300, '/account/mucus_pie')          
+    @position_pie = open_flash_chart_object('90%',300, '/account/position_pie')          
     @bar_glass = open_flash_chart_object('100%',300, '/account/bar_glass')          
-    @biggie = open_flash_chart_object('100%',300, '/account/y_right/30')          
+    @biggie = open_flash_chart_object('100%',300, '/account/y_right')          
   
   end
   
@@ -178,7 +178,7 @@ def mucus_pie
    data << no_entry
  
    g = Graph.new
-   g.set_bg_color('#afb9ff')  
+   g.set_bg_color('#ffffff')  
    g.pie(90, '#505050', '{font-size: 12px; color: #404040;}')
    g.pie_values(data, %w(Fertile Infertile Unsure Empty))
    g.pie_slice_colors(%w(#ffffff #cc9bff #1ebe1a #0d6fc9))
@@ -199,7 +199,7 @@ def mucus_pie
     data << no_entry
 
     g = Graph.new
-    g.set_bg_color('#afb9ff')  
+    g.set_bg_color('#ffffff')  
     g.pie(90, '#505050', '{font-size: 12px; color: #404040;}')
     g.pie_values(data, %w(Low Medium High Empty))
     g.pie_slice_colors(%w(#0d6fc9 #cc9bff #1ebe1a #ffffff))
@@ -254,7 +254,7 @@ def mucus_pie
      end
 
      g = Graph.new
-     g.set_bg_color('#afb9ff')
+     g.set_bg_color('#ffffff')
      g.data_sets << bar1
      g.data_sets << bar2
      g.data_sets << bar3
@@ -279,7 +279,7 @@ def mucus_pie
  
      def y_right
        g = Graph.new
-       g.set_bg_color('#e7d2fc')
+       g.set_bg_color('#ffffff')
        cycle = Cycle.find('18')
          @user = cycle.user
       # @user = current_user

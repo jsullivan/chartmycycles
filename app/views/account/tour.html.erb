@@ -13,27 +13,64 @@
 </tr>
 </table>
 <br />
+<h2>Watch a video</h2><br />
 ChartMyCycles uses an innovative new structure for fertility charting. Fertility charts are easier to create and analyze than ever before. ChartMyCycles applies the same principles of traditional fertility charting, but in a clearer, more intuitive display.
 <br />
 <br />
-<table width="100%">
-	<tr>
-	<td><%= @mucus_pie %> 
+</div>
+<div id="tourtour">
+	<table align="center" width="90%">
+		<tr>
+			<td>
+	<%= @biggie %>
+	<br />
+	<br />
+	<h2>Go ahead, use your mouse</h2><br />
+  It's easy to interpret your fertility charts, especially when they're interactive. Every graph in ChartMyCycles is 
+bright, intuitive, and interactive. See for yourself. Mouse over any graphs on this page.
+	<br />
+	</td>
+	</tr>
+	</table>
+</div>
+<div id="tourtour">
+	<table align="center" width="90%">
+		<tr>
+			<td>
+	<%= @mucus_pie %> 
 	</td>
 	<td>
 	<%= @position_pie%>
 	</td>
 	</tr>
+	<tr>
+		<td colspan="2">
+			<br />
+			<h2>Fertility stats on the fly</h2><br />
+			Every aspect of your fertility charting is presented in charts, graphs, and statistics that are meant to give you more insight into your fertility cycles than you could ever have by using paper charts.
+			<br />
+</td>
 	</table>
-	<br />
-	<br />
+	
+</div>
+<!--<div id="tourtour">
+	<table align="center" width="90%">
+		<tr>
+			<td>
 	<%= @bar_glass%>
-	<br />
-	<br />
-	<%= @biggie %>
+	</td>
+	</tr>
+	</table>
 
+	</div>
+-->
+<br />
+<div id="login_box">
 <div class="call_to_action" style="margin-top: 20px; text-align: right;">
 	<%= link_to "See more benefits", :action => 'benefits' %> or 
 	<%= link_to "Sign up now", :action => 'signup' %>
+	<br />
+	<br />
+</div>
 </div>
 </div>

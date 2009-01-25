@@ -32,7 +32,19 @@ class ForumsController < ApplicationController
       post.forum = @forum
       post.update_attributes(@post)
       post.user = current_user
+      if params[:post][:title].length < 1
+        post.title = "Untitled"
+      end
       post.save
+      email = {
+        :title => post.title,
+        :body => post.body,
+        :email => @user.email,
+        :id => post.id,
+        :topic => @forum.topic
+      }
+      Postoffice.deliver_newpost(email)
+      
       redirect_to :controller => 'forums', :action => 'topic', :id => @forum.id
       else
       redirect_to :action => 'topic', :id => @forum

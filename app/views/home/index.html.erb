@@ -24,16 +24,28 @@
 </div>
 	<% if @user.current_cycle.entries.count > 0 %>
 		<% if @fertile_toggle == 1 %>
-			<div id="fertile_toggle_red">
-				You are probably fertile right now. <br />
+			<div id="fertile_toggle_red" class="toggle_text">
+				<h2>You are probably fertile right now.</h2> <%= link_to_function("more...",
+				"Element.toggle('fertile_more')") %> <br />
+				<div id="fertile_more" style="font-size: 1em; display: none;">
+					this is more information about you being probably fertile.
+				</div>
 			</div>
 		<% elsif @fertile_toggle == 0 %>
-			<div id="fertile_toggle_purple">
-				You are probably infertile right now. <br />
+			<div id="fertile_toggle_purple" class="toggle_text">
+				<h2>You are probably infertile right now.</h2> <%= link_to_function("more...",
+				"Element.toggle('infertile_more')") %> <br />
+				<div id="infertile_more" style="display: none;">
+					this is more information about you being probably fertile.
+				</div>
 			</div>
 		<% elsif @fertile_toggle == 2 %>
-			<div id="fertile_toggle_orange">
-				You may be fertile right now. <br />
+			<div id="fertile_toggle_orange" class="toggle_text">
+				<h2>You may be fertile right now.</h2> <%= link_to_function("more...",
+				"Element.toggle('maybe_more')")%> <br />
+				<div id="maybe_more" style="font-size: 1em; display: none;">
+					this is more information about you being probably fertile.
+				</div>
 			</div>
 		<% end %>
 	<% end %>

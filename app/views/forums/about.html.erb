@@ -1,32 +1,39 @@
 <div id="contentwrapper">
 <div id="contentcolumn">
-	<div id="purple_pointers">
-		<h1>Introductions</h1>
-		<%= link_to 'Back', :controller => 'forums'%>
-	</div>
-		<div id="mystats" class="little_gray_text" style="min-height: 570px;">
-		<br />
-		<% if @abouts.length >= 1 %>	
-		<div id="post_div">
-							<% for about in @abouts %>
-
-							<% if about.user.avatar %>	
+<div id="purple_pointers">
+	<h1>Introductions</h1>
+<%= link_to 'Back', :controller => 'forums'%>
+</div>
+<div id="mystats" class="little_gray_text" style="min-height: 570px;">
+	<br />
+	<% if @abouts.length >= 1 %>	
+		<% for about in @abouts %>
+			<div id="post_div">
+			<table>
+				<tr>
+					<td width="50px" valign="top">
+						<% if about.user.avatar %>	
 							<%= image_tag(about.user.avatar.public_filename(:thumb)) %>	
-							<% else %>	
+						<% else %>	
 							<img src="/images/blankavatar_thumb.jpg">
-							<% end %>
+						<% end %>
+					</td>
+					<td>
 						<h1><%= link_to "Introducing #{about.user.full_name}", :action => 'about_details', :id => about %></h1> <br />
 						by <b><%= about.user.full_name %></b>, posted <%= time_ago_in_words(about.created_at) %> ago.<br />
-						
-
-							<%= about.about_comments.count%> comments.
-									<% if about.about_comments.count >= 1%>
-									Last comment <%= time_ago_in_words(about.about_comments.find(:last).created_at) %> ago
-									by <%= about.about_comments.find(:last).user.full_name %>
-									<br />
-									<% end%>
-									<% end %>
-									</div>
+						<%= about.about_comments.count%> comments.
+						<% if about.about_comments.count >= 1%>
+							Last comment <%= time_ago_in_words(about.about_comments.find(:last).created_at) %> ago
+							by <%= about.about_comments.find(:last).user.full_name %>
+							<br />
+						<% end%>
+					</td>
+				</tr>
+			</table>
+			</div>
+			<br />
+		<% end %>
+	
 				
 				
 		<% else %>

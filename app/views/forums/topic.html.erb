@@ -1,5 +1,11 @@
 <div id="contentwrapper">
 <div id="contentcolumn">
+	<% if @user.current_cycle.shared %>
+	<div id="share_it" class="share_it" style="-moz-border-radius: 0px; -webkit-border-radius: 0px;">
+		<% share_link = "www.chartmycycles.com/share/cycle/#{current_user.current_cycle.id}"%>
+		your current cycle is shared at: <b><%= link_to share_link, "http://www.chartmycycles.com/share/cycle/#{current_user.current_cycle.id}" %></b><br />
+	</div>
+	<% end %>
 	<div id="purple_pointers">
 		<h1><%= @forum.topic %>.</h1>
 		<%= @forum.description%><br />
@@ -20,14 +26,19 @@
 		</div>
 		<div id="fivepxspacer" style="margin-top: 30px;"></div>
 		<% if @posts.length >= 1 %>	
-		<div id="post_div">
 							<% for post in @posts %>
-
+							<div id="post_div">
+							
+							<table>
+								<tr>
+									<td width="50px" valign="top">
 							<% if post.user.avatar %>	
 							<%= image_tag(post.user.avatar.public_filename(:thumb)) %>	
 							<% else %>	
 							<img src="/images/blankavatar_thumb.jpg">
 							<% end %>
+								</td>
+								<td>
 						<h1><%= link_to post.title, :action => 'details', :id => post %></h1> <br />
 						by <b><%= post.user.full_name %></b>, posted <%= time_ago_in_words(post.created_at) %> ago.<br />
 						
@@ -38,14 +49,21 @@
 									by <%= post.comments.find(:last).user.full_name %>
 									<br />
 									<% end%>
+											</td>
+										</tr>
+										</table>
+										</div>
+										<br />
 									<% end %>
-									</div>
+	
 				
 				
 		<% else %>
 		<br />
 			There aren't any posts yet in this topic. Be the first! <br /><br />
+			
 		<% end %>
+		<br />
 		<div id="thirtypxspacer"></div>
 		<div id="create_new_post">
 			<% unless @posts.length < 1%>
@@ -53,7 +71,8 @@
 				<%= link_to_remote ('', :url => {:action => 'new_post_form', :forum_id => @forum.id}) %>
 		  </span>
 		<% end %>
-		</div>		
+		</div>	
+<div style="margin-top: 50px;"></div>
 </div>
 <p></p>
 </div>

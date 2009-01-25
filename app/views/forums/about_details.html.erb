@@ -1,5 +1,11 @@
 <div id="contentwrapper">
 <div id="contentcolumn">
+	<% if @user.current_cycle.shared %>
+	<div id="share_it" class="share_it" style="-moz-border-radius: 0px; -webkit-border-radius: 0px;">
+		<% share_link = "www.chartmycycles.com/share/cycle/#{current_user.current_cycle.id}"%>
+		your current cycle is shared at: <b><%= link_to share_link, "http://www.chartmycycles.com/share/cycle/#{current_user.current_cycle.id}" %></b><br />
+	</div>
+	<% end %>
 		<div id="purple_pointers">
 			<h1>Introductions</h1>
 		</div>

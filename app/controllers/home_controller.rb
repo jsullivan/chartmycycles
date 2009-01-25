@@ -96,6 +96,12 @@ class HomeController < ApplicationController
         current_user.about = About.new
         current_user.about.body = about
         current_user.about.save
+          email = {
+            :body => current_user.about.body,
+            :email => current_user.email,
+            :id => current_user.about.id,
+          }
+          Postoffice.deliver_newabout(email)
         redirect_to :controller => 'forums'
       end
     end

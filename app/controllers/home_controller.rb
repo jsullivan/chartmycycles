@@ -21,10 +21,20 @@ class HomeController < ApplicationController
        if @entries.last.mucus == "fertile" or @entries.last.mucus == "unsure"
          @fertile_toggle = 2
        end
-        if @entries.last.period == true && @user.menopause?
-           @fertile_toggle = 1
-         end
+       
      end
+      if @entries.last.period == true
+         if @user.period_rule_one == 1
+           @fertile_toggle = 0
+         elsif @user.period_rule_one == 2 && @user.current_cycle.entries.count < 4
+           @fertile_toggle = 0
+         elsif @user.period_rule_one == 0
+           @fertile_toggle = 1
+         end            
+         if @user.menopause?
+          @fertile_toggle = 1
+         end
+       end
     end
   end
  
@@ -105,6 +115,15 @@ class HomeController < ApplicationController
           Postoffice.deliver_newabout(email)
         redirect_to :controller => 'forums'
       end
+    end
+  end
+  
+  def period_rule_one
+    if request.post?
+      period_rule = params[:user][:period_rule_one]
+      current_user.period_rule_one = period_rule
+      current_user.save
+      redirect_to :action => 'index'
     end
   end
   

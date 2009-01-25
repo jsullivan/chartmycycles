@@ -27,4 +27,14 @@ class CycleController < ApplicationController
       end
   end
   
+  def period_rule_two
+     if request.post?
+       period_rule = params[:cycle][:period_rule_two]
+       @cycle = current_user.current_cycle   
+       @cycle.period_rule_two = period_rule
+       @cycle.save
+       redirect_to :controller => 'home', :action => 'index'
+     end
+   end
+  
 end

@@ -1,4 +1,21 @@
 <div id="pointers">
 	<h1>You're starting a new cycle!</h1>
-	We've moved your last cycle into your history. You can always access past cycles by clicking the "History" link in the top menu. There you can view each of your cycles in detail and compare them to each other. Click on the "Add an entry" button to start your next cycle. 
+	We've moved your last cycle into your history. You can always access past cycles by clicking the "History" link in the top menu. There you can view each of your cycles in detail and compare them to each other. Click on the "Add an entry" button to start your next cycle. <br /><br />
+	
+	<% if current_user.current_cycle.period_rule_two.nil?%>
+		<div id="hidden_intro" style="background: #0d6fc9; color: #ffffff; padding: 20px; margin: 5px 0px 10px 0px; -moz-border-radius: 15px;">
+		Did you experience a <%= link_to_function("temp jump",
+		"Element.toggle('temp_jump')") %> within the last 12-16 days? <br /><br />
+		<div id="temp_jump" style="font-size: 1em; display: none; padding: 20px; text-align: left;">
+			A temp jump occurs when you have three temperatures in a row that are higher than the temperatures six days before 
+			the temperature that triggered the cover line.
+		</div>
+		<% form_for :cycle, @cycle, :url => { :controller => 'cycle', :action => "period_rule_two" } do |f| %>
+		<%= f.radio_button :period_rule_two, '1'%> Yes<br /><br />
+		<%= f.radio_button :period_rule_two, '0' %> No<br /><br />
+		<%= f. radio_button :period_rule_two, '2' %> Unsure<br /><br />
+	    <%= submit_tag 'Submit' %><br />
+	  <% end %>
+	</div>
+	<% end %>
 </div>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090125023800) do
+ActiveRecord::Schema.define(:version => 20090125183450) do
 
   create_table "about_comments", :force => true do |t|
     t.integer  "about_id"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20090125023800) do
     t.datetime "phase_three_start"
     t.integer  "cover_line_entry_day"
     t.float    "cover_line_entry_temp"
+    t.integer  "period_rule_two"
   end
 
   create_table "entries", :force => true do |t|
@@ -163,6 +164,7 @@ ActiveRecord::Schema.define(:version => 20090125023800) do
     t.integer  "interval"
     t.string   "address"
     t.boolean  "menopause"
+    t.integer  "period_rule_one"
   end
 
 end

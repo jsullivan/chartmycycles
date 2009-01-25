@@ -48,7 +48,14 @@
 <div id="fivepxspacer"></div>
 <p> 	<%= check_box( :user, :menopause)%> <label for="menopause" >Signs of menopause?</label></p>
 </li>
+<br />
+<br />
 <li>
+	<%= f.radio_button :period_rule_one, '1'%> All of my cycles have been 26 days or longer during the last 12 months.<br /><br />
+	<%= f.radio_button :period_rule_one, '2' %> Some of my cycles were shorter than 26 days during the last 12 months.<br /><br />
+	<%= f. radio_button :period_rule_one, '0' %> I’m not completely sure about the length of my cycles over the past 12 months.<br /><br />
+	</li
+</li>
 	<div id="fivepxspacer"></div>
 <p><label for="children">Children</label> <%= select_with_integer_options ("user", "children", 0, 20, @user.children) %>  
 </li>

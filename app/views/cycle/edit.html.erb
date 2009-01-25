@@ -51,7 +51,18 @@
 	<%= f.text_field :custom4 %></p>
 	<br />
 	<br />
-											<%= submit_tag 'Update' %> or <%= link_to ('Cancel', :controller => 'home', :action => 'index') %>
+
+	Did you experience a <%= link_to_function("temp jump",
+	"Element.toggle('temp_jump')") %> within the last 12-16 days? <br /><br />
+	<div id="temp_jump" style="font-size: 1em; display: none; padding: 20px; text-align: left;">
+		A temp jump occurs when you have three temperatures in a row that are higher than the temperatures six days before 
+		the temperature that triggered the cover line.
+	</div>
+		<%= f.radio_button :period_rule_two, '1'%> Yes<br /><br />
+		<%= f.radio_button :period_rule_two, '0' %> No<br /><br />
+		<%= f. radio_button :period_rule_two, '2' %> Unsure<br /><br />
+
+	<%= submit_tag 'Update' %> or <%= link_to ('Cancel', :controller => 'home', :action => 'index') %>
 <% end %>
 </div>
 </div>

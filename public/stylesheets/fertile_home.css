@@ -164,6 +164,7 @@ margin-left: 200px; /*Set left margin to LeftColumnWidth*/
 	padding: 10px;
 	-moz-border-radius: 10px 0px 0px 0px;
 	-webkit-border-top-left-radius: 10px;
+	min-height: 700px;
 
 }
 #add_new_entry {

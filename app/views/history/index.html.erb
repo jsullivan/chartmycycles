@@ -8,10 +8,11 @@ cycles.
 
 <% if @old_cycles.length == 0 %>
 You don't have any archived cycles yet.
+
+<% end%>
 </div>
 <div id="mystats" class="little_gray_text" style="min-height: 600px;">
 
-<% end%>
 <% for cycle in @old_cycles %>
 <b><%= nice_date(cycle.started) %> to <%= nice_date(cycle.ended) %></b><br />
 <%= cycle.entries.count %> entries<br />

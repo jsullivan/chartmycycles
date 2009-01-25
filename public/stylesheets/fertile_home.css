@@ -26,6 +26,7 @@ margin-top: 0;
 h1 {
 	font-size: 1.5em;
 	font-weight: bold;
+	
 }
 strong {
 	font-weight: bold;
@@ -506,6 +507,19 @@ border-style: none;
 	
 }
 .share_it a {
+	color: #ffffff;
+	text-decoration: underline;
+}
+#share_it_big {
+	background: #1ebe1a;
+	padding: 5px;
+	color: #ffffff;
+	text-align: center;
+	-moz-border-radius: 10px 0px 0px 0px;
+	-webkit-border-top-left-radius: 10px;
+	
+}
+.share_it_big a {
 	color: #ffffff;
 	text-decoration: underline;
 }

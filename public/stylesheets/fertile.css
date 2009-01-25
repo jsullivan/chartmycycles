@@ -79,7 +79,7 @@ color: #000000;
 
 #logo_space {
 	height: 46px;
-	background: url(/images/logo_space_bkgrnd.jpg);
+	background: #ffffff;
 	margin: 0px -8px 0px -9px;
 /*	border-bottom: thin solid #C0C0C0;*/
 }

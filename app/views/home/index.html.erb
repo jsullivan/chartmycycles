@@ -26,27 +26,43 @@
 	<% if @user.current_cycle.entries.count > 0 %>
 		<% if @fertile_toggle == 1 %>
 			<div id="fertile_toggle_red" class="toggle_text">
-				<h2>You are probably fertile right now.</h2> <%= link_to_function("more...",
+				<h2>You are fertile right now.</h2> <%= link_to_function("more...",
 				"Element.toggle('fertile_more')") %> <br />
-				<div id="fertile_more" style="font-size: 1em; display: none;">
-					this is more information about you being probably fertile.
-				</div>
+				<div id="fertile_more" style="font-size: 1em; display: padding: 20px; text-align: left;">
+					When mucus is present, sperm
+					  can live, so pregnancy is possible.
+					<br /> <br />Remember, it's your
+					  responsibility to analyze your fertility and make appropriate
+					  decisions for yourself and your family.				</div>
 			</div>
 		<% elsif @fertile_toggle == 0 %>
 			<div id="fertile_toggle_purple" class="toggle_text">
-				<h2>You are probably infertile right now.</h2> <%= link_to_function("more...",
+				<h2>You are infertile right now.</h2> <%= link_to_function("more...",
 				"Element.toggle('infertile_more')") %> <br />
-				<div id="infertile_more" style="font-size: 1em; display: none;">
-					this is more information about you being probably fertile.
-				</div>
+				<div id="infertile_more" style="font-size: 1em; display: none; padding: 20px; text-align: left;">
+					The Dry Day Rule
+					  and/or Temp Jump rule indicate that you are most likely
+					  infertile right now. 
+					<br />
+					<br />
+					Remember that you are not truly infertile
+					  until 6pm daily during Phase one. If you are entering Phase three
+					  you are not infertile until 6pm on the third day after a true
+					  temp jump.				</div>
 			</div>
 		<% elsif @fertile_toggle == 2 %>
 			<div id="fertile_toggle_orange" class="toggle_text">
 				<h2>You may be fertile right now.</h2> <%= link_to_function("more...",
 				"Element.toggle('maybe_more')")%> <br />
-				<div id="maybe_more" style="font-size: 1em; display: none;">
-					this is more information about you being probably fertile.
-				</div>
+				<div id="maybe_more" style="font-size: 1em; display: none; padding: 20px; text-align: left;">
+					The recommended
+					  fertility rules are the most conservative ones. Those rules
+					  with your current fertility signs indicate that pregnancy is
+					  possible right now.
+					<br /><br />
+					  Remember, it's your
+					  responsibility to analyze your fertility and make appropriate
+					  decisions for yourself and your family.				</div>
 			</div>
 		<% end %>
 	<% end %>

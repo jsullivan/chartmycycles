@@ -3,7 +3,7 @@ class AccountController < ApplicationController
 #  include AuthenticatedSystem
   # If you want "remember me" functionality, add this before_filter to Application Controller
   before_filter :login_from_cookie
-   ssl_required  :login, :signup
+  # ssl_required  :login, :signup
 
   
   # say something nice, you goof!  something sweet.
@@ -170,8 +170,8 @@ def mucus_pie
    data = []
    fertile = 5
    infertile = 15
-   unsure = 10
-   no_entry = 0
+   unsure = 8
+   no_entry = 2
    data << fertile
    data << infertile
    data << unsure
@@ -181,7 +181,7 @@ def mucus_pie
    g.set_bg_color('#ffffff')  
    g.pie(90, '#505050', '{font-size: 12px; color: #404040;}')
    g.pie_values(data, %w(Fertile Infertile Unsure Empty))
-   g.pie_slice_colors(%w(#ffffff #cc9bff #1ebe1a #0d6fc9))
+   g.pie_slice_colors(%w(#ffffff #0d6fc9 #cc9bff #1ebe1a))
    g.set_tool_tip("#val# of 30 entries")
    g.title("Mucus", '{font-size:18px; color: #0a5294}' )
    render :text => g.render
@@ -210,7 +210,7 @@ def mucus_pie
   
   def bar_glass
 
-         acne_count = 23
+         acne_count = 10
          cramps_count = 4
          period_count = 5
          intercourse_count = 7
@@ -265,14 +265,14 @@ def mucus_pie
 
 
      g.set_x_labels(%w(Trends))
-     g.set_x_axis_color('#7d5f9e', '#afb9ff')
-     g.set_y_axis_color('#7d5f9e', '#afb9ff')
+     g.set_x_axis_color('#7d5f9e', '#ffffff')
+     g.set_y_axis_color('#7d5f9e', '#ffffff')
      g.set_y_min(0)
-     g.set_y_max(24)
+     g.set_y_max(12)
 
-     g.set_y_label_steps(24)
+     g.set_y_label_steps(12)
      g.set_y_legend("Days this cycle", 12, '#7d5f9e')
-     tip = "#key#<br>#val# of 24 days"
+     tip = "#key#<br>#val# of 12 days"
      g.set_tool_tip(tip)
      render :text => g.render
    end
@@ -456,8 +456,8 @@ def mucus_pie
 
        g.set_y_min(96.9)
        g.set_y_max(99)
-       g.set_x_axis_color('#7d5f9e', '#e7d2fc' )
-       g.set_y_axis_color( '#7d5f9e', '#e7d2fc' )
+       g.set_x_axis_color('#7d5f9e', '#ffffff' )
+       g.set_y_axis_color( '#7d5f9e', '#ffffff' )
        g.set_x_legend( 'Cycle days', 11, '#7d5f9e' )
        g.set_y_legend( 'Temp.', 11, '#7d5f9e' )
        g.set_x_labels(days)

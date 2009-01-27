@@ -99,7 +99,22 @@ class AccountController < ApplicationController
       },
       :description => 'ChartMyCycles subscription'
     }
-
+    if params[:coupon].length > 1
+     if params[:coupon] == "YESWECAN"
+      options[:trial] = {
+        :amount => 0,
+        :occurrences => 3
+      }
+      options[:duration] = {
+        :start_date => Time.now.to_date + 3.months,
+        :occurrences => 240
+      }
+      trial = 1
+    else 
+       flash[:error] = "That coupon code is invalid. Are you sure you entered it correctly?."
+        return
+     end
+    end
     if creditcard.valid?
       response = gateway.recurring(1300, creditcard, options)
 
@@ -150,7 +165,11 @@ class AccountController < ApplicationController
         :phone    => params[:billing_address][:phone],
         :email => params[:user][:email]
     }
-    Postoffice.deliver_welcome(email, extras)
+    if trial == 1
+      Postoffice.deliver_trial(email, extras)
+    else
+      Postoffice.deliver_welcome(email, extras)
+    end
   rescue ActiveRecord::RecordInvalid
     render :action => 'signup'
   end

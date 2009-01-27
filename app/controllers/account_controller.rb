@@ -111,7 +111,7 @@ class AccountController < ApplicationController
       }
       trial = 1
     else 
-       flash[:error] = "That coupon code is invalid. Are you sure you entered it correctly?."
+       flash[:error] = "That coupon code is invalid. Are you sure you entered it correctly?"
         return
      end
     end

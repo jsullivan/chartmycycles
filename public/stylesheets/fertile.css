@@ -238,6 +238,17 @@ color: #000000;
 	border-bottom: thin solid #8d9bfe;
 	background: url(/images/contact_banner.jpg);
 }
+#tweets_banner {
+	position: absolute;
+	height: 146px;
+	width: 775px;
+	text-align: left;
+	margin-left: -9px;
+	line-height: 1.2em;
+	border-top: thin solid #8d9bfe;
+	border-bottom: thin solid #8d9bfe;
+	background: url(/images/recent_tweets.png);
+}
 #tourtour {
 	height: 418px;
 	width: 758px;

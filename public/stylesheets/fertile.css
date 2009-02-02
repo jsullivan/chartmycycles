@@ -42,6 +42,13 @@ h1 {
 	letter-spacing: -2px;
 	color: #000000;	
 }
+.title_text {
+	font-size: 3em;
+	font-weight: bold;
+	font-family: Arial, Helvetica;
+	letter-spacing: -2px;
+	color: #000000;	
+}
 h2 {
 	font-size: 1.3em;
 	font-family: Arial, Helvetica;
@@ -172,8 +179,14 @@ color: #000000;
 /* PRODUCT SPACE 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
+#definition {
+	height: 98px;
+	margin-top:293px;
+	background: url(/images/definition.png);
+	padding: 40px 20px 20px 100px;
+}
 #product_space {
-  margin-top: 293px;
+  margin-top: 10px;
 	height: 205px;
 	background: url(/images/screencaptures.png);
 }

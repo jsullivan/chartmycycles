@@ -92,9 +92,16 @@ If you've received a special promotion code, please enter it here. Note that pro
 </label>
 <%= select_tag :month, expiration_month, :style => "width: 50px" %>
 <%= select_tag :year, expiration_year, :style => "width: 70px" %>
+
 <div class="spacer"></div>
-<%= check_box_tag 'terms', '1'%> &nbsp;I agree to the <%= link_to "Terms of Service", :action => 'tos', :target => '_new' %>
+<label><%= link_to "Terms of Service", :action => 'tos', :target => '_new' %> 
+	<span class="small">Click to agree</span>
+<span class="small"></span>
+</label>
+<%= check_box_tag 'terms', '1'%>
+
 <div class="spacer"></div>
+
 <button type="submit">Sign-up</button> or <%= link_to 'Cancel', :action => 'index' %>
 
 <div class="spacer"></div>

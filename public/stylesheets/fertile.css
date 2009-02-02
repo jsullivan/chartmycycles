@@ -33,7 +33,7 @@ body {
 	font-family: Arial, Helvetica;
  	text-align: center;
 	color: #000000;
-	background: url(../images/body_bkgrnd2.png) repeat-x #7f61a1;
+	background: url(../images/body_bkgrnd4.jpg) repeat-x #7f61a1;
 }
 h1 {
 	font-size: 3.4em;
@@ -71,6 +71,14 @@ label {
 display: block;
 color: #000000;
 }
+#light_blast {
+	background: transparent url(/images/light_blast.png) 0 0 no-repeat;
+	background-position: center top;
+	height: 630px;
+	margin: 0 auto;
+}
+
+
 #container {
 	margin: 0 auto;
 	width: 758px;

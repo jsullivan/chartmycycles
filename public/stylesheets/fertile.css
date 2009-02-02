@@ -427,3 +427,75 @@ padding-bottom: 5px;
 fieldset.submit {  
 border-style: none;
 }
+
+
+/* ----------- My Form ----------- */
+.myform{
+margin:0 auto;
+width:400px;
+padding:14px;
+}
+p, h1, form, button{border:0; margin:0; padding:0;}
+.spacer{clear:both; height:1px;}
+/* ----------- stylized ----------- */
+#stylized{
+border:solid 2px #8d9bfe;
+background:#bcc4ff;
+}
+#stylized h1 {
+font-size:1.5em;
+font-weight:bold;
+margin-bottom:8px;
+letter-spacing: 0px;
+
+}
+#stylized p{
+font-size:11px;
+color:#333333;
+margin-bottom:20px;
+border-bottom:solid 1px #8d9bfe;
+padding-bottom:10px;
+}
+#stylized label{
+display:block;
+font-weight:bold;
+text-align:right;
+width:140px;
+float:left;
+}
+#stylized .small{
+color:#333333;
+display:block;
+font-size:11px;
+font-weight:normal;
+text-align:right;
+width:140px;
+}
+#stylized input {
+float:left;
+font-size:12px;
+padding:4px 2px;
+border:solid 1px #8d9bfe;
+width:200px;
+margin:2px 0 20px 10px;
+}
+#stylized select{
+float:left;
+font-size:12px;
+padding:4px 2px;
+border:solid 1px #8d9bfe;
+width:200px;
+margin:2px 0 20px 10px;
+}
+#stylized button{
+clear:both;
+margin-left:150px;
+width:125px;
+height:31px;
+background:#4555c2 url(img/button.png) no-repeat;
+text-align:center;
+line-height:31px;
+color:#FFFFFF;
+font-size:11px;
+font-weight:bold;
+}

@@ -16,10 +16,12 @@
 </head>
 <body>
 <div id="light_blast">
+
 	<div>
 	<%= image_tag 'container_top.png' %>
 	</div>
 	<div id="container">
+
 		<div id="logo_space">
 				<% if logged_in? %>
 					<div id="logo_div">
@@ -37,12 +39,17 @@
 						</div>
 				<% end %>
 			<div id="header_links">
-			  <p style="text-align: right;"><!--<%= link_to 'Forums', :controller => 'forums' %> | <%= link_to 'Invite your friends', :action => 'invite' %> |--> <%= link_to 'Recent tweets', :action => 'recent_tweets' %> | <%= link_to 'Contact us', :action => 'contact' %> | Already a member? <%= link_to 'Log in', :action => 'login' %></p><br />
+			  <p style="text-align: right;"><!--<%= link_to 'Forums', :controller => 'forums' %> | <%= link_to 'Invite your friends', :action => 'invite' %> |--> <%= link_to 'Recent tweets', :action => 'recent_tweets' %> | <%= link_to 'Contact us', :action => 'contact' %> | <span class="signup"><%= link_to 'Pricing & Signup', :action => 'signup' %></span> | <%= link_to 'Log in', :action => 'login' %></p><br />
 			</div>
 		</div>
 	
 		<%= yield  %>
-	
+<!--		<div style="margin-top: 10px;">
+			<%= image_tag 'little_icons/delicious.png'%> <%= image_tag 'little_icons/digg.png'%>
+			<%= image_tag 'little_icons/friendfeed.png'%> <%= image_tag 'little_icons/linkedin.png'%>
+			<%= image_tag 'little_icons/stumbleupon.png'%><%= image_tag 'little_icons/twitter.png'%>
+			<%= image_tag 'little_icons/feed.png'%>
+		</div>-->
 	</div>
 	<div>
 	<%= image_tag 'container_bottom.png' %>

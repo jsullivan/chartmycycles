@@ -71,6 +71,14 @@ label {
 display: block;
 color: #000000;
 }
+.signup a {
+	color: #19a811;
+	font-weight: bold;
+}
+.signup a:hover {
+	background-color: #19a811;
+	color: #ffffff;
+}
 #light_blast {
 	background: transparent url(/images/light_blast.png) 0 0 no-repeat;
 	background-position: center top;
@@ -144,7 +152,6 @@ color: #000000;
 .header_subtitle {
 	color: #000000;
 	font-size: 1.4em;
-	line-height: 1.2em;
 }
 #call_to_action {
 	margin-top: 20px;
@@ -500,7 +507,7 @@ clear:both;
 margin-left:150px;
 width:125px;
 height:31px;
-background:#4555c2 url(img/button.png) no-repeat;
+background:#4555c2;
 text-align:center;
 line-height:31px;
 color:#FFFFFF;

@@ -116,7 +116,7 @@ class AccountController < ApplicationController
      end
     end
     if creditcard.valid?
-      response = gateway.recurring(1300, creditcard, options)
+      response = gateway.recurring(900, creditcard, options)
 
       print "(TEST) " if response.test?
 

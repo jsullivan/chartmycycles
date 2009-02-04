@@ -30,8 +30,13 @@
 </style>
 
 <div id="light_blast">
-
-	<div>
+	<![if IE]>
+	<div style="margin-bottom: -5px;">
+	<![endif]>
+		<![if !IE]>
+		<div>
+		<![endif]>
+		
 	<%= image_tag 'container_top.png' %>
 	</div>
 	<div id="container">
@@ -59,7 +64,7 @@
 		</div>
 	
 		<%= yield  %>
-<!--><div style="margin-top: 10px;">
+<!--<div style="margin-top: 10px;">
 			<%= image_tag 'little_icons/delicious.png'%> <%= image_tag 'little_icons/digg.png'%>
 			<%= image_tag 'little_icons/friendfeed.png'%> <%= image_tag 'little_icons/linkedin.png'%>
 			<%= image_tag 'little_icons/stumbleupon.png'%><%= image_tag 'little_icons/twitter.png'%>

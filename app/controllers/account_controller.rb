@@ -51,6 +51,7 @@ class AccountController < ApplicationController
         flash[:error] = "Please accept the terms of service before you proceed."      
         return
       end
+=begin
 ########=-=-=-=-=-=-=-=-=-=-=-=-=-= Early attempt at billing code
     # BEGIN construct
     gateway = ActiveMerchant::Billing::AuthorizeNetGateway.new({
@@ -135,11 +136,12 @@ class AccountController < ApplicationController
     end
     # END purchase
 #######=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=end
     @user.last_login = Time.now
-    @user.subscription_info = SubscriptionInfo.new
-    @user.subscription_info.authorization = response.authorization
-    @user.subscription_info.message = response.message
-    @user.subscription_info.save
+#    @user.subscription_info = SubscriptionInfo.new
+#    @user.subscription_info.authorization = response.authorization
+#    @user.subscription_info.message = response.message
+#    @user.subscription_info.save
     @user.save!
     self.current_user = @user
     c = Cycle.new
@@ -148,12 +150,14 @@ class AccountController < ApplicationController
     c.save
     redirect_back_or_default(:controller => '/home', :action => 'index')
     flash[:notice] = "Thanks for signing up!"
+    thirtydaytrial = 1
     
     email = {
       :email => @user.email,
-      :authorization => @user.subscription_info.authorization,
-      :creditcard => params[:credit_card_number].slice(12, 16)
+#      :authorization => @user.subscription_info.authorization,
+#      :creditcard => params[:credit_card_number].slice(12, 16)
     }
+=begin
     extras = {
        :first_name     => params[:first_name],
         :last_name      => params[:last_name],
@@ -165,8 +169,13 @@ class AccountController < ApplicationController
         :phone    => params[:billing_address][:phone],
         :email => params[:user][:email]
     }
+=end
+    trial = 0
     if trial == 1
       Postoffice.deliver_trial(email, extras)
+    elsif thirtydaytrial == 1
+      Postoffice.deliver_thirtydaytrial(email)
+      
     else
       Postoffice.deliver_welcome(email, extras)
     end
@@ -205,7 +214,7 @@ def mucus_pie
    g.pie_values(data, %w(Fertile Infertile Unsure Empty))
    g.pie_slice_colors(%w(#ffffff #0d6fc9 #cc9bff #1ebe1a))
    g.set_tool_tip("#val# of 30 entries")
-   g.title("Mucus", '{font-size:18px; color: #0a5294}' )
+   g.title("", '{font-size:18px; color: #0a5294}' )
    render :text => g.render
  end
  

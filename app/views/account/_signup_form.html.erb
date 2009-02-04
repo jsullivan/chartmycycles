@@ -1,0 +1,56 @@
+<div id="content_big_center_wide">
+	<span style="color: red;">
+		<%= error_messages_for :user %>
+		<%= flash[:error] if flash[:error] -%>
+	</span>
+</div>
+<br /><br />
+<% form_for :user do |f| -%>
+
+<div id="stylized" class="myform">
+<h1>Create your account</h1>
+<p></p>
+
+<label>Email
+<span class="small">Add a valid address</span>
+</label>
+<%= f.text_field :email %>
+
+<label>Password
+<span class="small">Min. size 4 chars</span>
+</label>
+<%= f.password_field :password %>
+
+<label>Confirm Password
+<span class="small"></span>
+</label>
+<%= f.password_field :password_confirmation %>
+
+<div class="spacer"></div>
+<label><%= link_to "Terms of Service", :action => 'tos', :target => '_new' %> 
+	<span class="small">Click to agree</span>
+<span class="small"></span>
+</label>
+<%= check_box_tag 'terms', '1'%>
+
+<div class="spacer"></div>
+
+<button type="submit">Sign-up</button> or <%= link_to 'Cancel', :action => 'index' %>
+
+<div class="spacer"></div>
+<div style="background-color: #4555c2; margin: 15px -15px -15px -15px; padding: 20px;">
+	<span class="summary">
+		Welcome! You're creating your <b>free 30-day trial</b>. Your account is fully
+		functional. At the end of your trial you can choose to stick around for 
+		<b>$9 a month</b>.</span>
+</div>
+<% end -%>
+</div>
+
+
+
+
+
+
+
+

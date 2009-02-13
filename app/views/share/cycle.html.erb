@@ -12,7 +12,7 @@
 				</td>
 				<td align="left">
 					<div id="share_text">
-					<%= @user.full_name %> shared this cycle. It started on <%= nice_date(@cycle.started) %>
+					<%= @user.first_name? ? @user.first_name : "This user has " %> shared this cycle. It started on <%= nice_date(@cycle.started) %>
 					<% if @cycle.ended %>
 					 and ended on <%= nice_date(@cycle.ended) %>.
 					<% end %>

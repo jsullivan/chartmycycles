@@ -1,14 +1,14 @@
 <div id="content_big_center_wide">
-	<span style="color: red;">
-		<%= error_messages_for :user %>
-		<%= flash[:error] if flash[:error] -%>
-	</span>
+
 </div>
 <br /><br />
 <% form_for :user do |f| -%>
 
 <div id="stylized" class="myform">
-
+	<span style="color: red; padding: 10px;">
+		<%= error_messages_for :user %>
+		<%= flash[:error] if flash[:error] -%>
+	</span>
 <label>Email
 <span class="small">Enter a valid address</span>
 </label>

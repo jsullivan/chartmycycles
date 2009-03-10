@@ -204,15 +204,14 @@ def mucus_pie
    unsure = 8
    no_entry = 2
    data << fertile
-   data << infertile
    data << unsure
    data << no_entry
  
    g = Graph.new
    g.set_bg_color('#ffffff')  
    g.pie(90, '#505050', '{font-size: 12px; color: #404040;}')
-   g.pie_values(data, %w(Fertile Infertile Unsure Empty))
-   g.pie_slice_colors(%w(#ffffff #0d6fc9 #cc9bff #1ebe1a))
+   g.pie_values(data, %w(Fertile Infertile Empty))
+   g.pie_slice_colors(%w(#ffffff #0d6fc9 #1ebe1a))
    g.set_tool_tip("#val# of 30 entries")
    g.title("", '{font-size:18px; color: #0a5294}' )
    render :text => g.render
